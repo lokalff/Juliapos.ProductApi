@@ -1,0 +1,34 @@
+{
+	"runtime": "Net80",
+	"defaultVariables": null,
+	"documentGenerator": {
+		"fromDocument": {
+			"json": "",
+			"url": "swagger.v1.json",
+			"output": null
+		}
+	},
+	"codeGenerators": {
+		"openApiToCSharpClient": {
+			"jsonLibrary": "SystemTextJson",
+			"namespace": "Juliapos.Portal.ProductApi.Client.v1",
+			"useBaseUrl": false,
+			"generateBaseUrlProperty": false,
+			"generateSyncMethods": true,
+			"wrapResponses": true,
+			"generateResponseClasses": true,
+			"responseClass": "SwaggerResponse",
+			"useHttpRequestMessageCreationMethod": true,
+			"generateClientClasses": true,
+			"generateClientInterfaces": true,
+			"clientBaseInterface": null,
+			"clientBaseClass": "Juliapos.AspNetCore.Authorization.ApiToken.ClientApiBase",
+			"configurationClass": "Juliapos.AspNetCore.Authorization.ApiToken.ITokenProvider",
+			"injectHttpClient": true,
+			"disposeHttpClient": false,
+			"operationGenerationMode": "MultipleClientsFromFirstTagAndOperationId",
+			"output": "../ApiClient/apiclient.v1.cs",
+			"contractsOutputFilePath": "../temp/Contracts.g.cs"
+		}
+	}
+}

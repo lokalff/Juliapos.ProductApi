@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <AssemblyName>Juliapos.Portal.ProductApi.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>Juliapos.Portal.ProductApi.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Asp.Versioning.Http" Version="8.1.0" />
+	  <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.0" />
+	  <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+	  <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.11" />
+	  <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+	  <PackageReference Include="NSwag.MSBuild" Version="14.2.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.2.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\nuget\src\Authorization\Juliapos.AspNetCore.Authorization.ApiToken\Juliapos.AspNetCore.Authorization.ApiToken.csproj" />
+    <ProjectReference Include="..\..\..\..\nuget\src\Authorization\Juliapos.AspNetCore.Authorization.Common\Juliapos.AspNetCore.Authorization.Common.csproj" />
+    <ProjectReference Include="..\..\..\..\nuget\src\Authorization\Juliapos.AspNetCore.Authorization.Swagger\Juliapos.AspNetCore.Authorization.Swagger.csproj" />
+    <ProjectReference Include="..\..\..\..\nuget\src\Patterns\Juliapos.Patterns.ArgumentChecking\Juliapos.Patterns.ArgumentChecking.csproj" />
+    <ProjectReference Include="..\..\..\..\nuget\src\Patterns\Juliapos.Patterns.DtoMapping\Juliapos.Patterns.DtoMapping.csproj" />
+    <ProjectReference Include="..\Db.Postgres\Db.Postgres.csproj" />
+    <ProjectReference Include="..\Db\Db.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+	
+	
+  <Target Name="NSwagDebug" AfterTargets="PostBuildEvent">
+    <Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="dotnet swagger tofile --serializeasv2 --output swagger.v1.json $(TargetPath) v1&#xD;&#xA;$(NSwagExe_Net80) run nswag.json /variables:Configuration=$(Configuration)" />
+  </Target>
+	
+</Project>

@@ -1,0 +1,12 @@
+﻿namespace Juliapos.Portal.ProductApi.Db.Models
+{
+    public sealed class Organization
+    {
+        public Guid OrganizationId { get; set; }
+        public Guid? ExternalId { get; set; }
+        public string Name { get; set; }
+
+        public ICollection<Location> Locations { get; set; } = new List<Location>();
+        public ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+    }
+}
