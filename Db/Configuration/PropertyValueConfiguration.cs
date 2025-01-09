@@ -13,6 +13,7 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.ToTable(DbConstants.Table.PropertyValue, DbConstants.DefaultSchema);
 
             builder.HasKey(t => t.PropertyValueId);
+            builder.HasIndex(t => new { t.ProductId, t.PropertyId });
 
             builder.Property(u => u.PropertyValueId)
                 .HasColumnName("propertyvalue_id");

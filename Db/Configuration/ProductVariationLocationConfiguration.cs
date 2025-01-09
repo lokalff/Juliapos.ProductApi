@@ -13,6 +13,7 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.ToTable(DbConstants.Table.ProductVariationLocation, DbConstants.DefaultSchema);
 
             builder.HasKey(t => t.ProductVariationLocationId);
+            builder.HasIndex(t => new { t.ProductVariationId, t.LocationId });
 
             builder.Property(u => u.ProductVariationLocationId)
                 .HasColumnName("productvariationlocation_id");
