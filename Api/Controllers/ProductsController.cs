@@ -76,7 +76,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
 
             product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
             product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
-            
+            // Variations?
+
             var productToAdd = product.MapProductAdd(id, "username");
             productToAdd = await m_service.CreateProductAsync(productToAdd);
 
@@ -103,6 +104,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
 
             product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
             product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
+            // Variations?
 
             var productToUpdate = product.MapProductUpdate("username");
             productToUpdate = await m_service.UpdateProductAsync(productToUpdate);

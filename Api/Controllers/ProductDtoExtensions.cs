@@ -1,5 +1,4 @@
-﻿using System;
-using Juliapos.Portal.ProductApi.Api.Models.Dto;
+﻿using Juliapos.Portal.ProductApi.Api.Models.Dto;
 using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Api.Controllers

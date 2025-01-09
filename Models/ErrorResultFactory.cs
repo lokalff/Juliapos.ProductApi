@@ -21,6 +21,7 @@ namespace Juliapos.Portal.ProductApi.Models
 
             { ApiErrorCode.ProductNotFound, "Product not found" },
             { ApiErrorCode.ProductExists, "Product already exists" },
+            { ApiErrorCode.ProductVariationDuplicateLocation, "Product has duplicate location connections" },
 
             { ApiErrorCode.ProductCategoryNotFound, "Product category not found" },
             { ApiErrorCode.DustCategoryNotFound, "Dust category not found" },
@@ -201,6 +202,11 @@ namespace Juliapos.Portal.ProductApi.Models
         /// Product exists
         /// </summary>
         ProductExists,
+
+        /// <summary>
+        /// Duplicate location in variation
+        /// </summary>
+        ProductVariationDuplicateLocation,
 
 
         /// <summary>

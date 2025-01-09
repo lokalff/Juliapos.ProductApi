@@ -22,6 +22,11 @@ namespace Juliapos.Portal.ProductApi.Api
                 context.Result = new ForbidResult();
                 context.ExceptionHandled = true;
             }
+            else
+            {
+                context.Result = new BadRequestObjectResult(context.Exception);
+                context.ExceptionHandled = true;
+            }
         }
     }
 }
