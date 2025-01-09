@@ -9,6 +9,8 @@
         public string TypeName { get; set; }
         public bool Enabled { get; set; }
 
+        public Organization Organization { get; set; }
+
         public ICollection<MenuCategory> MenuCategories { get; set; } = new List<MenuCategory>();
 
     }

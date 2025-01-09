@@ -40,6 +40,10 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.Property(u => u.Enabled)
                 .HasColumnName("enabled")
                 .IsRequired();
+
+            builder.HasOne(u => u.Organization)
+                .WithMany(t => t.Properties)
+                .HasForeignKey(u => u.OrganizationId);
         }
     }
 }

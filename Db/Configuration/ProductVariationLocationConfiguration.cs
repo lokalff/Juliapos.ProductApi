@@ -22,7 +22,6 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .HasColumnName("productvariation_id");
 
             builder.Property(u => u.LocationId)
-                .IsRequired()
                 .HasColumnName("location_id");
 
             builder.Property(u => u.UnitPrice)

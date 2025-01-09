@@ -7,10 +7,10 @@ namespace Juliapos.Portal.ProductApi.Db
     {
         DbSet<DustCategory> DustCategory { get; }
         DbSet<MenuCategory> MenuCategory { get; }
+        DbSet<ProductCategory> ProductCategory { get; }
         DbSet<Location> Location { get; }
         DbSet<Organization> Organization { get; }
         DbSet<Product> Product { get; }
-        DbSet<ProductCategory> ProductType { get; }
         DbSet<ProductVariation> ProductVariation { get; }
         DbSet<ProductVariationLocation> ProductVariationLocation { get; }
         DbSet<Property> Property { get; }

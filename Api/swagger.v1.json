@@ -11,7 +11,7 @@
         "tags": [
           "Products"
         ],
-        "summary": "Get dayorder with id as parameter",
+        "summary": "Get product with id as parameter",
         "operationId": "GetProductByIdAsync",
         "produces": [
           "application/json"
@@ -41,6 +41,112 @@
           },
           "400": {
             "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/products": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create a new product",
+        "operationId": "CreateProductAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new product.",
+            "schema": {
+              "$ref": "#/definitions/ProductDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Update a product",
+        "operationId": "UpdateProductAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product.",
+            "schema": {
+              "$ref": "#/definitions/ProductDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product.",
             "schema": {
               "$ref": "#/definitions/ErrorResultDto"
             }
@@ -149,10 +255,91 @@
       ],
       "type": "string"
     },
+    "ProductAddDto": {
+      "description": "DTO to add a product",
+      "type": "object",
+      "properties": {
+        "productCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "dustCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "menuCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "menuName": {
+          "type": "string"
+        },
+        "vatLevel": {
+          "$ref": "#/definitions/VatLevel"
+        },
+        "description": {
+          "type": "string"
+        },
+        "inInventory": {
+          "type": "boolean"
+        },
+        "percentage": {
+          "format": "float",
+          "type": "number"
+        },
+        "ascendingStock": {
+          "type": "boolean"
+        },
+        "state": {
+          "$ref": "#/definitions/RecordState"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PropertyReferenceDto"
+          }
+        },
+        "variations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductVariationAddDto"
+          }
+        },
+        "selectionPages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductSelectionPageReferenceDto"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
     "ProductDto": {
       "description": "",
       "type": "object",
       "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "productCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "dustCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "menuCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
         "code": {
           "type": "string"
         },
@@ -204,8 +391,33 @@
         "variations": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductVariationReferenceDto"
+            "$ref": "#/definitions/ProductVariationAddDto"
           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductSelectionPageReferenceDto": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "selectionPageId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "foreColor": {
+          "type": "string"
+        },
+        "backColor": {
+          "type": "string"
+        },
+        "rowIdx": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "columnIdx": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "additionalProperties": false
@@ -220,9 +432,103 @@
       ],
       "type": "string"
     },
+    "ProductUpdateDto": {
+      "description": "DTO to update a product",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "productCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "dustCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "menuCategoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "menuName": {
+          "type": "string"
+        },
+        "vatLevel": {
+          "$ref": "#/definitions/VatLevel"
+        },
+        "description": {
+          "type": "string"
+        },
+        "inInventory": {
+          "type": "boolean"
+        },
+        "percentage": {
+          "format": "float",
+          "type": "number"
+        },
+        "ascendingStock": {
+          "type": "boolean"
+        },
+        "state": {
+          "$ref": "#/definitions/RecordState"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PropertyReferenceDto"
+          }
+        },
+        "variations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductVariationUpdateDto"
+          }
+        },
+        "selectionPages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductSelectionPageReferenceDto"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductVariationAddDto": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productVariationLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductVariationLocationReferenceDto"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
     "ProductVariationLocationReferenceDto": {
       "type": "object",
       "properties": {
+        "locationId": {
+          "format": "uuid",
+          "type": "string"
+        },
         "unitPrice": {
           "format": "float",
           "type": "number"
@@ -267,9 +573,13 @@
       },
       "additionalProperties": false
     },
-    "ProductVariationReferenceDto": {
+    "ProductVariationUpdateDto": {
       "type": "object",
       "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
         "sku": {
           "type": "string"
         },
@@ -291,13 +601,8 @@
     "PropertyReferenceDto": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "idName": {
-          "type": "string"
-        },
-        "typeName": {
+        "id": {
+          "format": "uuid",
           "type": "string"
         },
         "value": {

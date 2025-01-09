@@ -4,12 +4,19 @@ using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Api.Mappers
 {
-    public sealed class ProductMapper : BaseDtoMapper<Product, ProductDto>
+    /// <summary>
+    /// Helpers to fill the product object from the DTO's
+    /// </summary>
+    public sealed class ProductDtoMapper : BaseDtoMapper<Product, ProductDto>
     {
         public override ProductDto Map(Product source)
         {
             var result = new ProductDto
             {
+                Id = source.ProductId,
+                ProductCategoryId = source.ProductCategoryId,
+                DustCategoryId = source.DustCategoryId,
+                MenuCategoryId = source.MenuCategoryId,
                 Name = source.Name,
                 Code = source.Code,
                 MenuName = source.MenuName,
@@ -29,22 +36,21 @@ namespace Juliapos.Portal.ProductApi.Api.Mappers
             {
                 result.Properties = source.PropertieValues.Select(x => new PropertyReferenceDto
                 {
-                    Name = x.Property.Name,
-                    IdName = x.Property.IdName,
-                    TypeName = x.Property.TypeName,
+                    Id = x.PropertyId,
                     Value = x.Value
                 }).ToArray();
             }
 
             if (source.ProductVariations != null && source.ProductVariations.Any())
             {
-                result.Variations = source.ProductVariations.Select(x => new ProductVariationReferenceDto
+                result.Variations = source.ProductVariations.Select(x => new ProductVariationAddDto
                 {
                     Name = x.Name,
                     Code = x.Code,
                     Sku = x.Sku,
                     ProductVariationLocations = x.ProductVariationLocations.Select(y => new ProductVariationLocationReferenceDto
                     {
+                        LocationId = y.LocationId,
                         Status = y.Status,
                         NextStatus = y.NextStatus,
                         ChangeDateTime = y.ChangeDateTime,

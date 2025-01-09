@@ -17,7 +17,7 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.Property(u => u.ProductId)
                 .HasColumnName("product_id");
 
-            builder.Property(u => u.CategoryId) // was ProductTypeId
+            builder.Property(u => u.ProductCategoryId) // was ProductTypeId
                 .HasColumnName("category_id")
                 .IsRequired();
 
@@ -76,16 +76,14 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
 
             builder.Property(u => u.UserUpdate)
                 .HasColumnName("userupdate")
-                .IsRequired()
                 .HasMaxLength(50);
 
             builder.Property(u => u.Updated)
-                .HasColumnName("updated")
-                .IsRequired();
+                .HasColumnName("updated");
 
             builder.HasOne(u => u.ProductCategory)
                 .WithMany(t => t.Products)
-                .HasForeignKey(u => u.CategoryId);
+                .HasForeignKey(u => u.ProductCategoryId);
 
             builder.HasOne(u => u.DustCategory)
                 .WithMany(t => t.Products)

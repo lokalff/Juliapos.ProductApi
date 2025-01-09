@@ -15,7 +15,7 @@ namespace Juliapos.Portal.ProductApi.Db
         public DbSet<MenuCategory> MenuCategory { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Organization> Organization { get; set; }
-        public DbSet<ProductCategory> ProductType { get; set; }
+        public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<SelectionPage> SelectionPage { get; set; }
         public DbSet<SelectionPageProduct> SelectionPageProduct { get; set; }
         public DbSet<Property> Property { get; set; }

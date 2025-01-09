@@ -31,6 +31,10 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .HasColumnName("weight")
                 .IsRequired();
 
+            builder.HasOne(u => u.Organization)
+                .WithMany(t => t.DustCategories)
+                .HasForeignKey(u => u.OrganizationId);
+
         }
     }
 }

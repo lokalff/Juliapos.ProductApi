@@ -3,14 +3,14 @@
 namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
     /// <summary>
-    /// 
+    /// DTO to add a product
     /// </summary>
-    public sealed class ProductDto
+    public sealed class ProductAddDto
     {
-        public Guid Id { get; set; }
         public Guid ProductCategoryId { get; set; }
         public Guid DustCategoryId { get; set; }
         public Guid MenuCategoryId { get; set; }
+
         public string Code { get; set; }
         public string Name { get; set; }
         public string MenuName { get; set; }
@@ -21,12 +21,9 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         public bool AscendingStock { get; set; }
         public RecordState State { get; set; }
 
-        public DateTime Created { get; set; }
-        public string UserCreate { get; set; }
-        public DateTime? Updated { get; set; }
-        public string UserUpdate { get; set; }
-
         public PropertyReferenceDto[] Properties { get; set; } = Array.Empty<PropertyReferenceDto>();
         public ProductVariationAddDto[] Variations { get; set; } = Array.Empty<ProductVariationAddDto>();
+        public ProductSelectionPageReferenceDto[] SelectionPages { get; set; } = Array.Empty<ProductSelectionPageReferenceDto>();
+
     }
 }

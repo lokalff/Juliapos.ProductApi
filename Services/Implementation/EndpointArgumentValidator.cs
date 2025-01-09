@@ -39,6 +39,25 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
         }
 
         /// <inheritdoc />
+        public async Task<DustCategory> ValidateDustCategoryAsync(Guid categoryId)
+        {
+            Guard.ArgumentNotDefaultValue(categoryId, nameof(categoryId));
+
+            if (m_authorizationContext?.OrganizationId == null)
+                throw new HttpForbidException();
+
+            var category = await m_dataStore.DustCategoryDataQuery
+                .WhereId(categoryId)
+                .WhereOrganizationExternalId(m_authorizationContext.OrganizationId.Value)
+                .SingleOrDefaultAsync();
+
+            if (category == null)
+                throw new HttpNotFoundException(ApiErrorCode.DustCategoryNotFound, categoryId);
+
+            return category;
+        }
+
+        /// <inheritdoc />
         public async Task<Location> ValidateLocationAsync(Guid locationId)
         {
             Guard.ArgumentNotDefaultValue(locationId, nameof(locationId));
@@ -55,6 +74,25 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
                 throw new HttpNotFoundException(ApiErrorCode.LocationNotFound, locationId);
 
             return location;
+        }
+
+        /// <inheritdoc />
+        public async Task<MenuCategory> ValidateMenuCategoryAsync(Guid categoryId)
+        {
+            Guard.ArgumentNotDefaultValue(categoryId, nameof(categoryId));
+
+            if (m_authorizationContext?.OrganizationId == null)
+                throw new HttpForbidException();
+
+            var category = await m_dataStore.MenuCategoryDataQuery
+                .WhereId(categoryId)
+                .WhereOrganizationExternalId(m_authorizationContext.OrganizationId.Value)
+                .SingleOrDefaultAsync();
+
+            if (category == null)
+                throw new HttpNotFoundException(ApiErrorCode.MenuCategoryNotFound, categoryId);
+
+            return category;
         }
 
         /// <inheritdoc />
@@ -76,5 +114,61 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
             return product;
         }
 
+        /// <inheritdoc />
+        public async Task<ProductCategory> ValidateProductCategoryAsync(Guid categoryId)
+        {
+            Guard.ArgumentNotDefaultValue(categoryId, nameof(categoryId));
+
+            if (m_authorizationContext?.OrganizationId == null)
+                throw new HttpForbidException();
+
+            var category = await m_dataStore.ProductCategoryDataQuery
+                .WhereId(categoryId)
+                .WhereOrganizationExternalId(m_authorizationContext.OrganizationId.Value)
+                .SingleOrDefaultAsync();
+
+            if (category == null)
+                throw new HttpNotFoundException(ApiErrorCode.ProductCategoryNotFound, categoryId);
+
+            return category;
+        }
+
+        /// <inheritdoc />
+        public async Task<Property> ValidatePropertyAsync(Guid propertyId)
+        {
+            Guard.ArgumentNotDefaultValue(propertyId, nameof(propertyId));
+
+            if (m_authorizationContext?.OrganizationId == null)
+                throw new HttpForbidException();
+
+            var property = await m_dataStore.PropertyDataQuery
+                .WhereId(propertyId)
+                .WhereOrganizationExternalId(m_authorizationContext.OrganizationId.Value)
+                .SingleOrDefaultAsync();
+
+            if (property == null)
+                throw new HttpNotFoundException(ApiErrorCode.PropertyNotFound, propertyId);
+
+            return property;
+        }
+
+        /// <inheritdoc />
+        public async Task<SelectionPage> ValidateSelectionPageAsync(Guid pageId)
+        {
+            Guard.ArgumentNotDefaultValue(pageId, nameof(pageId));
+
+            if (m_authorizationContext?.OrganizationId == null)
+                throw new HttpForbidException();
+
+            var category = await m_dataStore.SelectionPageDataQuery
+                .WhereId(pageId)
+                .WhereOrganizationExternalId(m_authorizationContext.OrganizationId.Value)
+                .SingleOrDefaultAsync();
+
+            if (category == null)
+                throw new HttpNotFoundException(ApiErrorCode.SelectionPageNotFound, pageId);
+
+            return category;
+        }
     }
 }

@@ -191,7 +191,7 @@ void ConfigureServices(IServiceCollection services)
 
     // singleton?
     services.AddTransient<IDtoMapper, DtoMapper>();
-    services.AddTransient<IDtoMapper<Product, ProductDto>, ProductMapper>();
+    services.AddTransient<IDtoMapper<Product, ProductDto>, ProductDtoMapper>();
 
     services.AddScoped<IProductsService, ProductsService>();
 

@@ -58,7 +58,6 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .WithMany(t => t.ProductCategories)
                 .HasForeignKey(u => u.OrganizationId);
 
-
         }
     }
 }

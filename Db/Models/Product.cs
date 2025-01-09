@@ -3,7 +3,7 @@
     public sealed class Product
     {
         public Guid ProductId { get; set; }
-        public Guid CategoryId { get; set; }
+        public Guid ProductCategoryId { get; set; }
         public Guid DustCategoryId { get; set; }
         public Guid MenuCategoryId { get; set; }
 
@@ -19,7 +19,7 @@
 
         public DateTime Created { get; set; }
         public string UserCreate { get; set; }
-        public DateTime Updated { get; set; }
+        public DateTime? Updated { get; set; }
         public string UserUpdate { get; set; }
 
         public ProductCategory ProductCategory { get; set; }

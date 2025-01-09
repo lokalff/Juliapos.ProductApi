@@ -7,7 +7,9 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
     internal sealed class ProductDataQuery : DataQuery<IApiDbContext, Product>, IProductDataQuery
     {
         public ProductDataQuery(IApiDbContext dataContext)
-            : this(dataContext, dataContext.Product.Include(p => p.ProductCategory).ThenInclude(c => c.Organization))
+            : this(dataContext, dataContext.Product
+                  .Include(p => p.ProductCategory)
+                  .ThenInclude(c => c.Organization))
         {
         }
 
@@ -34,7 +36,8 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
         public IProductDataQuery WithProperties()
         {
             return new ProductDataQuery(DataContext, Queryable
-                .Include(p => p.PropertieValues));
+                .Include(p => p.PropertieValues)
+                .ThenInclude(p => p.Property));
         }
 
         public IProductDataQuery WhereId(Guid id)

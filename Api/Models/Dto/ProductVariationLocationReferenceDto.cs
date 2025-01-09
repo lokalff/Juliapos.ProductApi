@@ -4,6 +4,8 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
     public sealed class ProductVariationLocationReferenceDto
     {
+        public Guid? LocationId { get; set; }
+
         public float? UnitPrice { get; set; }
         public float? UnitPricePurchase { get; set; }
         public bool? ShowOnFavoritePage { get; set; }

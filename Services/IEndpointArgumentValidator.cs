@@ -24,5 +24,40 @@ namespace Juliapos.Portal.ProductApi.Services
         /// <returns></returns>
         Task<Product> ValidateProductAsync(Guid productId);
 
+        /// <summary>
+        /// Return the product category if valid within the current context 
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        Task<ProductCategory> ValidateProductCategoryAsync(Guid categoryId);
+
+        /// <summary>
+        /// Return the dust category if valid within the current context 
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        Task<DustCategory> ValidateDustCategoryAsync(Guid categoryId);
+
+        /// <summary>
+        /// Return the menu category if valid within the current context 
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        Task<MenuCategory> ValidateMenuCategoryAsync(Guid categoryId);
+
+        /// <summary>
+        /// Return the property if valid within the current context 
+        /// </summary>
+        /// <param name="propertyId"></param>
+        /// <returns></returns>
+        Task<Property> ValidatePropertyAsync(Guid propertyId);
+
+        /// <summary>
+        /// Return the product selectionpage if valid within the current context 
+        /// </summary>
+        /// <param name="propertyId"></param>
+        /// <returns></returns>
+        Task<SelectionPage> ValidateSelectionPageAsync(Guid pageId);
+
     }
 }

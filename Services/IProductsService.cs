@@ -10,5 +10,19 @@ namespace Juliapos.Portal.ProductApi.Services
         /// <param name="id"></param>
         /// <returns></returns>
         Task<Product> GetProductByIdAsync(Guid id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        Task<Product> CreateProductAsync(Product product);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        Task<Product> UpdateProductAsync(Product product);
     }
 }

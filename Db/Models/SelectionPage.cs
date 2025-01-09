@@ -9,6 +9,7 @@
         public int Weight { get; set; }
         public bool Enabled { get; set; }
 
+        public Organization Organization { get; set; }
         public ICollection<SelectionPageProduct> SelectionPageProducts { get; set; } = new List<SelectionPageProduct>();
     }
 }

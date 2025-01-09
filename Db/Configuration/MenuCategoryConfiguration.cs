@@ -44,6 +44,10 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .WithMany(p => p.MenuCategories)
                 .UsingEntity<MenuCategoryProperty>();
 
+            builder.HasOne(u => u.Organization)
+                .WithMany(t => t.MenuCategories)
+                .HasForeignKey(u => u.OrganizationId);
+
 
         }
     }

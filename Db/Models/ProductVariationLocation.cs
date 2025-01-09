@@ -4,7 +4,7 @@
     {
         public Guid ProductVariationLocationId { get; set; }
         public Guid ProductVariationId { get; set; }
-        public Guid LocationId { get; set; }
+        public Guid? LocationId { get; set; }
 
         public float? UnitPrice { get; set; }
         public float? UnitPricePurchase { get; set; }

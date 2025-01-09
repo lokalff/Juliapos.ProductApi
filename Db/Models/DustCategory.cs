@@ -7,6 +7,7 @@
         public string Name { get; set; }
         public int Weight { get; set; }
 
+        public Organization Organization { get; set; }
         public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

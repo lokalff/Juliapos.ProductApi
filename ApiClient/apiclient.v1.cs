@@ -26,14 +26,14 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     public partial interface IProductsClient
     {
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <returns>Returned with the full information about the product.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> GetProductByIdAsync(System.Guid id);
 
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <returns>Returned with the full information about the product.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -41,11 +41,55 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <returns>Returned with the full information about the product.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> GetProductByIdAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <returns>Returned with the full information about the new product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> CreateProductAsync(ProductAddDto body);
+
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <returns>Returned with the full information about the new product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<ProductDto> CreateProduct(ProductAddDto body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <returns>Returned with the full information about the new product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> CreateProductAsync(ProductAddDto body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <returns>Returned with the full information about the product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> UpdateProductAsync(ProductUpdateDto body);
+
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <returns>Returned with the full information about the product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<ProductDto> UpdateProduct(ProductUpdateDto body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <returns>Returned with the full information about the product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> UpdateProductAsync(ProductUpdateDto body, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -82,7 +126,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <returns>Returned with the full information about the product.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -92,7 +136,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         }
 
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <returns>Returned with the full information about the product.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -103,7 +147,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <returns>Returned with the full information about the product.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -178,6 +222,246 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             throw new ApiException<ErrorResultDto>("Returned when request can not be completed.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <returns>Returned with the full information about the new product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> CreateProductAsync(ProductAddDto body)
+        {
+            return CreateProductAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <returns>Returned with the full information about the new product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<ProductDto> CreateProduct(ProductAddDto body)
+        {
+            return System.Threading.Tasks.Task.Run(async () => await CreateProductAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <returns>Returned with the full information about the new product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> CreateProductAsync(ProductAddDto body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/products"
+                    urlBuilder_.Append("api/v1/products");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProductDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ProductDto>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when there is a conflict with another product.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <returns>Returned with the full information about the product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> UpdateProductAsync(ProductUpdateDto body)
+        {
+            return UpdateProductAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <returns>Returned with the full information about the product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<ProductDto> UpdateProduct(ProductUpdateDto body)
+        {
+            return System.Threading.Tasks.Task.Run(async () => await UpdateProductAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <returns>Returned with the full information about the product.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ProductDto>> UpdateProductAsync(ProductUpdateDto body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/products"
+                    urlBuilder_.Append("api/v1/products");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProductDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<ProductDto>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when there is a conflict with another product.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == 401)
@@ -528,9 +812,77 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
+    /// <summary>
+    /// DTO to add a product
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProductAddDto
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("productCategoryId")]
+        public System.Guid? ProductCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("dustCategoryId")]
+        public System.Guid? DustCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("menuCategoryId")]
+        public System.Guid? MenuCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string Code { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("menuName")]
+        public string MenuName { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("vatLevel")]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public VatLevel? VatLevel { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("inInventory")]
+        public bool? InInventory { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("percentage")]
+        public float? Percentage { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("ascendingStock")]
+        public bool? AscendingStock { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public RecordState? State { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public System.Collections.Generic.ICollection<PropertyReferenceDto> Properties { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("variations")]
+        public System.Collections.Generic.ICollection<ProductVariationAddDto> Variations { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("selectionPages")]
+        public System.Collections.Generic.ICollection<ProductSelectionPageReferenceDto> SelectionPages { get; set; }
+
+    }
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductDto
     {
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public System.Guid? Id { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("productCategoryId")]
+        public System.Guid? ProductCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("dustCategoryId")]
+        public System.Guid? DustCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("menuCategoryId")]
+        public System.Guid? MenuCategoryId { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("code")]
         public string Code { get; set; }
@@ -577,7 +929,28 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         public System.Collections.Generic.ICollection<PropertyReferenceDto> Properties { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("variations")]
-        public System.Collections.Generic.ICollection<ProductVariationReferenceDto> Variations { get; set; }
+        public System.Collections.Generic.ICollection<ProductVariationAddDto> Variations { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProductSelectionPageReferenceDto
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("selectionPageId")]
+        public System.Guid? SelectionPageId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("foreColor")]
+        public string ForeColor { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("backColor")]
+        public string BackColor { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("rowIdx")]
+        public int? RowIdx { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("columnIdx")]
+        public int? ColumnIdx { get; set; }
 
     }
 
@@ -602,9 +975,89 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
+    /// <summary>
+    /// DTO to update a product
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProductUpdateDto
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public System.Guid? Id { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("productCategoryId")]
+        public System.Guid? ProductCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("dustCategoryId")]
+        public System.Guid? DustCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("menuCategoryId")]
+        public System.Guid? MenuCategoryId { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string Code { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("menuName")]
+        public string MenuName { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("vatLevel")]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public VatLevel? VatLevel { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("inInventory")]
+        public bool? InInventory { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("percentage")]
+        public float? Percentage { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("ascendingStock")]
+        public bool? AscendingStock { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("state")]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public RecordState? State { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("properties")]
+        public System.Collections.Generic.ICollection<PropertyReferenceDto> Properties { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("variations")]
+        public System.Collections.Generic.ICollection<ProductVariationUpdateDto> Variations { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("selectionPages")]
+        public System.Collections.Generic.ICollection<ProductSelectionPageReferenceDto> SelectionPages { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProductVariationAddDto
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("sku")]
+        public string Sku { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string Code { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("productVariationLocations")]
+        public System.Collections.Generic.ICollection<ProductVariationLocationReferenceDto> ProductVariationLocations { get; set; }
+
+    }
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductVariationLocationReferenceDto
     {
+
+        [System.Text.Json.Serialization.JsonPropertyName("locationId")]
+        public System.Guid? LocationId { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("unitPrice")]
         public float? UnitPrice { get; set; }
@@ -644,8 +1097,11 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ProductVariationReferenceDto
+    public partial class ProductVariationUpdateDto
     {
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public System.Guid? Id { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("sku")]
         public string Sku { get; set; }
@@ -665,14 +1121,8 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     public partial class PropertyReferenceDto
     {
 
-        [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("idName")]
-        public string IdName { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
-        public string TypeName { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        public System.Guid? Id { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
         public string Value { get; set; }

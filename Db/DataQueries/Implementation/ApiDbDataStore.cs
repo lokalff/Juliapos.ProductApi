@@ -8,7 +8,12 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
 
         public IOrganizationDataQuery OrganizationDataQuery { get; }
         public ILocationDataQuery LocationDataQuery { get; }
+        public IProductCategoryDataQuery ProductCategoryDataQuery { get; }
+        public IDustCategoryDataQuery DustCategoryDataQuery { get; }
+        public IMenuCategoryDataQuery MenuCategoryDataQuery { get; }
         public IProductDataQuery ProductDataQuery { get; }
+        public ISelectionPageDataQuery SelectionPageDataQuery { get; }
+        public IPropertyDataQuery PropertyDataQuery { get; }
 
         public ApiDbDataStore(IApiDbContext apiDbContext)
             : base(apiDbContext)
@@ -17,6 +22,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
 
             OrganizationDataQuery = new OrganizationDataQuery(m_apiDbContext);
             LocationDataQuery = new LocationDataQuery(m_apiDbContext);
+            PropertyDataQuery = new PropertyDataQuery(m_apiDbContext);
+            DustCategoryDataQuery = new DustCategoryDataQuery(m_apiDbContext);
+            MenuCategoryDataQuery = new MenuCategoryDataQuery(m_apiDbContext);
+            ProductCategoryDataQuery = new ProductCategoryDataQuery(m_apiDbContext);
+            SelectionPageDataQuery = new SelectionPageDataQuery(m_apiDbContext);
             ProductDataQuery = new ProductDataQuery(m_apiDbContext);
         }
 

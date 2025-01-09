@@ -39,7 +39,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         }
 
         /// <summary>
-        /// Get dayorder with id as parameter
+        /// Get product with id as parameter
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -48,12 +48,66 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product.", typeof(ProductDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the product was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Returned when request can not be completed.", typeof(ErrorResultDto))]
-        public async Task<ActionResult<ProductDto>> GetDayOrderByIdAsync(Guid id)
+        public async Task<ActionResult<ProductDto>> GetProductByIdAsync(Guid id)
         {
             var validProduct = await m_argumentValidator.ValidateProductAsync(id);
             var existingProduct = await m_service.GetProductByIdAsync(validProduct.ProductId);
 
             var result = m_mapper.Map<Product, ProductDto>(existingProduct);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Create a new product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [SwaggerOperation(OperationId = "CreateProductAsync")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the new product.", typeof(ProductDto))]
+        [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product.", typeof(ErrorResultDto))]
+        public async Task<ActionResult<ProductDto>> CreateProductAsync([FromBody] ProductAddDto product)
+        {
+            var id = Guid.NewGuid();
+
+            var validProductCategory = await m_argumentValidator.ValidateProductCategoryAsync(product.ProductCategoryId);
+            var validMenuCategory = await m_argumentValidator.ValidateMenuCategoryAsync(product.MenuCategoryId);
+            var validDustCategory = await m_argumentValidator.ValidateDustCategoryAsync(product.DustCategoryId);
+
+            product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
+            product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
+            
+            var productToAdd = product.MapProductAdd(id, "username");
+            productToAdd = await m_service.CreateProductAsync(productToAdd);
+
+            var result = m_mapper.Map<Product, ProductDto>(productToAdd);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Update a product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [SwaggerOperation(OperationId = "UpdateProductAsync")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product.", typeof(ProductDto))]
+        [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product.", typeof(ErrorResultDto))]
+        public async Task<ActionResult<ProductDto>> UpdateProductAsync([FromBody] ProductUpdateDto product)
+        {
+            var validProduct = await m_argumentValidator.ValidateProductAsync(product.Id);
+
+            var validProductCategory = await m_argumentValidator.ValidateProductCategoryAsync(product.ProductCategoryId);
+            var validMenuCategory = await m_argumentValidator.ValidateMenuCategoryAsync(product.MenuCategoryId);
+            var validDustCategory = await m_argumentValidator.ValidateDustCategoryAsync(product.DustCategoryId);
+
+            product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
+            product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
+
+            var productToUpdate = product.MapProductUpdate("username");
+            productToUpdate = await m_service.UpdateProductAsync(productToUpdate);
+
+            var result = m_mapper.Map<Product, ProductDto>(productToUpdate);
             return Ok(result);
         }
 

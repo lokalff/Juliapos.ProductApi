@@ -22,7 +22,9 @@ namespace Juliapos.Portal.ProductApi.Models
             { ApiErrorCode.ProductNotFound, "Product not found" },
             { ApiErrorCode.ProductExists, "Product already exists" },
 
-            //{ ApiErrorCode.PackageNotFound, "Package not found" },
+            { ApiErrorCode.ProductCategoryNotFound, "Product category not found" },
+            { ApiErrorCode.DustCategoryNotFound, "Dust category not found" },
+            { ApiErrorCode.MenuCategoryNotFound, "Menu category not found" },
             //{ ApiErrorCode.PackageTypeNotFound, "Package type not found" },
             //{ ApiErrorCode.ProductNotFound, "Product not found" },
             //{ ApiErrorCode.LocationEnclosingPackageConflict, "Location and enclosing package cannot both be assigned or both empty" },
@@ -201,45 +203,31 @@ namespace Juliapos.Portal.ProductApi.Models
         ProductExists,
 
 
-        ///// <summary>
-        ///// Package was not found
-        ///// </summary>
-        //PackageNotFound = 5000,
+        /// <summary>
+        /// Product Category was not found
+        /// </summary>
+        ProductCategoryNotFound = 5000,
 
-        ///// <summary>
-        ///// Package already exists
-        ///// </summary>
-        //PackageExists,
+        /// <summary>
+        /// Dust Category was not found
+        /// </summary>
+        DustCategoryNotFound = 5100,
 
-        ///// <summary>
-        ///// Packagee type cannot be found
-        ///// </summary>
-        //PackageTypeNotFound,
+        /// <summary>
+        /// Menu Category was not found
+        /// </summary>
+        MenuCategoryNotFound = 5200,
 
-        ///// <summary>
-        ///// Package is never checked in (has no location)
-        ///// </summary>
-        //PackageNotCheckedIn,
+        /// <summary>
+        /// Property was not found
+        /// </summary>
+        PropertyNotFound = 5300,
 
-        ///// <summary>
-        ///// Product not found
-        ///// </summary>
-        //ProductNotFound,
+        /// <summary>
+        /// Selection page was not found
+        /// </summary>
+        SelectionPageNotFound = 5400,
 
-        ///// <summary>
-        ///// Location and enclosing package cannot both be assigned
-        ///// </summary>
-        //LocationEnclosingPackageConflict,
-
-        ///// <summary>
-        ///// Container packages cannot have an 'Amount'
-        ///// </summary>
-        //AmountContainerConflict,
-
-        ///// <summary>
-        ///// Enclosing package is not a package container
-        ///// </summary>
-        //EnclosingPackageNotContainer,
 
         ///// <summary>
         ///// Day order already exists
