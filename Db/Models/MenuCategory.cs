@@ -2,11 +2,35 @@
 {
     public sealed class MenuCategory
     {
-        public Guid OrganizationId { get; set; }
+        /// <summary>
+        /// Id
+        /// </summary>
         public Guid MenuCategoryId { get; set; }
-        public string IdName { get; set; }
+
+        /// <summary>
+        /// Organization id
+        /// </summary>
+        public Guid OrganizationId { get; set; }
+
+        /// <summary>
+        /// Name
+        /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Weight (order)
+        /// </summary>
         public int Weight { get; set; }
+
+
+        /// <summary>
+        /// Id as a name
+        /// </summary>
+        public string IdName { get; set; }
+
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public bool Enabled { get; set; }
 
         public Organization Organization { get; set; }

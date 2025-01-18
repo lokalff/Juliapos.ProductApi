@@ -74,9 +74,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         /// <param name="id"></param>
         /// <param name="userName"></param>
         /// <returns></returns>
-        public static Product MapProductAdd(this ProductAddDto product, Guid id, string userName)
+        public static Product MapProductAdd(this ProductAddDto product, Guid id)
         {
-            DateTime dateTime = DateTime.UtcNow;
 
             var propertyValuesToAdd = product.Properties?.Select(p => p.MapProperty()).ToList();
             var variationsToAdd = product.Variations?.Select(v => v.MapVariationAdd()).ToList();
@@ -99,8 +98,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 AscendingStock = product.AscendingStock,
                 State = product.State,
 
-                Created = dateTime,
-                UserCreate = userName,
+                //Created = dateTime,           Set in the save to db
+                //UserCreate = userName,
 
                 PropertieValues = propertyValuesToAdd,
                 ProductVariations = variationsToAdd,
@@ -144,17 +143,15 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
             return result;
         }
 
-        public static Product MapProductUpdate(this ProductUpdateDto product, string userName)
+        public static Product MapProductUpdate(this ProductUpdateDto product, Guid id)
         {
-            DateTime dateTime = DateTime.UtcNow;
-
             var propertyValuesToAdd = product.Properties?.Select(p => p.MapProperty()).ToList();
             var variationsToAdd = product.Variations?.Select(v => v.MapVariationUpdate()).ToList();
             var selectionPageToAdd = product.SelectionPages.Select(s => s.MapProductSelectionPage()).ToList();
 
             var result = new Product
             {
-                ProductId = product.Id,
+                ProductId = id,
                 ProductCategoryId = product.ProductCategoryId,
                 DustCategoryId = product.DustCategoryId,
                 MenuCategoryId = product.MenuCategoryId,
@@ -169,8 +166,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 AscendingStock = product.AscendingStock,
                 State = product.State,
 
-                Created = dateTime,
-                UserCreate = userName,
+                //Created = dateTime,               Happens in the save to db
+                //UserCreate = userName,
 
                 PropertieValues = propertyValuesToAdd,
                 ProductVariations = variationsToAdd,

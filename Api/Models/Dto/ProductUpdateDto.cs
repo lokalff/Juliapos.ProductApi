@@ -7,7 +7,6 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
     /// </summary>
     public sealed class ProductUpdateDto
     {
-        public Guid Id { get; set; }
         public Guid ProductCategoryId { get; set; }
         public Guid DustCategoryId { get; set; }
         public Guid MenuCategoryId { get; set; }

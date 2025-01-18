@@ -47,10 +47,13 @@
     <ProjectReference Include="..\..\..\..\nuget\src\Authorization\Juliapos.AspNetCore.Authorization.Common\Juliapos.AspNetCore.Authorization.Common.csproj" />
     <ProjectReference Include="..\..\..\..\nuget\src\Authorization\Juliapos.AspNetCore.Authorization.Swagger\Juliapos.AspNetCore.Authorization.Swagger.csproj" />
     <ProjectReference Include="..\..\..\..\nuget\src\Patterns\Juliapos.Patterns.ArgumentChecking\Juliapos.Patterns.ArgumentChecking.csproj" />
+    <ProjectReference Include="..\..\..\..\nuget\src\Patterns\Juliapos.Patterns.CQRS\Juliapos.Patterns.CQRS.csproj" />
     <ProjectReference Include="..\..\..\..\nuget\src\Patterns\Juliapos.Patterns.DtoMapping\Juliapos.Patterns.DtoMapping.csproj" />
+    <ProjectReference Include="..\Commands\Commands.csproj" />
     <ProjectReference Include="..\Db.Postgres\Db.Postgres.csproj" />
     <ProjectReference Include="..\Db\Db.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Queries\Queries.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 	

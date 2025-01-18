@@ -4,8 +4,8 @@
     {
         public Guid PropertyId { get; set; }
         public Guid OrganizationId { get; set; }
-        public string Name { get; set; }
         public string IdName { get; set; }
+        public string Name { get; set; }
         public string TypeName { get; set; }
         public bool Enabled { get; set; }
 

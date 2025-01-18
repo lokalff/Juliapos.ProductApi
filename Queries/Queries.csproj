@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AssemblyName>Juliapos.Portal.ProductApi.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>Juliapos.Portal.ProductApi.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\nuget\src\Patterns\Juliapos.Patterns.CQRS\Juliapos.Patterns.CQRS.csproj" />
+    <ProjectReference Include="..\Db\Db.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+  </ItemGroup>
+
+</Project>

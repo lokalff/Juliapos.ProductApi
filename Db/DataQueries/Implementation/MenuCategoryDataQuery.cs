@@ -16,6 +16,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
         {
         }
 
+        public IMenuCategoryDataQuery WithOrganization()
+        {
+            return new MenuCategoryDataQuery(DataContext, Queryable.Include(c => c.Organization));
+        }
+
         public IMenuCategoryDataQuery WhereId(Guid id)
         {
             return new MenuCategoryDataQuery(DataContext, Queryable.Where(c => c.MenuCategoryId == id));
@@ -26,6 +31,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
             return new MenuCategoryDataQuery(DataContext, Queryable
                 .Include(c => c.Organization)
                 .Where(c => c.Organization.ExternalId == id));
+        }
+
+        public IMenuCategoryDataQuery WhereOrganizationId(Guid id)
+        {
+            return new MenuCategoryDataQuery(DataContext, Queryable.Where(c => c.OrganizationId == id));
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{165DC161-8296-4C3E-86E6-37C6A9BEB7BE}"
 EndProject
@@ -28,6 +28,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juliapos.Patterns.ArgumentChecking", "..\..\..\nuget\src\Patterns\Juliapos.Patterns.ArgumentChecking\Juliapos.Patterns.ArgumentChecking.csproj", "{0BB94344-B4E0-4718-8F25-613401F2A17B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juliapos.Patterns.DtoMapping", "..\..\..\nuget\src\Patterns\Juliapos.Patterns.DtoMapping\Juliapos.Patterns.DtoMapping.csproj", "{D9310A43-7EE6-4C38-B70C-54649A8E1F9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queries", "Queries\Queries.csproj", "{CDC8DB41-7100-4B2C-8D54-A0747C55567E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juliapos.Patterns.CQRS", "..\..\..\nuget\src\Patterns\Juliapos.Patterns.CQRS\Juliapos.Patterns.CQRS.csproj", "{835D0C7D-730C-4CC5-9BAA-7903AAD6AC13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{A6B298CC-907B-4568-8818-0C99745CF1FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +89,18 @@ Global
 		{D9310A43-7EE6-4C38-B70C-54649A8E1F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9310A43-7EE6-4C38-B70C-54649A8E1F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9310A43-7EE6-4C38-B70C-54649A8E1F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDC8DB41-7100-4B2C-8D54-A0747C55567E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDC8DB41-7100-4B2C-8D54-A0747C55567E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDC8DB41-7100-4B2C-8D54-A0747C55567E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDC8DB41-7100-4B2C-8D54-A0747C55567E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835D0C7D-730C-4CC5-9BAA-7903AAD6AC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835D0C7D-730C-4CC5-9BAA-7903AAD6AC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835D0C7D-730C-4CC5-9BAA-7903AAD6AC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835D0C7D-730C-4CC5-9BAA-7903AAD6AC13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B298CC-907B-4568-8818-0C99745CF1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B298CC-907B-4568-8818-0C99745CF1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B298CC-907B-4568-8818-0C99745CF1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B298CC-907B-4568-8818-0C99745CF1FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +112,6 @@ Global
 		{9F207A3E-5730-49C5-8D8C-5EAF0822E4F9} = {F5D837D6-4B9B-4182-BD60-2DEDCF66FACA}
 		{0BB94344-B4E0-4718-8F25-613401F2A17B} = {F5D837D6-4B9B-4182-BD60-2DEDCF66FACA}
 		{D9310A43-7EE6-4C38-B70C-54649A8E1F9E} = {F5D837D6-4B9B-4182-BD60-2DEDCF66FACA}
+		{835D0C7D-730C-4CC5-9BAA-7903AAD6AC13} = {F5D837D6-4B9B-4182-BD60-2DEDCF66FACA}
 	EndGlobalSection
 EndGlobal

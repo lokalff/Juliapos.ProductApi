@@ -16,6 +16,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
         {
         }
 
+        public IDustCategoryDataQuery WithOrganization()
+        {
+            return new DustCategoryDataQuery(DataContext, Queryable.Include(c => c.Organization));
+        }
+
         public IDustCategoryDataQuery WhereId(Guid id)
         {
             return new DustCategoryDataQuery(DataContext, Queryable.Where(c => c.DustCategoryId == id));
@@ -26,6 +31,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
             return new DustCategoryDataQuery(DataContext, Queryable
                 .Include(c => c.Organization)
                 .Where(c => c.Organization.ExternalId == id));
+        }
+
+        public IDustCategoryDataQuery WhereOrganizationId(Guid id)
+        {
+            return new DustCategoryDataQuery(DataContext, Queryable.Where(c => c.OrganizationId == id));
         }
 
     }

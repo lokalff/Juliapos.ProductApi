@@ -22,6 +22,9 @@
         public DateTime? Updated { get; set; }
         public string UserUpdate { get; set; }
 
+        public DateTime? Deleted { get; set; }
+        public string UserDelete { get; set; }
+
         public ProductCategory ProductCategory { get; set; }
         public MenuCategory MenuCategory { get; set; }
         public DustCategory DustCategory { get; set; }

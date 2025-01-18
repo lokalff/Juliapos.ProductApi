@@ -24,6 +24,13 @@ using Juliapos.Portal.ProductApi.Db.Models;
 using Juliapos.Portal.ProductApi.Api.Mappers;
 using Juliapos.Portal.ProductApi.Services;
 using Juliapos.Portal.ProductApi.Services.Implementation;
+using Juliapos.Patterns.CQRS.Queries;
+using System.Data;
+using Juliapos.Portal.ProductApi.Queries;
+using Juliapos.Portal.ProductApi.Queries.Handlers;
+using Juliapos.Patterns.CQRS.Commands;
+using Juliapos.Portal.ProductApi.Commands;
+using Juliapos.Portal.ProductApi.Commands.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -192,22 +199,37 @@ void ConfigureServices(IServiceCollection services)
     // singleton?
     services.AddTransient<IDtoMapper, DtoMapper>();
     services.AddTransient<IDtoMapper<Product, ProductDto>, ProductDtoMapper>();
+    services.AddTransient<IDtoMapper<ProductCategory, ProductCategoryDto>, ProductCategoryDtoMapper>();
+    services.AddTransient<IDtoMapper<DustCategory, DustCategoryDto>, DustCategoryDtoMapper>();
+    services.AddTransient<IDtoMapper<MenuCategory, MenuCategoryDto>, MenuCategoryDtoMapper>();
 
     services.AddScoped<IProductsService, ProductsService>();
+    services.AddScoped<IProductCategoriesService, ProductCategoriesService>();
+
+    // queries
+    services.AddTransient<IQueryHandler, QueryHandler>();
+    services.AddTransient<IHandleQuery<DustCategoriesQuery, IEnumerable<DustCategory>>, DustCategoriesQueryHandler>();
+    services.AddTransient<IHandleQuery<DustCategoryQuery, DustCategory>, DustCategoryQueryHandler>();
+
+    // commands
+    services.AddTransient<ICommandHandler, CommandHandler>();
+    services.AddTransient<IHandleCommand<DustCategoryCreateCommand, DustCategory>, DustCategoryCreateCommandHandler>();
+    services.AddTransient<IHandleCommand<DustCategoryUpdateCommand, DustCategory>, DustCategoryUpdateCommandHandler>();
+    services.AddTransient<IHandleCommand<DustCategoryDeleteCommand, DustCategory>, DustCategoryDeleteCommandHandler>();
 
 
-/*
-    services.AddScoped<ITokenProvider, ClientCredentialsTokenProvider>(sp =>
-    {
-        var httpClient = sp.GetRequiredService<HttpClient>();
-        var clientID = GetClientId();
-        var sercret = GetSecret();
+    /*
+        services.AddScoped<ITokenProvider, ClientCredentialsTokenProvider>(sp =>
+        {
+            var httpClient = sp.GetRequiredService<HttpClient>();
+            var clientID = GetClientId();
+            var sercret = GetSecret();
 
-        return new ClientCredentialsTokenProvider(httpClient, "https://auth.juliapos.eu", clientId, clientSecret, "all scopes");
-    });
-    // Dummy!
-    //services.AddSingleton<IAuthorizationContext, DummyAuthorizationContext>();
-*/
+            return new ClientCredentialsTokenProvider(httpClient, "https://auth.juliapos.eu", clientId, clientSecret, "all scopes");
+        });
+        // Dummy!
+        //services.AddSingleton<IAuthorizationContext, DummyAuthorizationContext>();
+    */
 }
 
 void ConfigureSwagger(IServiceCollection services)

@@ -45,6 +45,21 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
             return new ProductDataQuery(DataContext, Queryable.Where(c => c.ProductId == id));
         }
 
+        public IProductDataQuery WhereNotDeleted()
+        {
+            return new ProductDataQuery(DataContext, Queryable.Where(c => c.Deleted == null));
+        }
+
+        public IProductDataQuery WhereDustCategoryId(Guid id)
+        {
+            return new ProductDataQuery(DataContext, Queryable.Where(c => c.DustCategoryId == id));
+        }
+
+        public IProductDataQuery WhereProductCategoryId(Guid id)
+        {
+            return new ProductDataQuery(DataContext, Queryable.Where(c => c.ProductCategoryId == id));
+        }
+
         public IProductDataQuery WhereOrganizationId(Guid id)
         {
             return new ProductDataQuery(DataContext, Queryable.Where(c => c.ProductCategory.OrganizationId == id));

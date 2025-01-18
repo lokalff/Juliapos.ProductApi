@@ -5,10 +5,11 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Api.Mappers
 {
     /// <summary>
-    /// Helpers to fill the product object from the DTO's
+    /// Helpers to fill the product DTO object from the product
     /// </summary>
     public sealed class ProductDtoMapper : BaseDtoMapper<Product, ProductDto>
     {
+        /// <inheritdoc />
         public override ProductDto Map(Product source)
         {
             var result = new ProductDto

@@ -5,7 +5,9 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries
 {
     public interface IMenuCategoryDataQuery : IDataQuery<MenuCategory>
     {
+        IMenuCategoryDataQuery WithOrganization();
         IMenuCategoryDataQuery WhereId(Guid id);
         IMenuCategoryDataQuery WhereOrganizationExternalId(Guid id);
+        IMenuCategoryDataQuery WhereOrganizationId(Guid id);
     }
 }

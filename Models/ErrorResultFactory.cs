@@ -24,8 +24,14 @@ namespace Juliapos.Portal.ProductApi.Models
             { ApiErrorCode.ProductVariationDuplicateLocation, "Product has duplicate location connections" },
 
             { ApiErrorCode.ProductCategoryNotFound, "Product category not found" },
+            { ApiErrorCode.ProductCategoryHasProducts, "Product category has connected products" },
+
             { ApiErrorCode.DustCategoryNotFound, "Dust category not found" },
+            { ApiErrorCode.DustCategoryHasProducts, "Dust category has connected products" },
+            
             { ApiErrorCode.MenuCategoryNotFound, "Menu category not found" },
+            { ApiErrorCode.MenuCategoryHasProducts, "Menu category has connected products" },
+
             //{ ApiErrorCode.PackageTypeNotFound, "Package type not found" },
             //{ ApiErrorCode.ProductNotFound, "Product not found" },
             //{ ApiErrorCode.LocationEnclosingPackageConflict, "Location and enclosing package cannot both be assigned or both empty" },
@@ -215,14 +221,29 @@ namespace Juliapos.Portal.ProductApi.Models
         ProductCategoryNotFound = 5000,
 
         /// <summary>
+        /// Product Category has connected products
+        /// </summary>
+        ProductCategoryHasProducts = 5001,
+
+        /// <summary>
         /// Dust Category was not found
         /// </summary>
         DustCategoryNotFound = 5100,
 
         /// <summary>
+        /// Dust Category has connected products
+        /// </summary>
+        DustCategoryHasProducts = 5101,
+
+        /// <summary>
         /// Menu Category was not found
         /// </summary>
         MenuCategoryNotFound = 5200,
+
+        /// <summary>
+        /// Dust Category has connected products
+        /// </summary>
+        MenuCategoryHasProducts = 5201,
 
         /// <summary>
         /// Property was not found

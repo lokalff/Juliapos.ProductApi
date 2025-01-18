@@ -39,6 +39,23 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         }
 
         /// <summary>
+        /// Get products
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [SwaggerOperation(OperationId = "GetProductsAsync")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product.", typeof(IEnumerable<ProductDto>))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Returned when request can not be completed.", typeof(ErrorResultDto))]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsAsync()
+        {
+            var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();
+            var products = await m_service.GetProductsAsync(validOrganization.OrganizationId);
+            var result = m_mapper.Map<Product, ProductDto>(products);
+            return Ok(result);
+        }
+
+        /// <summary>
         /// Get product with id as parameter
         /// </summary>
         /// <param name="id"></param>
@@ -76,9 +93,13 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
 
             product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
             product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
-            // Variations?
+            product.Variations.SelectMany(v => v.ProductVariationLocations).Select(async vl =>
+            {
+                if (vl.LocationId != null)
+                    await m_argumentValidator.ValidateLocationAsync(vl.LocationId.Value);
+            });
 
-            var productToAdd = product.MapProductAdd(id, "username");
+            var productToAdd = product.MapProductAdd(id);
             productToAdd = await m_service.CreateProductAsync(productToAdd);
 
             var result = m_mapper.Map<Product, ProductDto>(productToAdd);
@@ -88,15 +109,16 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         /// <summary>
         /// Update a product
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="product"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateProductAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product.", typeof(ProductDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product.", typeof(ErrorResultDto))]
-        public async Task<ActionResult<ProductDto>> UpdateProductAsync([FromBody] ProductUpdateDto product)
+        public async Task<ActionResult<ProductDto>> UpdateProductAsync(Guid id, [FromBody] ProductUpdateDto product)
         {
-            var validProduct = await m_argumentValidator.ValidateProductAsync(product.Id);
+            var validProduct = await m_argumentValidator.ValidateProductAsync(id);
 
             var validProductCategory = await m_argumentValidator.ValidateProductCategoryAsync(product.ProductCategoryId);
             var validMenuCategory = await m_argumentValidator.ValidateMenuCategoryAsync(product.MenuCategoryId);
@@ -104,15 +126,36 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
 
             product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
             product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
-            // Variations?
+            product.Variations.SelectMany(v => v.ProductVariationLocations).Select(async vl =>
+            {
+                if (vl.LocationId != null)
+                    await m_argumentValidator.ValidateLocationAsync(vl.LocationId.Value);
+            });
 
-            var productToUpdate = product.MapProductUpdate("username");
+            var productToUpdate = product.MapProductUpdate(id);
             productToUpdate = await m_service.UpdateProductAsync(productToUpdate);
 
             var result = m_mapper.Map<Product, ProductDto>(productToUpdate);
             return Ok(result);
         }
 
+        /// <summary>
+        /// Delete a prouct
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="purgeProduct"></param>
+        /// <returns></returns>
+        [HttpDelete("{id:guid}")]
+        [SwaggerOperation(OperationId = "DeleteProductAsync")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted product.", typeof(ProductDto))]
+        //[SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the location is not empty.", typeof(ErrorResultDto))]
+        public async Task<ActionResult<ProductDto>> DeleteProductAsync(Guid id, bool purgeProduct)
+        {
+            var validProduct = await m_argumentValidator.ValidateProductAsync(id);
+            var product = await m_service.DeleteProductAsync(id, purgeProduct);
 
+            var result = m_mapper.Map<Product, ProductDto>(product);
+            return Ok(result);
+        }
     }
 }

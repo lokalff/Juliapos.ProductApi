@@ -81,17 +81,27 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.Property(u => u.Updated)
                 .HasColumnName("updated");
 
+            builder.Property(u => u.UserDelete)
+                .HasColumnName("userdelete")
+                .HasMaxLength(50);
+
+            builder.Property(u => u.Deleted)
+                .HasColumnName("deleted");
+
             builder.HasOne(u => u.ProductCategory)
                 .WithMany(t => t.Products)
-                .HasForeignKey(u => u.ProductCategoryId);
+                .HasForeignKey(u => u.ProductCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(u => u.DustCategory)
                 .WithMany(t => t.Products)
-                .HasForeignKey(u => u.DustCategoryId);
+                .HasForeignKey(u => u.DustCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(u => u.MenuCategory)
                 .WithMany(t => t.Products)
-                .HasForeignKey(u => u.MenuCategoryId);
+                .HasForeignKey(u => u.MenuCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

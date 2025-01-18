@@ -6,6 +6,612 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/v1/dustcategories": {
+      "get": {
+        "tags": [
+          "DustCategories"
+        ],
+        "summary": "Get dust categories",
+        "operationId": "GetDustCategoriesAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the dust category.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DustCategoryDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "DustCategories"
+        ],
+        "summary": "Create a new dust category",
+        "operationId": "CreateDustCategoryAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DustCategoryAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new dust category.",
+            "schema": {
+              "$ref": "#/definitions/DustCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another dust category.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/dustcategories/{id}": {
+      "get": {
+        "tags": [
+          "DustCategories"
+        ],
+        "summary": "Get dust category with id as parameter",
+        "operationId": "GetDustCategoryByIdAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the dust category.",
+            "schema": {
+              "$ref": "#/definitions/DustCategoryDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the dust category was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "DustCategories"
+        ],
+        "summary": "Update a dust category",
+        "operationId": "UpdateDustCategoryAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DustCategoryUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the dust category.",
+            "schema": {
+              "$ref": "#/definitions/DustCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another dust category.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "DustCategories"
+        ],
+        "summary": "Delete a product category",
+        "operationId": "DeleteDustCategoryAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted dust category.",
+            "schema": {
+              "$ref": "#/definitions/DustCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when the category is not empty.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/productcategories": {
+      "get": {
+        "tags": [
+          "ProductCategories"
+        ],
+        "summary": "Get product categories",
+        "operationId": "GetProductCategoriesAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product category.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ProductCategoryDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ProductCategories"
+        ],
+        "summary": "Create a new product category",
+        "operationId": "CreateProductCategoryAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new product category.",
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product category.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/productcategories/{id}": {
+      "get": {
+        "tags": [
+          "ProductCategories"
+        ],
+        "summary": "Get product category with id as parameter",
+        "operationId": "GetProductCategoryByIdAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product category.",
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the product category was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "ProductCategories"
+        ],
+        "summary": "Update a product category",
+        "operationId": "UpdateProductCategoryAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product category.",
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product category.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "ProductCategories"
+        ],
+        "summary": "Delete a product category",
+        "operationId": "DeleteProductCategoryAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted product category.",
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when the category is not empty.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get products",
+        "operationId": "GetProductsAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ProductDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create a new product",
+        "operationId": "CreateProductAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new product.",
+            "schema": {
+              "$ref": "#/definitions/ProductDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
     "/api/v1/products/{id}": {
       "get": {
         "tags": [
@@ -59,60 +665,6 @@
             ]
           }
         ]
-      }
-    },
-    "/api/v1/products": {
-      "post": {
-        "tags": [
-          "Products"
-        ],
-        "summary": "Create a new product",
-        "operationId": "CreateProductAsync",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ProductAddDto"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returned with the full information about the new product.",
-            "schema": {
-              "$ref": "#/definitions/ProductDto"
-            }
-          },
-          "409": {
-            "description": "Returned when there is a conflict with another product.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "openid"
-            ]
-          }
-        ]
       },
       "put": {
         "tags": [
@@ -129,6 +681,14 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
           {
             "in": "body",
             "name": "body",
@@ -165,10 +725,110 @@
             ]
           }
         ]
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Delete a prouct",
+        "operationId": "DeleteProductAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "purgeProduct",
+            "description": "",
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted product.",
+            "schema": {
+              "$ref": "#/definitions/ProductDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
       }
     }
   },
   "definitions": {
+    "DustCategoryAddDto": {
+      "description": "DTO for adding a dust category",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DustCategoryDto": {
+      "description": "DTO for Dust category",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DustCategoryUpdateDto": {
+      "description": "DTO for updating a dust category",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
     "ErrorResultDto": {
       "type": "object",
       "properties": {
@@ -255,6 +915,14 @@
       ],
       "type": "string"
     },
+    "MeasureMethod": {
+      "enum": [
+        "None",
+        "Count",
+        "Weigh"
+      ],
+      "type": "string"
+    },
     "ProductAddDto": {
       "description": "DTO to add a product",
       "type": "object",
@@ -316,6 +984,97 @@
           "items": {
             "$ref": "#/definitions/ProductSelectionPageReferenceDto"
           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductCategoryAddDto": {
+      "type": "object",
+      "properties": {
+        "idName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "measureMethod": {
+          "$ref": "#/definitions/MeasureMethod"
+        },
+        "defaultForeColor": {
+          "type": "string"
+        },
+        "defaultBackColor": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductCategoryDto": {
+      "description": "DTO for the product category",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "measureMethod": {
+          "$ref": "#/definitions/MeasureMethod"
+        },
+        "defaultForeColor": {
+          "type": "string"
+        },
+        "defaultBackColor": {
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductCategoryUpdateDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "measureMethod": {
+          "$ref": "#/definitions/MeasureMethod"
+        },
+        "defaultForeColor": {
+          "type": "string"
+        },
+        "defaultBackColor": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false
@@ -436,10 +1195,6 @@
       "description": "DTO to update a product",
       "type": "object",
       "properties": {
-        "id": {
-          "format": "uuid",
-          "type": "string"
-        },
         "productCategoryId": {
           "format": "uuid",
           "type": "string"

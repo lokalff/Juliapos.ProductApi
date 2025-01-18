@@ -1,9 +1,28 @@
 ﻿using Juliapos.Portal.ProductApi.Db.Models;
+using Juliapos.Portal.ProductApi.Models;
 
 namespace Juliapos.Portal.ProductApi.Services.Implementation
 {
     public static class ProductExtensions
     {
+        public static void CheckProduct(this Product product)
+        {
+            foreach (var variation in product.ProductVariations)
+            {
+                var locationDuplicates = variation.ProductVariationLocations
+                    .GroupBy(k => k.LocationId)
+                    .Where(g => g.Count() > 1)
+                    .ToList();
+
+                if (locationDuplicates.Any())
+                {
+                    var locationsString = string.Join(',', locationDuplicates.Select(g => g.Key?.ToString() ?? "null"));
+                    throw new HttpBadRequestException(ApiErrorCode.ProductVariationDuplicateLocation,
+                        product.ProductId, $"locations {locationsString}");
+                }
+            }
+        }
+
         public static void SyncProperties(this Product existingProduct, IEnumerable<PropertyValue> properties)
         {
             // Add or update properties
