@@ -4,6 +4,9 @@ using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Queries.Handlers
 {
+    /// <summary>
+    /// Handler for the <see cref="MenuCategoriesQuery"/>
+    /// </summary>
     public sealed class MenuCategoriesQueryHandler : IHandleQuery<MenuCategoriesQuery, IEnumerable<MenuCategory>>
     {
         private readonly IApiDbDataStore m_dataStore;

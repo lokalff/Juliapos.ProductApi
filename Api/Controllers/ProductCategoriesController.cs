@@ -143,6 +143,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteProductCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted product category.", typeof(ProductCategoryDto))]
+        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the category is not empty.", typeof(ErrorResultDto))]
         public async Task<ActionResult<ProductDto>> DeleteProductAsync(Guid id)
         {

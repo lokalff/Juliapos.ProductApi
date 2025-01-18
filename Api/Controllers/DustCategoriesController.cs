@@ -77,7 +77,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the dust category.", typeof(DustCategoryDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the dust category was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Returned when request can not be completed.", typeof(ErrorResultDto))]
-        public async Task<ActionResult<ProductDto>> GetDustCategoryByIdAsync(Guid id)
+        public async Task<ActionResult<DustCategoryDto>> GetDustCategoryByIdAsync(Guid id)
         {
             var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();
             var existingDustCategory = await m_queryHandler.HandleQueryAsync<DustCategoryQuery, DustCategory>(
@@ -146,15 +146,16 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         }
 
         /// <summary>
-        /// Delete a product category
+        /// Delete a menu category
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteDustCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted dust category.", typeof(DustCategoryDto))]
+        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the category is not empty.", typeof(ErrorResultDto))]
-        public async Task<ActionResult<ProductDto>> DeleteProductAsync(Guid id)
+        public async Task<ActionResult<DustCategoryDto>> DeleteMenuCategoryAsync(Guid id)
         {
             var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();
             

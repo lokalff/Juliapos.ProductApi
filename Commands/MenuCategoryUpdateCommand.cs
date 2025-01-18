@@ -4,7 +4,7 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Command to update a menu category
+    /// Command to update a <see cref="MenuCategory"/>
     /// </summary>
     public sealed class MenuCategoryUpdateCommand : ICommand<MenuCategory>
     {

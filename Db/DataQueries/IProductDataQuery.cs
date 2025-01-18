@@ -11,8 +11,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries
         IProductDataQuery WhereId(Guid id);
         IProductDataQuery WhereProductCategoryId(Guid id);
         IProductDataQuery WhereDustCategoryId(Guid id);
+        IProductDataQuery WhereMenuCategoryId(Guid id);
         IProductDataQuery WhereNotDeleted();
         IProductDataQuery WhereOrganizationId(Guid id);
         IProductDataQuery WhereOrganizationExternalId(Guid id);
+
+        IProductDataQuery HasProperty(Guid id);
     }
 }

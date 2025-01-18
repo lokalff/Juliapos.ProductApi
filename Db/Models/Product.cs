@@ -7,8 +7,9 @@
         public Guid DustCategoryId { get; set; }
         public Guid MenuCategoryId { get; set; }
 
-        public string Code { get; set; }
+        //public string Code { get; set; }
         public string Name { get; set; }
+        public string Code { get; set; }
         public string MenuName { get; set; }
         public VatLevel VatLevel { get; set; }
         public string Description { get; set; }

@@ -16,6 +16,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
         {
         }
 
+        public ISelectionPageDataQuery WithOrganization()
+        {
+            return new SelectionPageDataQuery(DataContext, Queryable.Include(c => c.Organization));
+        }
+
         public ISelectionPageDataQuery WhereId(Guid id)
         {
             return new SelectionPageDataQuery(DataContext, Queryable.Where(c => c.SelectionPageId == id));
@@ -26,6 +31,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
             return new SelectionPageDataQuery(DataContext, Queryable
                 .Include(c => c.Organization)
                 .Where(c => c.Organization.ExternalId == id));
+        }
+
+        public ISelectionPageDataQuery WhereOrganizationId(Guid id)
+        {
+            return new SelectionPageDataQuery(DataContext, Queryable.Where(c => c.OrganizationId == id));
         }
 
     }

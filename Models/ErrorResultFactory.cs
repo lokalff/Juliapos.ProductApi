@@ -24,13 +24,16 @@ namespace Juliapos.Portal.ProductApi.Models
             { ApiErrorCode.ProductVariationDuplicateLocation, "Product has duplicate location connections" },
 
             { ApiErrorCode.ProductCategoryNotFound, "Product category not found" },
-            { ApiErrorCode.ProductCategoryHasProducts, "Product category has connected products" },
+            { ApiErrorCode.ProductCategoryHasProducts, "Product category is used in products" },
 
             { ApiErrorCode.DustCategoryNotFound, "Dust category not found" },
-            { ApiErrorCode.DustCategoryHasProducts, "Dust category has connected products" },
-            
+            { ApiErrorCode.DustCategoryHasProducts, "Dust category is used in products" },
+
             { ApiErrorCode.MenuCategoryNotFound, "Menu category not found" },
-            { ApiErrorCode.MenuCategoryHasProducts, "Menu category has connected products" },
+            { ApiErrorCode.MenuCategoryHasProducts, "Menu category is used in products" },
+
+            { ApiErrorCode.PropertyNotFound, "Property not found" },
+            { ApiErrorCode.PropertyHasProducts, "Property is used in products" },
 
             //{ ApiErrorCode.PackageTypeNotFound, "Package type not found" },
             //{ ApiErrorCode.ProductNotFound, "Product not found" },
@@ -249,6 +252,11 @@ namespace Juliapos.Portal.ProductApi.Models
         /// Property was not found
         /// </summary>
         PropertyNotFound = 5300,
+
+        /// <summary>
+        /// Property has connected products
+        /// </summary>
+        PropertyHasProducts = 5301,
 
         /// <summary>
         /// Selection page was not found

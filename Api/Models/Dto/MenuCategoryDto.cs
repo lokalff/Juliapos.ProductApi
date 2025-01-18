@@ -20,7 +20,6 @@
         /// </summary>
         public int Weight { get; set; }
 
-
         /// <summary>
         /// Id as a name
         /// </summary>

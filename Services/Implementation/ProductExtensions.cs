@@ -58,8 +58,8 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
                 else
                 {
                     existingVariation.Sku = variation.Sku;
-                    existingVariation.Code = variation.Code;
-                    existingVariation.Name = variation.Name;
+                    existingVariation.CodeExtension = variation.CodeExtension;
+                    existingVariation.NameExtension = variation.NameExtension;
 
                     existingVariation.SyncVariationLocations(variation.ProductVariationLocations);
                 }

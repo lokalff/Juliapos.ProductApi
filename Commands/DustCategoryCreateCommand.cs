@@ -1,9 +1,11 @@
-﻿
-using Juliapos.Patterns.CQRS.Commands;
+﻿using Juliapos.Patterns.CQRS.Commands;
 using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands
 {
+    /// <summary>
+    /// Command to create a new <see cref="DustCategory"/>
+    /// </summary>
     public sealed class DustCategoryCreateCommand : ICommand<DustCategory>
     {
         /// <summary>

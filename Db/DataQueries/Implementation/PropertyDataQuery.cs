@@ -16,6 +16,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
         {
         }
 
+        public IPropertyDataQuery WithOrganization()
+        {
+            return new PropertyDataQuery(DataContext, Queryable.Include(c => c.Organization));
+        }
+
         public IPropertyDataQuery WhereId(Guid id)
         {
             return new PropertyDataQuery(DataContext, Queryable.Where(c => c.PropertyId == id));
@@ -38,6 +43,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
             return new PropertyDataQuery(DataContext, Queryable
                 .Include(c => c.Organization)
                 .Where(c => c.Organization.ExternalId == id));
+        }
+
+        public IPropertyDataQuery WhereOrganizationId(Guid id)
+        {
+            return new PropertyDataQuery(DataContext, Queryable.Where(c => c.OrganizationId == id));
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         public bool AscendingStock { get; set; }
         public RecordState State { get; set; }
 
-        public PropertyReferenceDto[] Properties { get; set; } = Array.Empty<PropertyReferenceDto>();
+        public ProductPropertyDto[] Properties { get; set; } = Array.Empty<ProductPropertyDto>();
         public ProductVariationAddDto[] Variations { get; set; } = Array.Empty<ProductVariationAddDto>();
         public ProductSelectionPageReferenceDto[] SelectionPages { get; set; } = Array.Empty<ProductSelectionPageReferenceDto>();
 

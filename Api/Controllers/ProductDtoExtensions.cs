@@ -7,11 +7,11 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
     {
 
         /// <summary>
-        /// Get PropertyValue objects from the <see cref="PropertyReferenceDto"/>
+        /// Get PropertyValue objects from the <see cref="ProductPropertyDto"/>
         /// </summary>
         /// <param name="property"></param>
         /// <returns></returns>
-        public static PropertyValue MapProperty(this PropertyReferenceDto property)
+        public static PropertyValue MapProperty(this ProductPropertyDto property)
         {
             var result = new PropertyValue
             {
@@ -30,8 +30,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         {
             var result = new ProductVariation
             {
-                Code = prdvar.Code,
-                Name = prdvar.Name,
+                CodeExtension = prdvar.Code,
+                NameExtension = prdvar.Name,
                 Sku = prdvar.Sku,
                 ProductVariationLocations = prdvar.ProductVariationLocations != null ?
                     prdvar.ProductVariationLocations.Select(vl => new ProductVariationLocation
@@ -120,8 +120,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
             var result = new ProductVariation
             {
                 ProductVariationId = prdvar.Id,
-                Code = prdvar.Code,
-                Name = prdvar.Name,
+                CodeExtension = prdvar.Code,
+                NameExtension = prdvar.Name,
                 Sku = prdvar.Sku,
                 ProductVariationLocations = prdvar.ProductVariationLocations != null ?
                     prdvar.ProductVariationLocations.Select(vl => new ProductVariationLocation

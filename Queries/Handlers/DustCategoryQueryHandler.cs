@@ -5,6 +5,9 @@ using Juliapos.Portal.ProductApi.Models;
 
 namespace Juliapos.Portal.ProductApi.Queries.Handlers
 {
+    /// <summary>
+    /// Handler for the <see cref="DustCategoryQuery"/>
+    /// </summary>
     public sealed class DustCategoryQueryHandler : IHandleQuery<DustCategoryQuery, DustCategory>
     {
         private readonly IApiDbDataStore m_dataStore;

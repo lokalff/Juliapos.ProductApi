@@ -14,6 +14,7 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
 
             builder.HasKey(t => t.PropertyId);
             builder.HasIndex(t => new { t.OrganizationId, t.Name }).IsUnique();
+            builder.HasIndex(t => new { t.OrganizationId, t.IdName }).IsUnique();
 
             builder.Property(u => u.PropertyId)
                 .HasColumnName("property_id");

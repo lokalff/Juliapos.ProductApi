@@ -13,8 +13,12 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.ToTable(DbConstants.Table.ProductVariation, DbConstants.DefaultSchema);
 
             builder.HasKey(t => t.ProductVariationId);
+
+            // These indexes do not work (globally) productId is unique in itself
+            // It prevents multiple entries within the product
             builder.HasIndex(t => new { t.ProductId, t.Sku });
-            builder.HasIndex(t => new { t.ProductId, t.Code });
+            builder.HasIndex(t => new { t.ProductId, t.CodeExtension });
+            builder.HasIndex(t => new { t.ProductId, t.NameExtension });
 
             builder.Property(u => u.ProductVariationId)
                 .HasColumnName("productvariation_id");
@@ -23,13 +27,13 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .IsRequired()
                 .HasColumnName("product_id");
 
-            builder.Property(u => u.Code)
-                .HasColumnName("code")
+            builder.Property(u => u.CodeExtension)
+                .HasColumnName("codeextension")
                 .IsRequired()
                 .HasMaxLength(32);
 
-            builder.Property(u => u.Name)
-                .HasColumnName("name")
+            builder.Property(u => u.NameExtension)
+                .HasColumnName("nameextension")
                 .IsRequired()
                 .HasMaxLength(50);
 

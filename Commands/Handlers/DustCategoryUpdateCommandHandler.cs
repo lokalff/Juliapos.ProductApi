@@ -5,6 +5,9 @@ using Juliapos.Portal.ProductApi.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands.Handlers
 {
+    /// <summary>
+    /// Handler for the <see cref="DustCategoryUpdateCommand"/>
+    /// </summary>
     public sealed class DustCategoryUpdateCommandHandler : IHandleCommand<DustCategoryUpdateCommand, DustCategory>
     {
         private readonly IApiDbDataStore m_dataStore;

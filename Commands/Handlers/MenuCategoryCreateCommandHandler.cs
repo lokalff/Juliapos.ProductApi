@@ -4,6 +4,9 @@ using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands.Handlers
 {
+    /// <summary>
+    /// Handler for the <see cref="MenuCategoryCreateCommand"/>
+    /// </summary>
     public sealed class MenuCategoryCreateCommandHandler : IHandleCommand<MenuCategoryCreateCommand, MenuCategory>
     {
         private readonly IApiDbDataStore m_dataStore;

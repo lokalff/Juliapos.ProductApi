@@ -13,6 +13,7 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
             builder.ToTable(DbConstants.Table.Product, DbConstants.DefaultSchema);
 
             builder.HasKey(t => t.ProductId);
+            builder.HasIndex(t => new { /*t.OrganizationId,*/ t.Code }).IsUnique();
 
             builder.Property(u => u.ProductId)
                 .HasColumnName("product_id");

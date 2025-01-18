@@ -4,7 +4,7 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Command to update a dust category
+    /// Command to update a <see cref="DustCategory"/>
     /// </summary>
     public sealed class DustCategoryUpdateCommand : ICommand<DustCategory>
     {

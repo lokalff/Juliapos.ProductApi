@@ -218,7 +218,7 @@
         "tags": [
           "DustCategories"
         ],
-        "summary": "Delete a product category",
+        "summary": "Delete a menu category",
         "operationId": "DeleteDustCategoryAsync",
         "produces": [
           "application/json"
@@ -239,6 +239,268 @@
             "schema": {
               "$ref": "#/definitions/DustCategoryDto"
             }
+          },
+          "204": {
+            "description": "Returned when record was no longer present."
+          },
+          "409": {
+            "description": "Returned when the category is not empty.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/menucategories": {
+      "get": {
+        "tags": [
+          "MenuCategories"
+        ],
+        "summary": "Get menu categories",
+        "operationId": "GetMenuCategoriesAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the menu category.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MenuCategoryDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "MenuCategories"
+        ],
+        "summary": "Create a new menu category",
+        "operationId": "CreateMenuCategoryAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MenuCategoryAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new menu category.",
+            "schema": {
+              "$ref": "#/definitions/MenuCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another menu category.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/menucategories/{id}": {
+      "get": {
+        "tags": [
+          "MenuCategories"
+        ],
+        "summary": "Get menu category with id as parameter",
+        "operationId": "GetMenuCategoryByIdAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the menu category.",
+            "schema": {
+              "$ref": "#/definitions/MenuCategoryDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the menu category was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "MenuCategories"
+        ],
+        "summary": "Update a menu category",
+        "operationId": "UpdateMenuCategoryAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MenuCategoryUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the dust category.",
+            "schema": {
+              "$ref": "#/definitions/MenuCategoryDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another dust category.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "MenuCategories"
+        ],
+        "summary": "Delete a menu category",
+        "operationId": "DeleteMenuCategoryAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted menu category.",
+            "schema": {
+              "$ref": "#/definitions/MenuCategoryDto"
+            }
+          },
+          "204": {
+            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the category is not empty.",
@@ -495,6 +757,9 @@
             "schema": {
               "$ref": "#/definitions/ProductCategoryDto"
             }
+          },
+          "204": {
+            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the category is not empty.",
@@ -758,6 +1023,268 @@
               "$ref": "#/definitions/ProductDto"
             }
           },
+          "204": {
+            "description": "Returned when record was no longer present."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/properties": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "Get properties",
+        "operationId": "GetPropertiesAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the property.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PropertyDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "Create a new property",
+        "operationId": "CreatePropertyAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PropertyAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new property.",
+            "schema": {
+              "$ref": "#/definitions/PropertyDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another property.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/properties/{id}": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "Get property with id as parameter",
+        "operationId": "GetPropertyByIdAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the property.",
+            "schema": {
+              "$ref": "#/definitions/PropertyDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the property was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "Update a property",
+        "operationId": "UpdatePropertyAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PropertyUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the property.",
+            "schema": {
+              "$ref": "#/definitions/PropertyDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another property.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "Delete a property",
+        "operationId": "DeletePropertyAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted property.",
+            "schema": {
+              "$ref": "#/definitions/PropertyDto"
+            }
+          },
+          "204": {
+            "description": "Returned when record was no longer present."
+          },
+          "409": {
+            "description": "Returned when the property is in use.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "401": {
             "description": "Unauthorized"
           },
@@ -923,6 +1450,79 @@
       ],
       "type": "string"
     },
+    "MenuCategoryAddDto": {
+      "description": "DTO for adding a Menu category",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MenuCategoryDto": {
+      "description": "DTO for Menu category",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MenuCategoryUpdateDto": {
+      "description": "DTO for updating a Menu category",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
     "ProductAddDto": {
       "description": "DTO to add a product",
       "type": "object",
@@ -970,7 +1570,7 @@
         "properties": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PropertyReferenceDto"
+            "$ref": "#/definitions/ProductPropertyDto"
           }
         },
         "variations": {
@@ -1144,7 +1744,7 @@
         "properties": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PropertyReferenceDto"
+            "$ref": "#/definitions/ProductPropertyDto"
           }
         },
         "variations": {
@@ -1152,6 +1752,22 @@
           "items": {
             "$ref": "#/definitions/ProductVariationAddDto"
           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductPropertyDto": {
+      "description": "Property instance in a product",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Property id",
+          "type": "string"
+        },
+        "value": {
+          "description": "Property value",
+          "type": "string"
         }
       },
       "additionalProperties": false
@@ -1238,7 +1854,7 @@
         "properties": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PropertyReferenceDto"
+            "$ref": "#/definitions/ProductPropertyDto"
           }
         },
         "variations": {
@@ -1353,15 +1969,72 @@
       },
       "additionalProperties": false
     },
-    "PropertyReferenceDto": {
+    "PropertyAddDto": {
+      "description": "DTO for adding a property",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "typeName": {
+          "description": "Typename",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PropertyDto": {
+      "description": "DTO for Properties",
       "type": "object",
       "properties": {
         "id": {
           "format": "uuid",
+          "description": "Id",
           "type": "string"
         },
-        "value": {
+        "name": {
+          "description": "Name",
           "type": "string"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "typeName": {
+          "description": "Typename",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PropertyUpdateDto": {
+      "description": "DTO for adding a property",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "typeName": {
+          "description": "Typename",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
         }
       },
       "additionalProperties": false

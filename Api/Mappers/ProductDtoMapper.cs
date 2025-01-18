@@ -35,7 +35,7 @@ namespace Juliapos.Portal.ProductApi.Api.Mappers
 
             if (source.PropertieValues != null && source.PropertieValues.Any())
             {
-                result.Properties = source.PropertieValues.Select(x => new PropertyReferenceDto
+                result.Properties = source.PropertieValues.Select(x => new ProductPropertyDto
                 {
                     Id = x.PropertyId,
                     Value = x.Value
@@ -46,8 +46,8 @@ namespace Juliapos.Portal.ProductApi.Api.Mappers
             {
                 result.Variations = source.ProductVariations.Select(x => new ProductVariationAddDto
                 {
-                    Name = x.Name,
-                    Code = x.Code,
+                    Name = x.NameExtension,
+                    Code = x.CodeExtension,
                     Sku = x.Sku,
                     ProductVariationLocations = x.ProductVariationLocations.Select(y => new ProductVariationLocationReferenceDto
                     {

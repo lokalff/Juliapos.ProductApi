@@ -202,6 +202,8 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IDtoMapper<ProductCategory, ProductCategoryDto>, ProductCategoryDtoMapper>();
     services.AddTransient<IDtoMapper<DustCategory, DustCategoryDto>, DustCategoryDtoMapper>();
     services.AddTransient<IDtoMapper<MenuCategory, MenuCategoryDto>, MenuCategoryDtoMapper>();
+    services.AddTransient<IDtoMapper<Property, PropertyDto>, PropertyDtoMapper>();
+    services.AddTransient<IDtoMapper<SelectionPage, SelectionPageDto>, SelectionPageDtoMapper>();
 
     services.AddScoped<IProductsService, ProductsService>();
     services.AddScoped<IProductCategoriesService, ProductCategoriesService>();
@@ -210,12 +212,22 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IQueryHandler, QueryHandler>();
     services.AddTransient<IHandleQuery<DustCategoriesQuery, IEnumerable<DustCategory>>, DustCategoriesQueryHandler>();
     services.AddTransient<IHandleQuery<DustCategoryQuery, DustCategory>, DustCategoryQueryHandler>();
+    services.AddTransient<IHandleQuery<MenuCategoriesQuery, IEnumerable<MenuCategory>>, MenuCategoriesQueryHandler>();
+    services.AddTransient<IHandleQuery<MenuCategoryQuery, MenuCategory>, MenuCategoryQueryHandler>();
+    services.AddTransient<IHandleQuery<PropertiesQuery, IEnumerable<Property>>, PropertiesQueryHandler>();
+    services.AddTransient<IHandleQuery<PropertyQuery, Property>, PropertyQueryHandler>();
 
     // commands
     services.AddTransient<ICommandHandler, CommandHandler>();
     services.AddTransient<IHandleCommand<DustCategoryCreateCommand, DustCategory>, DustCategoryCreateCommandHandler>();
     services.AddTransient<IHandleCommand<DustCategoryUpdateCommand, DustCategory>, DustCategoryUpdateCommandHandler>();
     services.AddTransient<IHandleCommand<DustCategoryDeleteCommand, DustCategory>, DustCategoryDeleteCommandHandler>();
+    services.AddTransient<IHandleCommand<MenuCategoryCreateCommand, MenuCategory>, MenuCategoryCreateCommandHandler>();
+    services.AddTransient<IHandleCommand<MenuCategoryUpdateCommand, MenuCategory>, MenuCategoryUpdateCommandHandler>();
+    services.AddTransient<IHandleCommand<MenuCategoryDeleteCommand, MenuCategory>, MenuCategoryDeleteCommandHandler>();
+    services.AddTransient<IHandleCommand<PropertyCreateCommand, Property>, PropertyCreateCommandHandler>();
+    services.AddTransient<IHandleCommand<PropertyUpdateCommand, Property>, PropertyUpdateCommandHandler>();
+    services.AddTransient<IHandleCommand<PropertyDeleteCommand, Property>, PropertyDeleteCommandHandler>();
 
 
     /*

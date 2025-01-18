@@ -5,6 +5,9 @@ using Juliapos.Portal.ProductApi.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands.Handlers
 {
+    /// <summary>
+    /// Handler for the <see cref="MenuCategoryUpdateCommand"/>
+    /// </summary>
     public sealed class MenuCategoryUpdateCommandHandler : IHandleCommand<MenuCategoryUpdateCommand, MenuCategory>
     {
         private readonly IApiDbDataStore m_dataStore;
@@ -30,12 +33,12 @@ namespace Juliapos.Portal.ProductApi.Commands.Handlers
             if (!command.Enabled && existingCategory.Enabled)
             {
                 var productsExist = m_dataStore.ProductDataQuery
-                    .WhereProductCategoryId(existingCategory.MenuCategoryId)
+                    .WhereMenuCategoryId(existingCategory.MenuCategoryId)
                     .AsQueryable()
                     .Any();
 
                 if (productsExist)
-                    throw new HttpConflictException(ApiErrorCode.ProductCategoryHasProducts, existingCategory.MenuCategoryId);
+                    throw new HttpConflictException(ApiErrorCode.MenuCategoryHasProducts, existingCategory.MenuCategoryId);
             }
 
 

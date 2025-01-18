@@ -5,6 +5,9 @@ using Juliapos.Portal.ProductApi.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands.Handlers
 {
+    /// <summary>
+    /// Handler for the <see cref="MenuCategoryDeleteCommand"/>
+    /// </summary>
     public sealed class MenuCategoryDeleteCommandHandler : IHandleCommand<MenuCategoryDeleteCommand, MenuCategory>
     {
         private readonly IApiDbDataStore m_dataStore;
@@ -28,7 +31,7 @@ namespace Juliapos.Portal.ProductApi.Commands.Handlers
             if (existingCategory != null)
             {
                 var productsExist = m_dataStore.ProductDataQuery
-                    .WhereDustCategoryId(command.Id)
+                    .WhereMenuCategoryId(command.Id)
                     .AsQueryable()
                     .Any();
 

@@ -4,7 +4,7 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Command to delete a dust category
+    /// Command to delete a <see cref="DustCategory"/>
     /// </summary>
     public sealed class DustCategoryDeleteCommand : ICommand<DustCategory>
     {

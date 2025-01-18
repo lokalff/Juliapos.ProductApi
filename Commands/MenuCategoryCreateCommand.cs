@@ -4,6 +4,9 @@ using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands
 {
+    /// <summary>
+    /// Command to create a <see cref="MenuCategory"/>
+    /// </summary>
     public sealed class MenuCategoryCreateCommand : ICommand<MenuCategory>
     {
         /// <summary>
