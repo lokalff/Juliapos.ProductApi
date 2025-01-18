@@ -114,6 +114,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateProductAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product.", typeof(ProductDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the product was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product.", typeof(ErrorResultDto))]
         public async Task<ActionResult<ProductDto>> UpdateProductAsync(Guid id, [FromBody] ProductUpdateDto product)
         {
@@ -147,7 +148,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteProductAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted product.", typeof(ProductDto))]
-        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         //[SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the location is not empty.", typeof(ErrorResultDto))]
         public async Task<ActionResult<ProductDto>> DeleteProductAsync(Guid id, bool purgeProduct)
         {
@@ -155,7 +155,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
             var product = await m_service.DeleteProductAsync(id, purgeProduct);
 
             var result = m_mapper.Map<Product, ProductDto>(product);
-            return Ok(result);
+            return result == null ? Ok() : Ok(result);
         }
     }
 }

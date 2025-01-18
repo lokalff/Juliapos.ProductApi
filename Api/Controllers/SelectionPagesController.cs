@@ -129,6 +129,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateSelectionPageAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product selection page.", typeof(SelectionPageDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the product selection page was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product selection page.", typeof(ErrorResultDto))]
         public async Task<ActionResult<SelectionPageDto>> UpdateSelectionPageAsync(Guid id, [FromBody] SelectionPageUpdateDto selectionPage)
         {
@@ -156,7 +157,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteSelectionPageAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted menu category.", typeof(SelectionPageDto))]
-        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the category is not empty.", typeof(ErrorResultDto))]
         public async Task<ActionResult<SelectionPageDto>> DeleteSelectionPageAsync(Guid id)
         {
@@ -170,7 +170,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 });
 
             var result = category != null ? m_mapper.Map<SelectionPage, SelectionPageDto>(category) : null;
-            return Ok(result);
+            return result == null ? Ok() : Ok(result);
         }
 
 

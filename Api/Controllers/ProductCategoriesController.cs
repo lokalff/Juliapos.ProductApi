@@ -1,7 +1,11 @@
-﻿using Juliapos.Patterns.DtoMapping;
+﻿using Juliapos.Patterns.CQRS.Commands;
+using Juliapos.Patterns.CQRS.Queries;
+using Juliapos.Patterns.DtoMapping;
 using Juliapos.Portal.ProductApi.Api.Models.Dto;
+using Juliapos.Portal.ProductApi.Commands;
 using Juliapos.Portal.ProductApi.Db.Models;
 using Juliapos.Portal.ProductApi.Models;
+using Juliapos.Portal.ProductApi.Queries;
 using Juliapos.Portal.ProductApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,21 +23,25 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
     public sealed class ProductCategoriesController : ControllerBase
     {
         private readonly IEndpointArgumentValidator m_argumentValidator;
-        private readonly IProductCategoriesService m_service;
         private readonly IDtoMapper m_mapper;
+        private readonly ICommandHandler m_commandHandler;
+        private readonly IQueryHandler m_queryHandler;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="service"></param>
+        /// <param name="commandHandler"></param>
+        /// <param name="queryHandler"></param>
         /// <param name="mapper"></param>
         /// <param name="endpointArgumentValidator"></param>
         public ProductCategoriesController(
-            IProductCategoriesService service,
+            ICommandHandler commandHandler,
+            IQueryHandler queryHandler,
             IDtoMapper mapper,
             IEndpointArgumentValidator endpointArgumentValidator)
         {
-            m_service = service;
+            m_commandHandler = commandHandler;
+            m_queryHandler = queryHandler;
             m_mapper = mapper;
             m_argumentValidator = endpointArgumentValidator;
         }
@@ -49,9 +57,15 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         public async Task<ActionResult<IEnumerable<ProductCategoryDto>>> GetProductCategoriesAsync()
         {
             var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();
-            var products = await m_service.GetProductCategoriesAsync(validOrganization.OrganizationId);
-            var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(products);
+            var productCategories = await m_queryHandler.HandleQueryAsync<ProductCategoriesQuery, IEnumerable<ProductCategory>>(
+                new ProductCategoriesQuery
+                {
+                    OrganizationId = validOrganization.OrganizationId,
+                });
+
+            var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(productCategories);
             return Ok(result);
+
         }
 
         /// <summary>
@@ -67,7 +81,12 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         public async Task<ActionResult<ProductDto>> GetProductCategoryByIdAsync(Guid id)
         {
             var validProductCategory = await m_argumentValidator.ValidateProductCategoryAsync(id);
-            var existingProductCategory = await m_service.GetProductCategoryByIdAsync(validProductCategory.ProductCategoryId);
+            var existingProductCategory = await m_queryHandler.HandleQueryAsync<ProductCategoryQuery, ProductCategory>(
+                new ProductCategoryQuery
+                {
+                    OrganizationId = validProductCategory.OrganizationId,
+                    Id = id
+                });
 
             var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(existingProductCategory);
             return Ok(result);
@@ -84,23 +103,22 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product category.", typeof(ErrorResultDto))]
         public async Task<ActionResult<ProductCategoryDto>> CreateProductCategoryAsync([FromBody] ProductCategoryAddDto productCategory)
         {
-            var id = Guid.NewGuid();
             var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();
 
-            var categoryToAdd = new ProductCategory
-            {
-                OrganizationId = validOrganization.OrganizationId,
-                ProductCategoryId = id,
-                IdName = productCategory.IdName,
-                Name = productCategory.Name,
-                Weight = productCategory.Weight,
-                MeasureMethod = productCategory.MeasureMethod,
-                DefaultForeColor = productCategory.DefaultForeColor,
-                DefaultBackColor = productCategory.DefaultBackColor,
-                Enabled = productCategory.Enabled,
-            };
-            categoryToAdd = await m_service.CreateProductCategoryAsync(categoryToAdd);
-            var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(categoryToAdd);
+            var category = await m_commandHandler.HandleCommandAsync<ProductCategoryCreateCommand, ProductCategory>(
+                new ProductCategoryCreateCommand
+                {
+                    OrganizationId = validOrganization.OrganizationId,
+                    IdName = productCategory.IdName,
+                    Name = productCategory.Name,
+                    Weight = productCategory.Weight,
+                    MeasureMethod = productCategory.MeasureMethod,
+                    DefaultForeColor = productCategory.DefaultForeColor,
+                    DefaultBackColor = productCategory.DefaultBackColor,
+                    Enabled = productCategory.Enabled,
+                });
+
+            var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(category);
             return Ok(result);
         }
 
@@ -114,24 +132,26 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateProductCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the product category.", typeof(ProductCategoryDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the product category was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another product category.", typeof(ErrorResultDto))]
         public async Task<ActionResult<ProductCategoryDto>> UpdateProductCategoryAsync(Guid id, [FromBody] ProductCategoryUpdateDto productCategory)
         {
             var validProductCategory = await m_argumentValidator.ValidateProductCategoryAsync(id);
 
-            var categoryToUpdate = new ProductCategory
-            {
-                ProductCategoryId = id,
-                Name = productCategory.Name,
-                Weight = productCategory.Weight,
-                MeasureMethod = productCategory.MeasureMethod,
-                DefaultForeColor = productCategory.DefaultForeColor,
-                DefaultBackColor = productCategory.DefaultBackColor,
-                Enabled = productCategory.Enabled,
-            };
-            categoryToUpdate = await m_service.UpdateProductCategoryAsync(categoryToUpdate);
+            var category = await m_commandHandler.HandleCommandAsync<ProductCategoryUpdateCommand, ProductCategory>(
+                new ProductCategoryUpdateCommand
+                {
+                    Id = id,
+                    OrganizationId = validProductCategory.OrganizationId,
+                    Name = productCategory.Name,
+                    Weight = productCategory.Weight,
+                    MeasureMethod = productCategory.MeasureMethod,
+                    DefaultForeColor = productCategory.DefaultForeColor,
+                    DefaultBackColor = productCategory.DefaultBackColor,
+                    Enabled = productCategory.Enabled,
+                });
 
-            var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(categoryToUpdate);
+            var result = m_mapper.Map<ProductCategory, ProductCategoryDto>(category);
             return Ok(result);
         }
 
@@ -143,15 +163,19 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteProductCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted product category.", typeof(ProductCategoryDto))]
-        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the category is not empty.", typeof(ErrorResultDto))]
         public async Task<ActionResult<ProductDto>> DeleteProductAsync(Guid id)
         {
             var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();
-            var productCategory = await m_service.DeleteProductCategoryAsync(id, validOrganization.OrganizationId);
+            var category = await m_commandHandler.HandleCommandAsync<ProductCategoryDeleteCommand, ProductCategory>(
+                new ProductCategoryDeleteCommand
+                {
+                    OrganizationId = validOrganization.OrganizationId,
+                    Id = id
+                });
 
-            var result = productCategory != null ? m_mapper.Map<ProductCategory, ProductCategoryDto>(productCategory) : null;
-            return Ok(result);
+            var result = category != null ? m_mapper.Map<ProductCategory, ProductCategoryDto>(category) : null;
+            return result == null ? Ok() : Ok(result);
         }
 
 

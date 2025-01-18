@@ -127,6 +127,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateDustCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the dust category.", typeof(DustCategoryDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the dust category was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another dust category.", typeof(ErrorResultDto))]
         public async Task<ActionResult<DustCategoryDto>> UpdateDustCategoryAsync(Guid id, [FromBody] DustCategoryUpdateDto dustCategory)
         {
@@ -153,7 +154,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteDustCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted dust category.", typeof(DustCategoryDto))]
-        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the category is not empty.", typeof(ErrorResultDto))]
         public async Task<ActionResult<DustCategoryDto>> DeleteMenuCategoryAsync(Guid id)
         {
@@ -167,7 +167,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 });
 
             var result = category != null ? m_mapper.Map<DustCategory, DustCategoryDto>(category) : null;
-            return Ok(result);
+            return result == null ? Ok() : Ok(result);
         }
 
 

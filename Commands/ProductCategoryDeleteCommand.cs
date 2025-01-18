@@ -1,12 +1,12 @@
-﻿using Juliapos.Patterns.CQRS.Queries;
+﻿using Juliapos.Patterns.CQRS.Commands;
 using Juliapos.Portal.ProductApi.Db.Models;
 
-namespace Juliapos.Portal.ProductApi.Queries
+namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Query to retrieve a dust category
+    /// Command to delete a <see cref="ProductCategory"/>
     /// </summary>
-    public sealed class DustCategoryQuery : IQuery<DustCategory>
+    public sealed class ProductCategoryDeleteCommand : ICommand<ProductCategory>
     {
         /// <summary>
         /// Organization id

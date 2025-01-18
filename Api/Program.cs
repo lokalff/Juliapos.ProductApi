@@ -206,10 +206,11 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IDtoMapper<SelectionPage, SelectionPageDto>, SelectionPageDtoMapper>();
 
     services.AddScoped<IProductsService, ProductsService>();
-    services.AddScoped<IProductCategoriesService, ProductCategoriesService>();
 
     // queries
     services.AddTransient<IQueryHandler, QueryHandler>();
+    services.AddTransient<IHandleQuery<ProductCategoriesQuery, IEnumerable<ProductCategory>>, ProductCategoriesQueryHandler>();
+    services.AddTransient<IHandleQuery<ProductCategoryQuery, ProductCategory>, ProductCategoryQueryHandler>();
     services.AddTransient<IHandleQuery<DustCategoriesQuery, IEnumerable<DustCategory>>, DustCategoriesQueryHandler>();
     services.AddTransient<IHandleQuery<DustCategoryQuery, DustCategory>, DustCategoryQueryHandler>();
     services.AddTransient<IHandleQuery<MenuCategoriesQuery, IEnumerable<MenuCategory>>, MenuCategoriesQueryHandler>();
@@ -221,6 +222,10 @@ void ConfigureServices(IServiceCollection services)
 
     // commands
     services.AddTransient<ICommandHandler, CommandHandler>();
+    services.AddTransient<IHandleCommand<ProductCategoryCreateCommand, ProductCategory>, ProductCategoryCreateCommandHandler>();
+    services.AddTransient<IHandleCommand<ProductCategoryUpdateCommand, ProductCategory>, ProductCategoryUpdateCommandHandler>();
+    services.AddTransient<IHandleCommand<ProductCategoryDeleteCommand, ProductCategory>, ProductCategoryDeleteCommandHandler>();
+
     services.AddTransient<IHandleCommand<DustCategoryCreateCommand, DustCategory>, DustCategoryCreateCommandHandler>();
     services.AddTransient<IHandleCommand<DustCategoryUpdateCommand, DustCategory>, DustCategoryUpdateCommandHandler>();
     services.AddTransient<IHandleCommand<DustCategoryDeleteCommand, DustCategory>, DustCategoryDeleteCommandHandler>();

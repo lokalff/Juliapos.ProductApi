@@ -1,12 +1,18 @@
-﻿using Juliapos.Portal.ProductApi.Db.Models;
+﻿using Juliapos.Patterns.CQRS.Commands;
+using Juliapos.Portal.ProductApi.Db.Models;
 
-namespace Juliapos.Portal.ProductApi.Api.Models.Dto
+namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// DTO for adding product categories
+    /// Command to create a new <see cref="ProductCategory"/>
     /// </summary>
-    public sealed class ProductCategoryAddDto
+    public sealed class ProductCategoryCreateCommand : ICommand<ProductCategory>
     {
+        /// <summary>
+        /// Organization id
+        /// </summary>
+        public Guid OrganizationId { get; set; }
+
         /// <summary>
         /// Name
         /// </summary>
@@ -42,6 +48,5 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         /// Enabled
         /// </summary>
         public bool Enabled { get; set; }
-
     }
 }

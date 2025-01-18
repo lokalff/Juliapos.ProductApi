@@ -618,6 +618,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                             return new SwaggerResponse<DustCategoryDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the dust category was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         if (status_ == 409)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -736,12 +746,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<DustCategoryDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 204)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Returned when record was no longer present.", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 409)
@@ -1490,6 +1494,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                             return new SwaggerResponse<MenuCategoryDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the menu category was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         if (status_ == 409)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -1608,12 +1622,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<MenuCategoryDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 204)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Returned when record was no longer present.", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 409)
@@ -2362,6 +2370,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                             return new SwaggerResponse<ProductCategoryDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the product category was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         if (status_ == 409)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -2480,12 +2498,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<ProductCategoryDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 204)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Returned when record was no longer present.", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 409)
@@ -3234,6 +3246,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                             return new SwaggerResponse<ProductDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the product was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         if (status_ == 409)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -3358,12 +3380,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<ProductDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 204)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Returned when record was no longer present.", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 401)
@@ -4102,6 +4118,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                             return new SwaggerResponse<PropertyDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the property was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         if (status_ == 409)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -4220,12 +4246,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<PropertyDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 204)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Returned when record was no longer present.", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 409)
@@ -4974,6 +4994,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                             return new SwaggerResponse<SelectionPageDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the product selection page was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
                         if (status_ == 409)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
@@ -5092,12 +5122,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
                             return new SwaggerResponse<SelectionPageDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 204)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Returned when record was no longer present.", status_, responseText_, headers_, null);
                         }
                         else
                         if (status_ == 409)
@@ -5710,28 +5734,54 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
+    /// <summary>
+    /// DTO for adding product categories
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductCategoryAddDto
     {
-
-        [System.Text.Json.Serialization.JsonPropertyName("idName")]
-        public string IdName { get; set; }
+        /// <summary>
+        /// Name
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Weight (order)
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("weight")]
         public int? Weight { get; set; }
+
+        /// <summary>
+        /// Id as a name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("idName")]
+        public string IdName { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("measureMethod")]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public MeasureMethod? MeasureMethod { get; set; }
 
+        /// <summary>
+        /// Default foreground color for new products
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("defaultForeColor")]
         public string DefaultForeColor { get; set; }
 
+        /// <summary>
+        /// Default background color for new products
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("defaultBackColor")]
         public string DefaultBackColor { get; set; }
+
+        /// <summary>
+        /// Enabled
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
@@ -5776,8 +5826,16 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public MeasureMethod? MeasureMethod { get; set; }
 
+        /// <summary>
+        /// Default foreground color for new products
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("defaultForeColor")]
         public string DefaultForeColor { get; set; }
+
+        /// <summary>
+        /// Default background color for new products
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("defaultBackColor")]
         public string DefaultBackColor { get; set; }
@@ -5791,12 +5849,22 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
+    /// <summary>
+    /// DTO for updating product categories
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductCategoryUpdateDto
     {
+        /// <summary>
+        /// Name
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Weight (order)
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("weight")]
         public int? Weight { get; set; }
@@ -5805,11 +5873,23 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public MeasureMethod? MeasureMethod { get; set; }
 
+        /// <summary>
+        /// Default foreground color for new products
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("defaultForeColor")]
         public string DefaultForeColor { get; set; }
 
+        /// <summary>
+        /// Default background color for new products
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("defaultBackColor")]
         public string DefaultBackColor { get; set; }
+
+        /// <summary>
+        /// Enabled
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }

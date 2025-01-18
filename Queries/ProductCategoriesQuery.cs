@@ -4,18 +4,13 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Queries
 {
     /// <summary>
-    /// Query to retrieve a dust category
+    /// Query to retrieve all product categories
     /// </summary>
-    public sealed class DustCategoryQuery : IQuery<DustCategory>
+    public sealed class ProductCategoriesQuery : IQuery<IEnumerable<ProductCategory>>
     {
         /// <summary>
         /// Organization id
         /// </summary>
-        public Guid OrganizationId { get; set; }
-
-        /// <summary>
-        /// id
-        /// </summary>
-        public Guid Id { get; set; }
+        public Guid? OrganizationId { get; set; }
     }
 }

@@ -129,6 +129,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdatePropertyAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the property.", typeof(PropertyDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the property was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another property.", typeof(ErrorResultDto))]
         public async Task<ActionResult<PropertyDto>> UpdatePropertyAsync(Guid id, [FromBody] PropertyUpdateDto Property)
         {
@@ -156,7 +157,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeletePropertyAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted property.", typeof(PropertyDto))]
-        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the property is in use.", typeof(ErrorResultDto))]
         public async Task<ActionResult<PropertyDto>> DeletePropertyAsync(Guid id)
         {
@@ -170,7 +170,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 });
 
             var result = property != null ? m_mapper.Map<Property, PropertyDto>(property) : null;
-            return Ok(result);
+            return result == null ? Ok() : Ok(result);
         }
 
 

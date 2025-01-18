@@ -193,6 +193,12 @@
               "$ref": "#/definitions/DustCategoryDto"
             }
           },
+          "404": {
+            "description": "Returned when the dust category was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "409": {
             "description": "Returned when there is a conflict with another dust category.",
             "schema": {
@@ -239,9 +245,6 @@
             "schema": {
               "$ref": "#/definitions/DustCategoryDto"
             }
-          },
-          "204": {
-            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the category is not empty.",
@@ -452,6 +455,12 @@
               "$ref": "#/definitions/MenuCategoryDto"
             }
           },
+          "404": {
+            "description": "Returned when the menu category was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "409": {
             "description": "Returned when there is a conflict with another menu category.",
             "schema": {
@@ -498,9 +507,6 @@
             "schema": {
               "$ref": "#/definitions/MenuCategoryDto"
             }
-          },
-          "204": {
-            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the category is not empty.",
@@ -711,6 +717,12 @@
               "$ref": "#/definitions/ProductCategoryDto"
             }
           },
+          "404": {
+            "description": "Returned when the product category was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "409": {
             "description": "Returned when there is a conflict with another product category.",
             "schema": {
@@ -757,9 +769,6 @@
             "schema": {
               "$ref": "#/definitions/ProductCategoryDto"
             }
-          },
-          "204": {
-            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the category is not empty.",
@@ -970,6 +979,12 @@
               "$ref": "#/definitions/ProductDto"
             }
           },
+          "404": {
+            "description": "Returned when the product was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "409": {
             "description": "Returned when there is a conflict with another product.",
             "schema": {
@@ -1022,9 +1037,6 @@
             "schema": {
               "$ref": "#/definitions/ProductDto"
             }
-          },
-          "204": {
-            "description": "Returned when record was no longer present."
           },
           "401": {
             "description": "Unauthorized"
@@ -1229,6 +1241,12 @@
               "$ref": "#/definitions/PropertyDto"
             }
           },
+          "404": {
+            "description": "Returned when the property was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "409": {
             "description": "Returned when there is a conflict with another property.",
             "schema": {
@@ -1275,9 +1293,6 @@
             "schema": {
               "$ref": "#/definitions/PropertyDto"
             }
-          },
-          "204": {
-            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the property is in use.",
@@ -1488,6 +1503,12 @@
               "$ref": "#/definitions/SelectionPageDto"
             }
           },
+          "404": {
+            "description": "Returned when the product selection page was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
           "409": {
             "description": "Returned when there is a conflict with another product selection page.",
             "schema": {
@@ -1534,9 +1555,6 @@
             "schema": {
               "$ref": "#/definitions/SelectionPageDto"
             }
-          },
-          "204": {
-            "description": "Returned when record was no longer present."
           },
           "409": {
             "description": "Returned when the category is not empty.",
@@ -1848,28 +1866,35 @@
       "additionalProperties": false
     },
     "ProductCategoryAddDto": {
+      "description": "DTO for adding product categories",
       "type": "object",
       "properties": {
-        "idName": {
-          "type": "string"
-        },
         "name": {
+          "description": "Name",
           "type": "string"
         },
         "weight": {
           "format": "int32",
+          "description": "Weight (order)",
           "type": "integer"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
         },
         "measureMethod": {
           "$ref": "#/definitions/MeasureMethod"
         },
         "defaultForeColor": {
+          "description": "Default foreground color for new products",
           "type": "string"
         },
         "defaultBackColor": {
+          "description": "Default background color for new products",
           "type": "string"
         },
         "enabled": {
+          "description": "Enabled",
           "type": "boolean"
         }
       },
@@ -1901,9 +1926,11 @@
           "$ref": "#/definitions/MeasureMethod"
         },
         "defaultForeColor": {
+          "description": "Default foreground color for new products",
           "type": "string"
         },
         "defaultBackColor": {
+          "description": "Default background color for new products",
           "type": "string"
         },
         "enabled": {
@@ -1914,25 +1941,31 @@
       "additionalProperties": false
     },
     "ProductCategoryUpdateDto": {
+      "description": "DTO for updating product categories",
       "type": "object",
       "properties": {
         "name": {
+          "description": "Name",
           "type": "string"
         },
         "weight": {
           "format": "int32",
+          "description": "Weight (order)",
           "type": "integer"
         },
         "measureMethod": {
           "$ref": "#/definitions/MeasureMethod"
         },
         "defaultForeColor": {
+          "description": "Default foreground color for new products",
           "type": "string"
         },
         "defaultBackColor": {
+          "description": "Default background color for new products",
           "type": "string"
         },
         "enabled": {
+          "description": "Enabled",
           "type": "boolean"
         }
       },

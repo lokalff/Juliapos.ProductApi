@@ -129,6 +129,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateMenuCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the menu category.", typeof(MenuCategoryDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Returned when the menu category was not found.", typeof(ErrorResultDto))]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another menu category.", typeof(ErrorResultDto))]
         public async Task<ActionResult<MenuCategoryDto>> UpdateMenuCategoryAsync(Guid id, [FromBody] MenuCategoryUpdateDto menuCategory)
         {
@@ -156,7 +157,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         [HttpDelete("{id:guid}")]
         [SwaggerOperation(OperationId = "DeleteMenuCategoryAsync")]
         [SwaggerResponse(StatusCodes.Status200OK, "Returned with the deleted menu category.", typeof(MenuCategoryDto))]
-        [SwaggerResponse(StatusCodes.Status204NoContent, "Returned when record was no longer present.")]
         [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when the category is not empty.", typeof(ErrorResultDto))]
         public async Task<ActionResult<MenuCategoryDto>> DeleteMenuCategoryAsync(Guid id)
         {
@@ -170,7 +170,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 });
 
             var result = category != null ? m_mapper.Map<MenuCategory, MenuCategoryDto>(category) : null;
-            return Ok(result);
+            return result == null ? Ok() : Ok(result);
         }
 
 
