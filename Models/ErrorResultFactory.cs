@@ -35,17 +35,9 @@ namespace Juliapos.Portal.ProductApi.Models
             { ApiErrorCode.PropertyNotFound, "Property not found" },
             { ApiErrorCode.PropertyHasProducts, "Property is used in products" },
 
-            //{ ApiErrorCode.PackageTypeNotFound, "Package type not found" },
-            //{ ApiErrorCode.ProductNotFound, "Product not found" },
-            //{ ApiErrorCode.LocationEnclosingPackageConflict, "Location and enclosing package cannot both be assigned or both empty" },
-            //{ ApiErrorCode.PackageExists, "Package already exists" },
-            //{ ApiErrorCode.AmountContainerConflict, "Container packages cannot have an 'Amount'" },
-            //{ ApiErrorCode.EnclosingPackageNotContainer, "Enclosing package is not a package container" },
-            //{ ApiErrorCode.PackageNotCheckedIn, "Package has no location" },
+            { ApiErrorCode.SelectionPageNotFound, "Product selection page not found" },
+            { ApiErrorCode.SelectionPageHasProducts, "Product selection page has products" },
 
-            //{ ApiErrorCode.DayOrderExists, "Day order already exists" },
-            //{ ApiErrorCode.DayOrderNotFound, "Day order not found" },
-            //{ ApiErrorCode.DayOrderParametersNotComplete, "Supplied parameters are not complete" },
         };
 
 
@@ -244,7 +236,7 @@ namespace Juliapos.Portal.ProductApi.Models
         MenuCategoryNotFound = 5200,
 
         /// <summary>
-        /// Dust Category has connected products
+        /// Menu Category has connected products
         /// </summary>
         MenuCategoryHasProducts = 5201,
 
@@ -263,20 +255,10 @@ namespace Juliapos.Portal.ProductApi.Models
         /// </summary>
         SelectionPageNotFound = 5400,
 
+        /// <summary>
+        /// Selection page has connected products
+        /// </summary>
+        SelectionPageHasProducts = 5401,
 
-        ///// <summary>
-        ///// Day order already exists
-        ///// </summary>
-        //DayOrderExists = 6000,
-
-        ///// <summary>
-        ///// Day order not found
-        ///// </summary>
-        //DayOrderNotFound,
-
-        ///// <summary>
-        ///// Supplied parameters are not complete
-        ///// </summary>
-        //DayOrderParametersNotComplete,
     };
 }

@@ -447,13 +447,13 @@
         ],
         "responses": {
           "200": {
-            "description": "Returned with the full information about the dust category.",
+            "description": "Returned with the full information about the menu category.",
             "schema": {
               "$ref": "#/definitions/MenuCategoryDto"
             }
           },
           "409": {
-            "description": "Returned when there is a conflict with another dust category.",
+            "description": "Returned when there is a conflict with another menu category.",
             "schema": {
               "$ref": "#/definitions/ErrorResultDto"
             }
@@ -1300,6 +1300,265 @@
           }
         ]
       }
+    },
+    "/api/v1/selectionpages": {
+      "get": {
+        "tags": [
+          "SelectionPages"
+        ],
+        "summary": "Get product selection pages",
+        "operationId": "GetSelectionPagesAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product selection page.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SelectionPageDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "SelectionPages"
+        ],
+        "summary": "Create a new product selection page",
+        "operationId": "CreateSelectionPageAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SelectionPageAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new product selection page.",
+            "schema": {
+              "$ref": "#/definitions/SelectionPageDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product selection page.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/selectionpages/{id}": {
+      "get": {
+        "tags": [
+          "SelectionPages"
+        ],
+        "summary": "Get product selection page with id as parameter",
+        "operationId": "GetSelectionPageByIdAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product selection page.",
+            "schema": {
+              "$ref": "#/definitions/SelectionPageDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the product selection page was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "SelectionPages"
+        ],
+        "summary": "Update a product selection page",
+        "operationId": "UpdateSelectionPageAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SelectionPageUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the product selection page.",
+            "schema": {
+              "$ref": "#/definitions/SelectionPageDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another product selection page.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "SelectionPages"
+        ],
+        "summary": "Delete a product selection page",
+        "operationId": "DeleteSelectionPageAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted menu category.",
+            "schema": {
+              "$ref": "#/definitions/SelectionPageDto"
+            }
+          },
+          "204": {
+            "description": "Returned when record was no longer present."
+          },
+          "409": {
+            "description": "Returned when the category is not empty.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -2046,6 +2305,79 @@
         "Deleted"
       ],
       "type": "string"
+    },
+    "SelectionPageAddDto": {
+      "description": "DTO for adding a product selection page",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SelectionPageDto": {
+      "description": "DTO for product selection page",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SelectionPageUpdateDto": {
+      "description": "DTO for updating a product selection page",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "format": "int32",
+          "description": "Weight (order)",
+          "type": "integer"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
     },
     "VatLevel": {
       "enum": [

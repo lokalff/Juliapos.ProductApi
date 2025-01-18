@@ -128,8 +128,8 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         /// <returns></returns>
         [HttpPut("{id:guid}")]
         [SwaggerOperation(OperationId = "UpdateMenuCategoryAsync")]
-        [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the dust category.", typeof(MenuCategoryDto))]
-        [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another dust category.", typeof(ErrorResultDto))]
+        [SwaggerResponse(StatusCodes.Status200OK, "Returned with the full information about the menu category.", typeof(MenuCategoryDto))]
+        [SwaggerResponse(StatusCodes.Status409Conflict, "Returned when there is a conflict with another menu category.", typeof(ErrorResultDto))]
         public async Task<ActionResult<MenuCategoryDto>> UpdateMenuCategoryAsync(Guid id, [FromBody] MenuCategoryUpdateDto menuCategory)
         {
             var validOrganization = await m_argumentValidator.ValidateCurrentOrganizationAsync();

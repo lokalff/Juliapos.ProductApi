@@ -1,5 +1,4 @@
-﻿
-using Juliapos.Patterns.CQRS.Commands;
+﻿using Juliapos.Patterns.CQRS.Commands;
 using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Commands

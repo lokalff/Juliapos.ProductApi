@@ -25,6 +25,7 @@ namespace Juliapos.Portal.ProductApi.Commands.Handlers
         public async Task<DustCategory> HandleAsync(DustCategoryDeleteCommand command)
         {
             var existingCategory = await m_dataStore.DustCategoryDataQuery
+                .WhereOrganizationId(command.OrganizationId)
                 .WhereId(command.Id)
                 .SingleOrDefaultAsync();
 

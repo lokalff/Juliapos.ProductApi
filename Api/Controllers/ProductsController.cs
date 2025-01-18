@@ -41,7 +41,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         /// <summary>
         /// Get products
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
         [SwaggerOperation(OperationId = "GetProductsAsync")]

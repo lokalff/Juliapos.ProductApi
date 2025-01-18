@@ -4,9 +4,9 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Command to create a <see cref="Property"/>
+    /// Command to create a <see cref="SelectionPage"/>
     /// </summary>
-    public sealed class PropertyCreateCommand : ICommand<Property>
+    public sealed class SelectionPageCreateCommand : ICommand<SelectionPage>
     {
         /// <summary>
         /// Organization id
@@ -19,14 +19,14 @@ namespace Juliapos.Portal.ProductApi.Commands
         public string Name { get; set; }
 
         /// <summary>
+        /// Weight (order)
+        /// </summary>
+        public int Weight { get; set; }
+
+        /// <summary>
         /// Id as a name
         /// </summary>
         public string IdName { get; set; }
-
-        /// <summary>
-        /// TYpe name
-        /// </summary>
-        public string TypeName { get; set; }
 
         /// <summary>
         /// Enabled

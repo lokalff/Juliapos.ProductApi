@@ -216,6 +216,8 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IHandleQuery<MenuCategoryQuery, MenuCategory>, MenuCategoryQueryHandler>();
     services.AddTransient<IHandleQuery<PropertiesQuery, IEnumerable<Property>>, PropertiesQueryHandler>();
     services.AddTransient<IHandleQuery<PropertyQuery, Property>, PropertyQueryHandler>();
+    services.AddTransient<IHandleQuery<SelectionPagesQuery, IEnumerable<SelectionPage>>, SelectionPagesQueryHandler>();
+    services.AddTransient<IHandleQuery<SelectionPageQuery, SelectionPage>, SelectionPageQueryHandler>();
 
     // commands
     services.AddTransient<ICommandHandler, CommandHandler>();
@@ -228,20 +230,10 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IHandleCommand<PropertyCreateCommand, Property>, PropertyCreateCommandHandler>();
     services.AddTransient<IHandleCommand<PropertyUpdateCommand, Property>, PropertyUpdateCommandHandler>();
     services.AddTransient<IHandleCommand<PropertyDeleteCommand, Property>, PropertyDeleteCommandHandler>();
+    services.AddTransient<IHandleCommand<SelectionPageCreateCommand, SelectionPage>, SelectionPageCreateCommandHandler>();
+    services.AddTransient<IHandleCommand<SelectionPageUpdateCommand, SelectionPage>, SelectionPageUpdateCommandHandler>();
+    services.AddTransient<IHandleCommand<SelectionPageDeleteCommand, SelectionPage>, SelectionPageDeleteCommandHandler>();
 
-
-    /*
-        services.AddScoped<ITokenProvider, ClientCredentialsTokenProvider>(sp =>
-        {
-            var httpClient = sp.GetRequiredService<HttpClient>();
-            var clientID = GetClientId();
-            var sercret = GetSecret();
-
-            return new ClientCredentialsTokenProvider(httpClient, "https://auth.juliapos.eu", clientId, clientSecret, "all scopes");
-        });
-        // Dummy!
-        //services.AddSingleton<IAuthorizationContext, DummyAuthorizationContext>();
-    */
 }
 
 void ConfigureSwagger(IServiceCollection services)

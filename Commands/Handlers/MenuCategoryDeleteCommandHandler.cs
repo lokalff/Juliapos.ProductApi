@@ -25,6 +25,7 @@ namespace Juliapos.Portal.ProductApi.Commands.Handlers
         public async Task<MenuCategory> HandleAsync(MenuCategoryDeleteCommand command)
         {
             var existingCategory = await m_dataStore.MenuCategoryDataQuery
+                .WhereOrganizationId(command.OrganizationId)
                 .WhereId(command.Id)
                 .SingleOrDefaultAsync();
 

@@ -57,7 +57,9 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
 
         public IProductDataQuery WhereMenuCategoryId(Guid id)
         {
-            return new ProductDataQuery(DataContext, Queryable.Where(c => c.MenuCategoryId == id));
+            return new ProductDataQuery(DataContext, Queryable
+                .Include(p => p.MenuCategory)
+                .Where(c => c.MenuCategoryId == id));
         }
 
         public IProductDataQuery WhereProductCategoryId(Guid id)
@@ -77,7 +79,16 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
 
         public IProductDataQuery HasProperty(Guid id)
         {
-            return new ProductDataQuery(DataContext, Queryable.Where(c => c.PropertieValues.Any(p => p.PropertyId == id)));
+            return new ProductDataQuery(DataContext, Queryable
+                .Include(p => p.PropertieValues)
+                .Where(c => c.PropertieValues.Any(p => p.PropertyId == id)));
+        }
+
+        public IProductDataQuery OnSelectionPage(Guid id)
+        {
+            return new ProductDataQuery(DataContext, Queryable
+                .Include(p => p.SelectionPageProducts)
+                .Where(c => c.SelectionPageProducts.Any(p => p.SelectionPageId == id)));
         }
     }
 }

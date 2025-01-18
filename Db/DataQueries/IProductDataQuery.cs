@@ -17,5 +17,6 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries
         IProductDataQuery WhereOrganizationExternalId(Guid id);
 
         IProductDataQuery HasProperty(Guid id);
+        IProductDataQuery OnSelectionPage(Guid id);
     }
 }

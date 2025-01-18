@@ -72,7 +72,6 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         /// </summary>
         /// <param name="product"></param>
         /// <param name="id"></param>
-        /// <param name="userName"></param>
         /// <returns></returns>
         public static Product MapProductAdd(this ProductAddDto product, Guid id)
         {
