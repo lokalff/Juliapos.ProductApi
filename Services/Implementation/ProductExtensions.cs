@@ -23,25 +23,25 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
             }
         }
 
-        public static void SyncProperties(this Product existingProduct, IEnumerable<PropertyValue> properties)
+        public static void SyncCustomAttributes(this Product existingProduct, IEnumerable<CustomAttributeValue> attributes)
         {
-            // Add or update properties
-            foreach (var property in properties.ToList())
+            // Add or update attributes
+            foreach (var property in attributes.ToList())
             {
-                var existingProperty = existingProduct.PropertieValues
-                    .FirstOrDefault(p => p.PropertyId == property.PropertyId);
+                var existingAttribute = existingProduct.CustomAttributeValues
+                    .FirstOrDefault(p => p.CustomAttributeId == property.CustomAttributeId);
 
-                if (existingProperty == null)
-                    existingProduct.PropertieValues.Add(property);
+                if (existingAttribute == null)
+                    existingProduct.CustomAttributeValues.Add(property);
                 else
-                    existingProperty.Value = property.Value;
+                    existingAttribute.Value = property.Value;
             }
 
-            // Remove deleted properties
-            foreach (var property in existingProduct.PropertieValues.ToList())
+            // Remove deleted attributes
+            foreach (var attribute in existingProduct.CustomAttributeValues.ToList())
             {
-                if (properties.All(p => p.PropertyId != property.PropertyId))
-                    existingProduct.PropertieValues.Remove(property);
+                if (attributes.All(p => p.CustomAttributeId != attribute.CustomAttributeId))
+                    existingProduct.CustomAttributeValues.Remove(attribute);
             }
         }
 

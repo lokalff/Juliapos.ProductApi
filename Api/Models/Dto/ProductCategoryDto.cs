@@ -1,4 +1,5 @@
-﻿using Juliapos.Portal.ProductApi.Db.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Juliapos.Portal.ProductApi.Db.Models;
 
 namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
@@ -10,6 +11,7 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         /// <summary>
         /// Id
         /// </summary>
+        [Required]
         public Guid Id { get; set; }
 
         /// <summary>
@@ -20,6 +22,7 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         /// <summary>
         /// Weight (order)
         /// </summary>
+        [Required]
         public int Weight { get; set; }
 
         /// <summary>
@@ -30,6 +33,7 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         /// <summary>
         /// Measure method
         /// </summary>
+        [Required]
         public MeasureMethod MeasureMethod { get; set; }           // None, Count, Weigh
 
         /// <summary>
@@ -46,6 +50,7 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         /// <summary>
         /// Enabled
         /// </summary>
+        [Required]
         public bool Enabled { get; set; }
     }
 }

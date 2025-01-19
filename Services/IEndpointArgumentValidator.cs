@@ -46,16 +46,16 @@ namespace Juliapos.Portal.ProductApi.Services
         Task<MenuCategory> ValidateMenuCategoryAsync(Guid categoryId);
 
         /// <summary>
-        /// Return the property if valid within the current context 
+        /// Return the custom attribute if valid within the current context 
         /// </summary>
-        /// <param name="propertyId"></param>
+        /// <param name="attributeId"></param>
         /// <returns></returns>
-        Task<Property> ValidatePropertyAsync(Guid propertyId);
+        Task<CustomAttribute> ValidateCustomAttributeAsync(Guid attributeId);
 
         /// <summary>
         /// Return the product selectionpage if valid within the current context 
         /// </summary>
-        /// <param name="propertyId"></param>
+        /// <param name="pageId"></param>
         /// <returns></returns>
         Task<SelectionPage> ValidateSelectionPageAsync(Guid pageId);
 

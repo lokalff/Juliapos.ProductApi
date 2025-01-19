@@ -23,6 +23,882 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial interface ICustomAttributesClient
+    {
+        /// <summary>
+        /// Get custom attributes
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attributes.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>>> GetCustomAttributesAsync();
+
+        /// <summary>
+        /// Get custom attributes
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attributes.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>> GetCustomAttributes();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get custom attributes
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attributes.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>>> GetCustomAttributesAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Create a new custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the new custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> CreateCustomAttributeAsync(CustomAttributeAddDto body);
+
+        /// <summary>
+        /// Create a new custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the new custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<CustomAttributeDto> CreateCustomAttribute(CustomAttributeAddDto body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the new custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> CreateCustomAttributeAsync(CustomAttributeAddDto body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get custom attribute with id as parameter
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> GetCustomAttributeByIdAsync(System.Guid id);
+
+        /// <summary>
+        /// Get custom attribute with id as parameter
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<CustomAttributeDto> GetCustomAttributeById(System.Guid id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get custom attribute with id as parameter
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> GetCustomAttributeByIdAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Update a custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> UpdateCustomAttributeAsync(System.Guid id, CustomAttributeUpdateDto body);
+
+        /// <summary>
+        /// Update a custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<CustomAttributeDto> UpdateCustomAttribute(System.Guid id, CustomAttributeUpdateDto body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> UpdateCustomAttributeAsync(System.Guid id, CustomAttributeUpdateDto body, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Delete a custom attribute
+        /// </summary>
+        /// <returns>Returned with the deleted custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> DeleteCustomAttributeAsync(System.Guid id);
+
+        /// <summary>
+        /// Delete a custom attribute
+        /// </summary>
+        /// <returns>Returned with the deleted custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        SwaggerResponse<CustomAttributeDto> DeleteCustomAttribute(System.Guid id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete a custom attribute
+        /// </summary>
+        /// <returns>Returned with the deleted custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> DeleteCustomAttributeAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class CustomAttributesClient : Juliapos.AspNetCore.Authorization.ApiToken.ClientApiBase, ICustomAttributesClient
+    {
+        private System.Net.Http.HttpClient _httpClient;
+        private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
+        private System.Text.Json.JsonSerializerOptions _instanceSettings;
+
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public CustomAttributesClient(Juliapos.AspNetCore.Authorization.ApiToken.ITokenProvider configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        {
+            _httpClient = httpClient;
+            Initialize();
+        }
+
+        private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
+        {
+            var settings = new System.Text.Json.JsonSerializerOptions();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <summary>
+        /// Get custom attributes
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attributes.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>>> GetCustomAttributesAsync()
+        {
+            return GetCustomAttributesAsync(System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Get custom attributes
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attributes.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>> GetCustomAttributes()
+        {
+            return System.Threading.Tasks.Task.Run(async () => await GetCustomAttributesAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get custom attributes
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attributes.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>>> GetCustomAttributesAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/customattributes"
+                    urlBuilder_.Append("api/v1/customattributes");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<CustomAttributeDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<CustomAttributeDto>>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when request can not be completed.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Create a new custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the new custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> CreateCustomAttributeAsync(CustomAttributeAddDto body)
+        {
+            return CreateCustomAttributeAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Create a new custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the new custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<CustomAttributeDto> CreateCustomAttribute(CustomAttributeAddDto body)
+        {
+            return System.Threading.Tasks.Task.Run(async () => await CreateCustomAttributeAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Create a new custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the new custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> CreateCustomAttributeAsync(CustomAttributeAddDto body, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/customattributes"
+                    urlBuilder_.Append("api/v1/customattributes");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<CustomAttributeDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<CustomAttributeDto>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when there is a conflict with another custom attribute.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Get custom attribute with id as parameter
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> GetCustomAttributeByIdAsync(System.Guid id)
+        {
+            return GetCustomAttributeByIdAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Get custom attribute with id as parameter
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<CustomAttributeDto> GetCustomAttributeById(System.Guid id)
+        {
+            return System.Threading.Tasks.Task.Run(async () => await GetCustomAttributeByIdAsync(id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get custom attribute with id as parameter
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> GetCustomAttributeByIdAsync(System.Guid id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/customattributes/{id}"
+                    urlBuilder_.Append("api/v1/customattributes/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<CustomAttributeDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<CustomAttributeDto>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the custom attribute was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when request can not be completed.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Update a custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> UpdateCustomAttributeAsync(System.Guid id, CustomAttributeUpdateDto body)
+        {
+            return UpdateCustomAttributeAsync(id, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Update a custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<CustomAttributeDto> UpdateCustomAttribute(System.Guid id, CustomAttributeUpdateDto body)
+        {
+            return System.Threading.Tasks.Task.Run(async () => await UpdateCustomAttributeAsync(id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Update a custom attribute
+        /// </summary>
+        /// <returns>Returned with the full information about the custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> UpdateCustomAttributeAsync(System.Guid id, CustomAttributeUpdateDto body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/customattributes/{id}"
+                    urlBuilder_.Append("api/v1/customattributes/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<CustomAttributeDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<CustomAttributeDto>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the custom attribute was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when there is a conflict with another custom attribute.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Delete a custom attribute
+        /// </summary>
+        /// <returns>Returned with the deleted custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> DeleteCustomAttributeAsync(System.Guid id)
+        {
+            return DeleteCustomAttributeAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Delete a custom attribute
+        /// </summary>
+        /// <returns>Returned with the deleted custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual SwaggerResponse<CustomAttributeDto> DeleteCustomAttribute(System.Guid id)
+        {
+            return System.Threading.Tasks.Task.Run(async () => await DeleteCustomAttributeAsync(id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Delete a custom attribute
+        /// </summary>
+        /// <returns>Returned with the deleted custom attribute.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomAttributeDto>> DeleteCustomAttributeAsync(System.Guid id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/v1/customattributes/{id}"
+                    urlBuilder_.Append("api/v1/customattributes/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<CustomAttributeDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return new SwaggerResponse<CustomAttributeDto>(status_, headers_, objectResponse_.Object);
+                        }
+                        else
+                        if (status_ == 409)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<ErrorResultDto>("Returned when the custom attribute is in use.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        if (status_ == 401)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == 403)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T), string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody, responseText);
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
+                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                    }
+                }
+                catch (System.Text.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool) 
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[]) value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial interface IDustCategoriesClient
     {
         /// <summary>
@@ -3523,882 +4399,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial interface IPropertiesClient
-    {
-        /// <summary>
-        /// Get properties
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>>> GetPropertiesAsync();
-
-        /// <summary>
-        /// Get properties
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>> GetProperties();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get properties
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>>> GetPropertiesAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Create a new property
-        /// </summary>
-        /// <returns>Returned with the full information about the new property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> CreatePropertyAsync(PropertyAddDto body);
-
-        /// <summary>
-        /// Create a new property
-        /// </summary>
-        /// <returns>Returned with the full information about the new property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        SwaggerResponse<PropertyDto> CreateProperty(PropertyAddDto body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create a new property
-        /// </summary>
-        /// <returns>Returned with the full information about the new property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> CreatePropertyAsync(PropertyAddDto body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Get property with id as parameter
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> GetPropertyByIdAsync(System.Guid id);
-
-        /// <summary>
-        /// Get property with id as parameter
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        SwaggerResponse<PropertyDto> GetPropertyById(System.Guid id);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get property with id as parameter
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> GetPropertyByIdAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Update a property
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> UpdatePropertyAsync(System.Guid id, PropertyUpdateDto body);
-
-        /// <summary>
-        /// Update a property
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        SwaggerResponse<PropertyDto> UpdateProperty(System.Guid id, PropertyUpdateDto body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update a property
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> UpdatePropertyAsync(System.Guid id, PropertyUpdateDto body, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Delete a property
-        /// </summary>
-        /// <returns>Returned with the deleted property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> DeletePropertyAsync(System.Guid id);
-
-        /// <summary>
-        /// Delete a property
-        /// </summary>
-        /// <returns>Returned with the deleted property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        SwaggerResponse<PropertyDto> DeleteProperty(System.Guid id);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete a property
-        /// </summary>
-        /// <returns>Returned with the deleted property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> DeletePropertyAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PropertiesClient : Juliapos.AspNetCore.Authorization.ApiToken.ClientApiBase, IPropertiesClient
-    {
-        private System.Net.Http.HttpClient _httpClient;
-        private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
-        private System.Text.Json.JsonSerializerOptions _instanceSettings;
-
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public PropertiesClient(Juliapos.AspNetCore.Authorization.ApiToken.ITokenProvider configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        {
-            _httpClient = httpClient;
-            Initialize();
-        }
-
-        private static System.Text.Json.JsonSerializerOptions CreateSerializerSettings()
-        {
-            var settings = new System.Text.Json.JsonSerializerOptions();
-            UpdateJsonSerializerSettings(settings);
-            return settings;
-        }
-
-        protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
-
-        static partial void UpdateJsonSerializerSettings(System.Text.Json.JsonSerializerOptions settings);
-
-        partial void Initialize();
-
-        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
-        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
-        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
-
-        /// <summary>
-        /// Get properties
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>>> GetPropertiesAsync()
-        {
-            return GetPropertiesAsync(System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Get properties
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>> GetProperties()
-        {
-            return System.Threading.Tasks.Task.Run(async () => await GetPropertiesAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get properties
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>>> GetPropertiesAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-                    var urlBuilder_ = new System.Text.StringBuilder();
-                
-                    // Operation Path: "api/v1/properties"
-                    urlBuilder_.Append("api/v1/properties");
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-                        foreach (var item_ in response_.Headers)
-                            headers_[item_.Key] = item_.Value;
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<PropertyDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<System.Collections.Generic.ICollection<PropertyDto>>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 400)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when request can not be completed.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 401)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Create a new property
-        /// </summary>
-        /// <returns>Returned with the full information about the new property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> CreatePropertyAsync(PropertyAddDto body)
-        {
-            return CreatePropertyAsync(body, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Create a new property
-        /// </summary>
-        /// <returns>Returned with the full information about the new property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual SwaggerResponse<PropertyDto> CreateProperty(PropertyAddDto body)
-        {
-            return System.Threading.Tasks.Task.Run(async () => await CreatePropertyAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create a new property
-        /// </summary>
-        /// <returns>Returned with the full information about the new property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> CreatePropertyAsync(PropertyAddDto body, System.Threading.CancellationToken cancellationToken)
-        {
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.ByteArrayContent(json_);
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-                    var urlBuilder_ = new System.Text.StringBuilder();
-                
-                    // Operation Path: "api/v1/properties"
-                    urlBuilder_.Append("api/v1/properties");
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-                        foreach (var item_ in response_.Headers)
-                            headers_[item_.Key] = item_.Value;
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<PropertyDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<PropertyDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 409)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when there is a conflict with another property.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 401)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Get property with id as parameter
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> GetPropertyByIdAsync(System.Guid id)
-        {
-            return GetPropertyByIdAsync(id, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Get property with id as parameter
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual SwaggerResponse<PropertyDto> GetPropertyById(System.Guid id)
-        {
-            return System.Threading.Tasks.Task.Run(async () => await GetPropertyByIdAsync(id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get property with id as parameter
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> GetPropertyByIdAsync(System.Guid id, System.Threading.CancellationToken cancellationToken)
-        {
-            if (id == null)
-                throw new System.ArgumentNullException("id");
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-                    var urlBuilder_ = new System.Text.StringBuilder();
-                
-                    // Operation Path: "api/v1/properties/{id}"
-                    urlBuilder_.Append("api/v1/properties/");
-                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-                        foreach (var item_ in response_.Headers)
-                            headers_[item_.Key] = item_.Value;
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<PropertyDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<PropertyDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 404)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when the property was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 400)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when request can not be completed.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 401)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Update a property
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> UpdatePropertyAsync(System.Guid id, PropertyUpdateDto body)
-        {
-            return UpdatePropertyAsync(id, body, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Update a property
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual SwaggerResponse<PropertyDto> UpdateProperty(System.Guid id, PropertyUpdateDto body)
-        {
-            return System.Threading.Tasks.Task.Run(async () => await UpdatePropertyAsync(id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update a property
-        /// </summary>
-        /// <returns>Returned with the full information about the property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> UpdatePropertyAsync(System.Guid id, PropertyUpdateDto body, System.Threading.CancellationToken cancellationToken)
-        {
-            if (id == null)
-                throw new System.ArgumentNullException("id");
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, JsonSerializerSettings);
-                    var content_ = new System.Net.Http.ByteArrayContent(json_);
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("PUT");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-                    var urlBuilder_ = new System.Text.StringBuilder();
-                
-                    // Operation Path: "api/v1/properties/{id}"
-                    urlBuilder_.Append("api/v1/properties/");
-                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-                        foreach (var item_ in response_.Headers)
-                            headers_[item_.Key] = item_.Value;
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<PropertyDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<PropertyDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 404)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when the property was not found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 409)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when there is a conflict with another property.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 401)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Delete a property
-        /// </summary>
-        /// <returns>Returned with the deleted property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> DeletePropertyAsync(System.Guid id)
-        {
-            return DeletePropertyAsync(id, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Delete a property
-        /// </summary>
-        /// <returns>Returned with the deleted property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual SwaggerResponse<PropertyDto> DeleteProperty(System.Guid id)
-        {
-            return System.Threading.Tasks.Task.Run(async () => await DeletePropertyAsync(id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete a property
-        /// </summary>
-        /// <returns>Returned with the deleted property.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PropertyDto>> DeletePropertyAsync(System.Guid id, System.Threading.CancellationToken cancellationToken)
-        {
-            if (id == null)
-                throw new System.ArgumentNullException("id");
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-                    var urlBuilder_ = new System.Text.StringBuilder();
-                
-                    // Operation Path: "api/v1/properties/{id}"
-                    urlBuilder_.Append("api/v1/properties/");
-                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-                        foreach (var item_ in response_.Headers)
-                            headers_[item_.Key] = item_.Value;
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<PropertyDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return new SwaggerResponse<PropertyDto>(status_, headers_, objectResponse_.Object);
-                        }
-                        else
-                        if (status_ == 409)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<ErrorResultDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            throw new ApiException<ErrorResultDto>("Returned when the property is in use.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-                        }
-                        else
-                        if (status_ == 401)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Unauthorized", status_, responseText_, headers_, null);
-                        }
-                        else
-                        if (status_ == 403)
-                        {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Forbidden", status_, responseText_, headers_, null);
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        protected struct ObjectResponseResult<T>
-        {
-            public ObjectResponseResult(T responseObject, string responseText)
-            {
-                this.Object = responseObject;
-                this.Text = responseText;
-            }
-
-            public T Object { get; }
-
-            public string Text { get; }
-        }
-
-        public bool ReadResponseAsString { get; set; }
-
-        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
-        {
-            if (response == null || response.Content == null)
-            {
-                return new ObjectResponseResult<T>(default(T), string.Empty);
-            }
-
-            if (ReadResponseAsString)
-            {
-                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
-                    return new ObjectResponseResult<T>(typedBody, responseText);
-                }
-                catch (System.Text.Json.JsonException exception)
-                {
-                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
-                }
-            }
-            else
-            {
-                try
-                {
-                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    {
-                        var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
-                        return new ObjectResponseResult<T>(typedBody, string.Empty);
-                    }
-                }
-                catch (System.Text.Json.JsonException exception)
-                {
-                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
-                }
-            }
-        }
-
-        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
-        {
-            if (value == null)
-            {
-                return "";
-            }
-
-            if (value is System.Enum)
-            {
-                var name = System.Enum.GetName(value.GetType(), value);
-                if (name != null)
-                {
-                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
-                    if (field != null)
-                    {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
-                            as System.Runtime.Serialization.EnumMemberAttribute;
-                        if (attribute != null)
-                        {
-                            return attribute.Value != null ? attribute.Value : name;
-                        }
-                    }
-
-                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
-                    return converted == null ? string.Empty : converted;
-                }
-            }
-            else if (value is bool) 
-            {
-                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
-            }
-            else if (value is byte[])
-            {
-                return System.Convert.ToBase64String((byte[]) value);
-            }
-            else if (value is string[])
-            {
-                return string.Join(",", (string[])value);
-            }
-            else if (value.GetType().IsArray)
-            {
-                var valueArray = (System.Array)value;
-                var valueTextArray = new string[valueArray.Length];
-                for (var i = 0; i < valueArray.Length; i++)
-                {
-                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
-                }
-                return string.Join(",", valueTextArray);
-            }
-
-            var result = System.Convert.ToString(value, cultureInfo);
-            return result == null ? "" : result;
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial interface ISelectionPagesClient
     {
         /// <summary>
@@ -5275,6 +5275,115 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     }
 
     /// <summary>
+    /// DTO for adding a custom attribute
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class CustomAttributeAddDto
+    {
+        /// <summary>
+        /// Name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Id as a name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("idName")]
+        public string IdName { get; set; }
+
+        /// <summary>
+        /// Typename
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
+        public string TypeName { get; set; }
+
+        /// <summary>
+        /// Enabled
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+    }
+
+    /// <summary>
+    /// DTO for Custom attributes
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class CustomAttributeDto
+    {
+        /// <summary>
+        /// Id
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid Id { get; set; }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Id as a name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("idName")]
+        public string IdName { get; set; }
+
+        /// <summary>
+        /// Typename
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
+        public string TypeName { get; set; }
+
+        /// <summary>
+        /// Enabled
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool Enabled { get; set; }
+
+    }
+
+    /// <summary>
+    /// DTO for adding a custom attribute
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class CustomAttributeUpdateDto
+    {
+        /// <summary>
+        /// Name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Typename
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
+        public string TypeName { get; set; }
+
+        /// <summary>
+        /// Enabled
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+    }
+
+    /// <summary>
     /// DTO for adding a dust category
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -5307,7 +5416,8 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public System.Guid? Id { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid Id { get; set; }
 
         /// <summary>
         /// Name
@@ -5321,7 +5431,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("weight")]
-        public int? Weight { get; set; }
+        public int Weight { get; set; }
 
     }
 
@@ -5617,7 +5727,8 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public System.Guid? Id { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid Id { get; set; }
 
         /// <summary>
         /// Name
@@ -5631,7 +5742,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("weight")]
-        public int? Weight { get; set; }
+        public int Weight { get; set; }
 
         /// <summary>
         /// Id as a name
@@ -5645,7 +5756,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
+        public bool Enabled { get; set; }
 
     }
 
@@ -5684,21 +5795,44 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductAddDto
     {
+        /// <summary>
+        /// Product category
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("productCategoryId")]
         public System.Guid? ProductCategoryId { get; set; }
 
+        /// <summary>
+        /// Dust category
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("dustCategoryId")]
         public System.Guid? DustCategoryId { get; set; }
+
+        /// <summary>
+        /// Menu category
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("menuCategoryId")]
         public System.Guid? MenuCategoryId { get; set; }
 
+        /// <summary>
+        /// Product code
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("code")]
         public string Code { get; set; }
 
+        /// <summary>
+        /// Product name
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Alternative name on menu
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("menuName")]
         public string MenuName { get; set; }
@@ -5707,14 +5841,30 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public VatLevel? VatLevel { get; set; }
 
+        /// <summary>
+        /// Long description
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Should be included in inventory
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("inInventory")]
         public bool? InInventory { get; set; }
 
+        /// <summary>
+        /// Amount of softdrugs for use in stock measurement
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("percentage")]
         public float? Percentage { get; set; }
+
+        /// <summary>
+        /// Stock goes up on use (coffee machine counter)
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("ascendingStock")]
         public bool? AscendingStock { get; set; }
@@ -5723,11 +5873,23 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public RecordState? State { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("properties")]
-        public System.Collections.Generic.ICollection<ProductPropertyDto> Properties { get; set; }
+        /// <summary>
+        /// Custom attributes
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("customAttributes")]
+        public System.Collections.Generic.ICollection<ProductCustomAttributeDto> CustomAttributes { get; set; }
+
+        /// <summary>
+        /// Variations
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("variations")]
         public System.Collections.Generic.ICollection<ProductVariationAddDto> Variations { get; set; }
+
+        /// <summary>
+        /// Selection pages
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("selectionPages")]
         public System.Collections.Generic.ICollection<ProductSelectionPageReferenceDto> SelectionPages { get; set; }
@@ -5799,7 +5961,8 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public System.Guid? Id { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid Id { get; set; }
 
         /// <summary>
         /// Name
@@ -5813,7 +5976,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("weight")]
-        public int? Weight { get; set; }
+        public int Weight { get; set; }
 
         /// <summary>
         /// Id as a name
@@ -5823,8 +5986,9 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         public string IdName { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("measureMethod")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
-        public MeasureMethod? MeasureMethod { get; set; }
+        public MeasureMethod MeasureMethod { get; set; }
 
         /// <summary>
         /// Default foreground color for new products
@@ -5845,7 +6009,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
+        public bool Enabled { get; set; }
 
     }
 
@@ -5896,90 +6060,167 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
+    /// <summary>
+    /// Custom attribute instance in a product
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ProductDto
+    public partial class ProductCustomAttributeDto
     {
+        /// <summary>
+        /// Custom attribute id
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
         public System.Guid? Id { get; set; }
 
+        /// <summary>
+        /// Custom attribute value
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("value")]
+        public string Value { get; set; }
+
+    }
+
+    /// <summary>
+    /// DTO for products
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProductDto
+    {
+        /// <summary>
+        /// Id
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid Id { get; set; }
+
+        /// <summary>
+        /// Product category
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("productCategoryId")]
-        public System.Guid? ProductCategoryId { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid ProductCategoryId { get; set; }
+
+        /// <summary>
+        /// Dust category
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("dustCategoryId")]
-        public System.Guid? DustCategoryId { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid DustCategoryId { get; set; }
+
+        /// <summary>
+        /// Menu category
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("menuCategoryId")]
-        public System.Guid? MenuCategoryId { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid MenuCategoryId { get; set; }
+
+        /// <summary>
+        /// Product code
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("code")]
         public string Code { get; set; }
 
+        /// <summary>
+        /// Product name
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Alternative name on menu
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("menuName")]
         public string MenuName { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("vatLevel")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
-        public VatLevel? VatLevel { get; set; }
+        public VatLevel VatLevel { get; set; }
+
+        /// <summary>
+        /// Long description
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// Should be included in inventory
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("inInventory")]
-        public bool? InInventory { get; set; }
+        public bool InInventory { get; set; }
+
+        /// <summary>
+        /// Amount of softdrugs for use in stock measurement
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("percentage")]
-        public float? Percentage { get; set; }
+        public float Percentage { get; set; }
+
+        /// <summary>
+        /// Stock goes up on use (coffee machine counter)
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("ascendingStock")]
-        public bool? AscendingStock { get; set; }
+        public bool AscendingStock { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("state")]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
-        public RecordState? State { get; set; }
+        public RecordState State { get; set; }
+
+        /// <summary>
+        /// Datetime created
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("created")]
-        public System.DateTimeOffset? Created { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.DateTimeOffset Created { get; set; }
+
+        /// <summary>
+        /// User that created the product
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("userCreate")]
         public string UserCreate { get; set; }
 
+        /// <summary>
+        /// Datetime last update
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("updated")]
         public System.DateTimeOffset? Updated { get; set; }
+
+        /// <summary>
+        /// User last update
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("userUpdate")]
         public string UserUpdate { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("properties")]
-        public System.Collections.Generic.ICollection<ProductPropertyDto> Properties { get; set; }
+        /// <summary>
+        /// Custom attributes
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("customAttributes")]
+        public System.Collections.Generic.ICollection<ProductCustomAttributeDto> CustomAttributes { get; set; }
+
+        /// <summary>
+        /// Variations
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("variations")]
         public System.Collections.Generic.ICollection<ProductVariationAddDto> Variations { get; set; }
-
-    }
-
-    /// <summary>
-    /// Property instance in a product
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ProductPropertyDto
-    {
-        /// <summary>
-        /// Property id
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public System.Guid? Id { get; set; }
-
-        /// <summary>
-        /// Property value
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("value")]
-        public string Value { get; set; }
 
     }
 
@@ -6031,21 +6272,44 @@ namespace Juliapos.Portal.ProductApi.Client.v1
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductUpdateDto
     {
+        /// <summary>
+        /// Product category
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("productCategoryId")]
         public System.Guid? ProductCategoryId { get; set; }
 
+        /// <summary>
+        /// Dust category
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("dustCategoryId")]
         public System.Guid? DustCategoryId { get; set; }
+
+        /// <summary>
+        /// Menu category
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("menuCategoryId")]
         public System.Guid? MenuCategoryId { get; set; }
 
+        /// <summary>
+        /// Product code
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("code")]
         public string Code { get; set; }
 
+        /// <summary>
+        /// Product name
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Alternative name on menu
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("menuName")]
         public string MenuName { get; set; }
@@ -6054,14 +6318,30 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public VatLevel? VatLevel { get; set; }
 
+        /// <summary>
+        /// Long description
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Should be included in inventory
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("inInventory")]
         public bool? InInventory { get; set; }
 
+        /// <summary>
+        /// Amount of softdrugs for use in stock measurement
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("percentage")]
         public float? Percentage { get; set; }
+
+        /// <summary>
+        /// Stock goes up on use (coffee machine counter)
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("ascendingStock")]
         public bool? AscendingStock { get; set; }
@@ -6070,11 +6350,23 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
         public RecordState? State { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("properties")]
-        public System.Collections.Generic.ICollection<ProductPropertyDto> Properties { get; set; }
+        /// <summary>
+        /// Custom attributes
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("customAttributes")]
+        public System.Collections.Generic.ICollection<ProductCustomAttributeDto> CustomAttributes { get; set; }
+
+        /// <summary>
+        /// Variations
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("variations")]
         public System.Collections.Generic.ICollection<ProductVariationUpdateDto> Variations { get; set; }
+
+        /// <summary>
+        /// Selection pages
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("selectionPages")]
         public System.Collections.Generic.ICollection<ProductSelectionPageReferenceDto> SelectionPages { get; set; }
@@ -6164,114 +6456,6 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
-    /// <summary>
-    /// DTO for adding a property
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PropertyAddDto
-    {
-        /// <summary>
-        /// Name
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Id as a name
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("idName")]
-        public string IdName { get; set; }
-
-        /// <summary>
-        /// Typename
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
-        public string TypeName { get; set; }
-
-        /// <summary>
-        /// Enabled
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
-
-    }
-
-    /// <summary>
-    /// DTO for Properties
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PropertyDto
-    {
-        /// <summary>
-        /// Id
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public System.Guid? Id { get; set; }
-
-        /// <summary>
-        /// Name
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Id as a name
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("idName")]
-        public string IdName { get; set; }
-
-        /// <summary>
-        /// Typename
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
-        public string TypeName { get; set; }
-
-        /// <summary>
-        /// Enabled
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
-
-    }
-
-    /// <summary>
-    /// DTO for adding a property
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PropertyUpdateDto
-    {
-        /// <summary>
-        /// Name
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Typename
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("typeName")]
-        public string TypeName { get; set; }
-
-        /// <summary>
-        /// Enabled
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
-
-    }
-
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public enum RecordState
     {
@@ -6334,7 +6518,8 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public System.Guid? Id { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public System.Guid Id { get; set; }
 
         /// <summary>
         /// Name
@@ -6348,7 +6533,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("weight")]
-        public int? Weight { get; set; }
+        public int Weight { get; set; }
 
         /// <summary>
         /// Id as a name
@@ -6362,7 +6547,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
+        public bool Enabled { get; set; }
 
     }
 

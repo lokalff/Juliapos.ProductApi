@@ -134,22 +134,22 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
         }
 
         /// <inheritdoc />
-        public async Task<Property> ValidatePropertyAsync(Guid propertyId)
+        public async Task<CustomAttribute> ValidateCustomAttributeAsync(Guid attributeId)
         {
-            Guard.ArgumentNotDefaultValue(propertyId, nameof(propertyId));
+            Guard.ArgumentNotDefaultValue(attributeId, nameof(attributeId));
 
             if (m_authorizationContext?.OrganizationId == null)
                 throw new HttpForbidException();
 
-            var property = await m_dataStore.PropertyDataQuery
-                .WhereId(propertyId)
+            var attribute = await m_dataStore.CustomAttributeDataQuery
+                .WhereId(attributeId)
                 .WhereOrganizationExternalId(m_authorizationContext.OrganizationId.Value)
                 .SingleOrDefaultAsync();
 
-            if (property == null)
-                throw new HttpNotFoundException(ApiErrorCode.PropertyNotFound, propertyId);
+            if (attribute == null)
+                throw new HttpNotFoundException(ApiErrorCode.CustomAttributeNotFound, attributeId);
 
-            return property;
+            return attribute;
         }
 
         /// <inheritdoc />

@@ -11,7 +11,7 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries
         IProductDataQuery ProductDataQuery { get; }
         IOrganizationDataQuery OrganizationDataQuery { get; }
         ILocationDataQuery LocationDataQuery { get; }
-        IPropertyDataQuery PropertyDataQuery { get; }
+        ICustomAttributeDataQuery CustomAttributeDataQuery { get; }
 
         //IQueryable<PackagesAtResult> GetPackagesAt(DateTime at, Guid? OrganizationId, Guid? locationId);
     }

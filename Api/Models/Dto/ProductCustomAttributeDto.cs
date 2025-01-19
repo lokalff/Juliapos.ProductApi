@@ -1,17 +1,17 @@
 ﻿namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
     /// <summary>
-    /// Property instance in a product
+    /// Custom attribute instance in a product
     /// </summary>
-    public sealed class ProductPropertyDto
+    public sealed class ProductCustomAttributeDto
     {
         /// <summary>
-        /// Property id
+        /// Custom attribute id
         /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Property value
+        /// Custom attribute value
         /// </summary>
         public string Value { get; set; }
     }

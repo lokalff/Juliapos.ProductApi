@@ -6,7 +6,7 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries
     public interface IProductDataQuery : IDataQuery<Product>
     {
         IProductDataQuery WithLocations();
-        IProductDataQuery WithProperties();
+        IProductDataQuery WithCustomAttributes();
         IProductDataQuery WithVariations();
         IProductDataQuery WhereId(Guid id);
         IProductDataQuery WhereProductCategoryId(Guid id);
@@ -16,7 +16,7 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries
         IProductDataQuery WhereOrganizationId(Guid id);
         IProductDataQuery WhereOrganizationExternalId(Guid id);
 
-        IProductDataQuery HasProperty(Guid id);
+        IProductDataQuery HasCustomAttribute(Guid id);
         IProductDataQuery OnSelectionPage(Guid id);
     }
 }

@@ -5,25 +5,25 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands.Handlers
 {
     /// <summary>
-    /// Handler for the <see cref="PropertyCreateCommand"/>
+    /// Handler for the <see cref="CustomAttributeCreateCommand"/>
     /// </summary>
-    public sealed class PropertyCreateCommandHandler : IHandleCommand<PropertyCreateCommand, Property>
+    public sealed class CustomAttributeCreateCommandHandler : IHandleCommand<CustomAttributeCreateCommand, CustomAttribute>
     {
         private readonly IApiDbDataStore m_dataStore;
 
         /// <summary>
-        /// Create an instance of type <see cref="PropertyCreateCommandHandler"/>
+        /// Create an instance of type <see cref="CustomAttributeCreateCommandHandler"/>
         /// </summary>
         /// <param name="dataStore"></param>
-        public PropertyCreateCommandHandler(IApiDbDataStore dataStore)
+        public CustomAttributeCreateCommandHandler(IApiDbDataStore dataStore)
         {
             m_dataStore = dataStore;
         }
 
         /// <inheritdoc />
-        public async Task<Property> HandleAsync(PropertyCreateCommand command)
+        public async Task<CustomAttribute> HandleAsync(CustomAttributeCreateCommand command)
         {
-            var property = new Property
+            var attribute = new CustomAttribute
             {
                 OrganizationId = command.OrganizationId,
                 Name = command.Name,
@@ -32,10 +32,10 @@ namespace Juliapos.Portal.ProductApi.Commands.Handlers
                 Enabled = command.Enabled,
             };
             
-            m_dataStore.Add(property);
+            m_dataStore.Add(attribute);
             await m_dataStore.SaveChangesAsync();
             
-            return property;
+            return attribute;
         }
     }
 }

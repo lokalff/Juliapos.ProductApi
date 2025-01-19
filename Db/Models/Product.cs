@@ -29,7 +29,7 @@
         public ProductCategory ProductCategory { get; set; }
         public MenuCategory MenuCategory { get; set; }
         public DustCategory DustCategory { get; set; }
-        public ICollection<PropertyValue> PropertieValues { get; set; } = new List<PropertyValue>();
+        public ICollection<CustomAttributeValue> CustomAttributeValues { get; set; } = new List<CustomAttributeValue>();
         public ICollection<SelectionPageProduct> SelectionPageProducts { get; set; } = new List<SelectionPageProduct>();
         public ICollection<ProductVariation> ProductVariations { get; set; } = new List<ProductVariation>();
 

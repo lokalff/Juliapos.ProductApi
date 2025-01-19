@@ -41,9 +41,9 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .HasColumnName("weight")
                 .IsRequired();
 
-            builder.HasMany(c => c.Properties)
+            builder.HasMany(c => c.CustomAttributes)
                 .WithMany(p => p.MenuCategories)
-                .UsingEntity<MenuCategoryProperty>();
+                .UsingEntity<MenuCategoryCustomAttribute>();
 
             builder.HasOne(u => u.Organization)
                 .WithMany(t => t.MenuCategories)

@@ -5,16 +5,16 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Api.Mappers
 {
     /// <summary>
-    /// Helpers to fill the proerty DTO object from the property
+    /// Helpers to fill the custom attribute DTO object from the custom attribute
     /// </summary>
-    public sealed class PropertyDtoMapper : BaseDtoMapper<Property, PropertyDto>
+    public sealed class CustomAttributeDtoMapper : BaseDtoMapper<CustomAttribute, CustomAttributeDto>
     {
         /// <inheritdoc />
-        public override PropertyDto Map(Property source)
+        public override CustomAttributeDto Map(CustomAttribute source)
         {
-            var result = new PropertyDto
+            var result = new CustomAttributeDto
             {
-                Id = source.PropertyId,
+                Id = source.CustomAttributeId,
                 IdName = source.IdName,
                 Name = source.Name,
                 TypeName = source.TypeName,

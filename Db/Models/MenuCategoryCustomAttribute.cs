@@ -1,8 +1,8 @@
 ﻿namespace Juliapos.Portal.ProductApi.Db.Models
 {
-    public sealed class MenuCategoryProperty
+    public sealed class MenuCategoryCustomAttribute
     {
         public Guid MenuCategoryId { get; set; }
-        public Guid PropertyId { get; set; }
+        public Guid CustomAttributeId { get; set; }
     }
 }

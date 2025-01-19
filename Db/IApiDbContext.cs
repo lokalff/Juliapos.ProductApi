@@ -13,10 +13,10 @@ namespace Juliapos.Portal.ProductApi.Db
         DbSet<Product> Product { get; }
         DbSet<ProductVariation> ProductVariation { get; }
         DbSet<ProductVariationLocation> ProductVariationLocation { get; }
-        DbSet<Property> Property { get; }
-        DbSet<PropertyValue> PropertyValue { get; }
+        DbSet<CustomAttribute> CustomAttribute { get; }
+        DbSet<CustomAttributeValue> CustomAttributeValue { get; }
         DbSet<SelectionPage> SelectionPage { get; }
         DbSet<SelectionPageProduct> SelectionPageProduct { get; }
-        DbSet<MenuCategoryProperty> ProductPropertyTemplate { get; }
+        DbSet<MenuCategoryCustomAttribute> MenuCategoryCustomAttribute { get; }
     }
 }

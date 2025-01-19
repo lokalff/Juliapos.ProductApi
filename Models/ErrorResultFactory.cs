@@ -32,8 +32,8 @@ namespace Juliapos.Portal.ProductApi.Models
             { ApiErrorCode.MenuCategoryNotFound, "Menu category not found" },
             { ApiErrorCode.MenuCategoryHasProducts, "Menu category is used in products" },
 
-            { ApiErrorCode.PropertyNotFound, "Property not found" },
-            { ApiErrorCode.PropertyHasProducts, "Property is used in products" },
+            { ApiErrorCode.CustomAttributeNotFound, "Custom attribute not found" },
+            { ApiErrorCode.CustomAttributeHasProducts, "Custom attribute is used in products" },
 
             { ApiErrorCode.SelectionPageNotFound, "Product selection page not found" },
             { ApiErrorCode.SelectionPageHasProducts, "Product selection page has products" },
@@ -241,14 +241,14 @@ namespace Juliapos.Portal.ProductApi.Models
         MenuCategoryHasProducts = 5201,
 
         /// <summary>
-        /// Property was not found
+        /// Custom attribute was not found
         /// </summary>
-        PropertyNotFound = 5300,
+        CustomAttributeNotFound = 5300,
 
         /// <summary>
-        /// Property has connected products
+        /// Custom attribute has connected products
         /// </summary>
-        PropertyHasProducts = 5301,
+        CustomAttributeHasProducts = 5301,
 
         /// <summary>
         /// Selection page was not found

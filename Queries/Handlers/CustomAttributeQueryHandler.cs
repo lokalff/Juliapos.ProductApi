@@ -6,30 +6,30 @@ using Juliapos.Portal.ProductApi.Models;
 namespace Juliapos.Portal.ProductApi.Queries.Handlers
 {
     /// <summary>
-    /// Handler for the <see cref="PropertyQuery"/>
+    /// Handler for the <see cref="CustomAttributeQuery"/>
     /// </summary>
-    public sealed class PropertyQueryHandler : IHandleQuery<PropertyQuery, Property>
+    public sealed class CustomAttributeQueryHandler : IHandleQuery<CustomAttributeQuery, CustomAttribute>
     {
         private readonly IApiDbDataStore m_dataStore;
 
         /// <summary>
-        /// Create an instance of type <see cref="PropertyQueryHandler"/>
+        /// Create an instance of type <see cref="CustomAttributeQueryHandler"/>
         /// </summary>
         /// <param name="dataStore"></param>
-        public PropertyQueryHandler(IApiDbDataStore dataStore)
+        public CustomAttributeQueryHandler(IApiDbDataStore dataStore)
         {
             m_dataStore = dataStore;
         }
 
         /// <inheritdoc />
-        public async Task<Property> HandleAsync(PropertyQuery query)
+        public async Task<CustomAttribute> HandleAsync(CustomAttributeQuery query)
         {
-            var result = await m_dataStore.PropertyDataQuery
+            var result = await m_dataStore.CustomAttributeDataQuery
                 .WithOrganization()
                 .WhereOrganizationId(query.OrganizationId)
                 .WhereId(query.Id)
                 .SingleOrDefaultAsync()
-                ?? throw new HttpNotFoundException(ApiErrorCode.PropertyNotFound, query.Id); ;
+                ?? throw new HttpNotFoundException(ApiErrorCode.CustomAttributeNotFound, query.Id); ;
 
             return result;
         }

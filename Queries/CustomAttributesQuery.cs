@@ -4,18 +4,13 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Queries
 {
     /// <summary>
-    /// Query for one property
+    /// Query to retrieve all custom attributes
     /// </summary>
-    public sealed class PropertyQuery : IQuery<Property>
+    public sealed class CustomAttributesQuery : IQuery<IEnumerable<CustomAttribute>>
     {
         /// <summary>
         /// Organization id
         /// </summary>
-        public Guid OrganizationId { get; set; }
-
-        /// <summary>
-        /// id
-        /// </summary>
-        public Guid Id { get; set; }
+        public Guid? OrganizationId { get; set; }
     }
 }

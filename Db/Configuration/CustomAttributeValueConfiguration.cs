@@ -6,20 +6,20 @@ using Microsoft.EntityFrameworkCore;
 namespace Juliapos.Portal.ProductApi.Db.Configuration
 {
     [ExcludeFromCodeCoverage]
-    internal sealed class PropertyValueConfiguration : IEntityTypeConfiguration<PropertyValue>
+    internal sealed class CustomAttributeValueConfiguration : IEntityTypeConfiguration<CustomAttributeValue>
     {
-        public void Configure(EntityTypeBuilder<PropertyValue> builder)
+        public void Configure(EntityTypeBuilder<CustomAttributeValue> builder)
         {
-            builder.ToTable(DbConstants.Table.PropertyValue, DbConstants.DefaultSchema);
+            builder.ToTable(DbConstants.Table.CustomAttributeValue, DbConstants.DefaultSchema);
 
-            builder.HasKey(t => t.PropertyValueId);
-            builder.HasIndex(t => new { t.ProductId, t.PropertyId });
+            builder.HasKey(t => t.CustomAttributeValueId);
+            builder.HasIndex(t => new { t.ProductId, t.CustomAttributeId });
 
-            builder.Property(u => u.PropertyValueId)
-                .HasColumnName("propertyvalue_id");
+            builder.Property(u => u.CustomAttributeValueId)
+                .HasColumnName("customattributevalue_id");
 
-            builder.Property(u => u.PropertyId)
-                .HasColumnName("property_id")
+            builder.Property(u => u.CustomAttributeId)
+                .HasColumnName("customattribute_id")
                 .IsRequired();
 
             builder.Property(u => u.ProductId)
@@ -30,13 +30,13 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .HasColumnName("value")
                 .IsRequired();
 
-            builder.HasOne(pv => pv.Property)
+            builder.HasOne(pv => pv.CustomAttribute)
                 .WithMany()
-                .HasForeignKey(pv => pv.PropertyId)
+                .HasForeignKey(pv => pv.CustomAttributeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(pv => pv.Product)
-                .WithMany(p => p.PropertieValues)
+                .WithMany(p => p.CustomAttributeValues)
                 .HasForeignKey(pv => pv.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
 

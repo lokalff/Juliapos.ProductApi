@@ -4,9 +4,9 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Command to create a <see cref="Property"/>
+    /// Command to create a <see cref="CustomAttribute"/>
     /// </summary>
-    public sealed class PropertyCreateCommand : ICommand<Property>
+    public sealed class CustomAttributeCreateCommand : ICommand<CustomAttribute>
     {
         /// <summary>
         /// Organization id

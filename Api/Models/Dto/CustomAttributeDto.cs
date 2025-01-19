@@ -1,21 +1,16 @@
-﻿using Juliapos.Patterns.CQRS.Commands;
-using Juliapos.Portal.ProductApi.Db.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Juliapos.Portal.ProductApi.Commands
+namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
     /// <summary>
-    /// Command to update a <see cref="Property"/>
+    /// DTO for Custom attributes
     /// </summary>
-    public sealed class PropertyUpdateCommand : ICommand<Property>
+    public sealed class CustomAttributeDto
     {
         /// <summary>
-        /// Organization id
+        /// Id
         /// </summary>
-        public Guid OrganizationId { get; set; }
-
-        /// <summary>
-        /// id
-        /// </summary>
+        [Required]
         public Guid Id { get; set; }
 
         /// <summary>
@@ -24,13 +19,20 @@ namespace Juliapos.Portal.ProductApi.Commands
         public string Name { get; set; }
 
         /// <summary>
-        /// Type name
+        /// Id as a name
+        /// </summary>
+        public string IdName { get; set; }
+
+        /// <summary>
+        /// Typename
         /// </summary>
         public string TypeName { get; set; }
 
         /// <summary>
         /// Enabled
         /// </summary>
+        [Required]
         public bool Enabled { get; set; }
+
     }
 }

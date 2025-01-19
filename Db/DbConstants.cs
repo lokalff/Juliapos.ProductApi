@@ -15,15 +15,15 @@
             public const string Location = "location";
             public const string Organization = "organization";
             public const string ProductCategory = "productcategory";
-            public const string Property = "property";
-            public const string PropertyValue = "propertyvalue";
+            public const string CustomAttribute = "customattribute";
+            public const string CustomAttributeValue = "customattributevalue";
             public const string SelectionPage = "selectionpage";
             public const string SelectionPageProduct = "selectionpageproduct";
             public const string Product = "product";
             public const string ProductVariation = "productvariation";
             public const string ProductLocation = "productlocation";
             public const string ProductVariationLocation = "productvariationlocation";
-            public const string MenuCategoryProperty = "menucategoryproperty";
+            public const string MenuCategoryCustomAttribute = "menucategorycustomattribute";
         }
 
         public static class View

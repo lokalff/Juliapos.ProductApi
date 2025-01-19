@@ -25,7 +25,7 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
         {
             var query = m_dataStore.ProductDataQuery
                 .WithLocations()
-                .WithProperties()
+                .WithCustomAttributes()
                 .WithVariations();
 
             if (organizationId != null)
@@ -41,7 +41,7 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
         {
             var result = await m_dataStore.ProductDataQuery
                 .WithLocations()
-                .WithProperties()
+                .WithCustomAttributes()
                 .WithVariations()
                 .WhereId(id)
                 .WhereNotDeleted()
@@ -74,7 +74,7 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
         {
             var existing = await m_dataStore.ProductDataQuery
                 .WithLocations()
-                .WithProperties()
+                .WithCustomAttributes()
                 .WithVariations()
                 .WhereId(product.ProductId)
                 .SingleOrDefaultAsync();
@@ -95,7 +95,7 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
             existing.Updated = DateTime.UtcNow;
             existing.UserUpdate = m_authorizationContext.UserId.ToString();
 
-            existing.SyncProperties(product.PropertieValues);
+            existing.SyncCustomAttributes(product.CustomAttributeValues);
             existing.SyncVariations(product.ProductVariations);
 
             product.CheckProduct();
@@ -108,7 +108,7 @@ namespace Juliapos.Portal.ProductApi.Services.Implementation
         {
             var result = await m_dataStore.ProductDataQuery
                 .WithLocations()
-                .WithProperties()
+                .WithCustomAttributes()
                 .WithVariations()
                 .WhereId(id)
                 .SingleOrDefaultAsync();

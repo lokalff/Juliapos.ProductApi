@@ -33,11 +33,11 @@ namespace Juliapos.Portal.ProductApi.Api.Mappers
                 UserUpdate = source.UserUpdate
             };
 
-            if (source.PropertieValues != null && source.PropertieValues.Any())
+            if (source.CustomAttributeValues != null && source.CustomAttributeValues.Any())
             {
-                result.Properties = source.PropertieValues.Select(x => new ProductPropertyDto
+                result.CustomAttributes = source.CustomAttributeValues.Select(x => new ProductCustomAttributeDto
                 {
-                    Id = x.PropertyId,
+                    Id = x.CustomAttributeId,
                     Value = x.Value
                 }).ToArray();
             }

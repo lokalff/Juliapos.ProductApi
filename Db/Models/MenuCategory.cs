@@ -35,6 +35,6 @@
 
         public Organization Organization { get; set; }
         public ICollection<Product> Products { get; set; } = new List<Product>();
-        public ICollection<Property> Properties { get; set; } = new List<Property>();
+        public ICollection<CustomAttribute> CustomAttributes { get; set; } = new List<CustomAttribute>();
     }
 }

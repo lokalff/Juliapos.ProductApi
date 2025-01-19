@@ -90,7 +90,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
             var validMenuCategory = await m_argumentValidator.ValidateMenuCategoryAsync(product.MenuCategoryId);
             var validDustCategory = await m_argumentValidator.ValidateDustCategoryAsync(product.DustCategoryId);
 
-            product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
+            product.CustomAttributes.Select(async s => await m_argumentValidator.ValidateCustomAttributeAsync(s.Id));
             product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
             product.Variations.SelectMany(v => v.ProductVariationLocations).Select(async vl =>
             {
@@ -124,7 +124,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
             var validMenuCategory = await m_argumentValidator.ValidateMenuCategoryAsync(product.MenuCategoryId);
             var validDustCategory = await m_argumentValidator.ValidateDustCategoryAsync(product.DustCategoryId);
 
-            product.Properties.Select(async s => await m_argumentValidator.ValidatePropertyAsync(s.Id));
+            product.CustomAttributes.Select(async s => await m_argumentValidator.ValidateCustomAttributeAsync(s.Id));
             product.SelectionPages.Select(async s => await m_argumentValidator.ValidateSelectionPageAsync(s.SelectionPageId));
             product.Variations.SelectMany(v => v.ProductVariationLocations).Select(async vl =>
             {

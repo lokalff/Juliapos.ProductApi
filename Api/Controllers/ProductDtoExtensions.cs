@@ -7,16 +7,16 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
     {
 
         /// <summary>
-        /// Get PropertyValue objects from the <see cref="ProductPropertyDto"/>
+        /// Get CustomAttributeValue objects from the <see cref="ProductCustomAttributeDto"/>
         /// </summary>
-        /// <param name="property"></param>
+        /// <param name="attribute"></param>
         /// <returns></returns>
-        public static PropertyValue MapProperty(this ProductPropertyDto property)
+        public static CustomAttributeValue MapCustomAttribute(this ProductCustomAttributeDto attribute)
         {
-            var result = new PropertyValue
+            var result = new CustomAttributeValue
             {
-                PropertyId = property.Id,
-                Value = property.Value,
+                CustomAttributeId = attribute.Id,
+                Value = attribute.Value,
             };
             return result;
         }
@@ -76,7 +76,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
         public static Product MapProductAdd(this ProductAddDto product, Guid id)
         {
 
-            var propertyValuesToAdd = product.Properties?.Select(p => p.MapProperty()).ToList();
+            var attributeValuesToAdd = product.CustomAttributes?.Select(p => p.MapCustomAttribute()).ToList();
             var variationsToAdd = product.Variations?.Select(v => v.MapVariationAdd()).ToList();
             var selectionPageToAdd = product.SelectionPages.Select(s => s.MapProductSelectionPage()).ToList();
 
@@ -100,7 +100,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 //Created = dateTime,           Set in the save to db
                 //UserCreate = userName,
 
-                PropertieValues = propertyValuesToAdd,
+                CustomAttributeValues = attributeValuesToAdd,
                 ProductVariations = variationsToAdd,
                 SelectionPageProducts = selectionPageToAdd,
             };
@@ -144,7 +144,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
 
         public static Product MapProductUpdate(this ProductUpdateDto product, Guid id)
         {
-            var propertyValuesToAdd = product.Properties?.Select(p => p.MapProperty()).ToList();
+            var attributeValuesToAdd = product.CustomAttributes?.Select(p => p.MapCustomAttribute()).ToList();
             var variationsToAdd = product.Variations?.Select(v => v.MapVariationUpdate()).ToList();
             var selectionPageToAdd = product.SelectionPages.Select(s => s.MapProductSelectionPage()).ToList();
 
@@ -168,7 +168,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 //Created = dateTime,               Happens in the save to db
                 //UserCreate = userName,
 
-                PropertieValues = propertyValuesToAdd,
+                CustomAttributeValues = attributeValuesToAdd,
                 ProductVariations = variationsToAdd,
                 SelectionPageProducts = selectionPageToAdd,
             };

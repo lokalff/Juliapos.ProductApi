@@ -18,12 +18,12 @@ namespace Juliapos.Portal.ProductApi.Db
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<SelectionPage> SelectionPage { get; set; }
         public DbSet<SelectionPageProduct> SelectionPageProduct { get; set; }
-        public DbSet<Property> Property { get; set; }
-        public DbSet<PropertyValue> PropertyValue { get; set; }
+        public DbSet<CustomAttribute> CustomAttribute { get; set; }
+        public DbSet<CustomAttributeValue> CustomAttributeValue { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductVariation> ProductVariation { get; set; }
         public DbSet<ProductVariationLocation> ProductVariationLocation { get; set; }
-        public DbSet<MenuCategoryProperty> ProductPropertyTemplate { get; set; }
+        public DbSet<MenuCategoryCustomAttribute> MenuCategoryCustomAttribute { get; set; }
 
         /// <summary>
         /// Create an instance of <see href="ApiDbContext" />
@@ -45,12 +45,12 @@ namespace Juliapos.Portal.ProductApi.Db
             modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new SelectionPageConfiguration());
             modelBuilder.ApplyConfiguration(new SelectionPageProductConfiguration());
-            modelBuilder.ApplyConfiguration(new PropertyConfiguration());
-            modelBuilder.ApplyConfiguration(new PropertyValueConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomAttributeConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomAttributeValueConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ProductVariationConfiguration());
             modelBuilder.ApplyConfiguration(new ProductVariationLocationConfiguration());
-            modelBuilder.ApplyConfiguration(new MenuCategoryPropertyConfiguration());
+            modelBuilder.ApplyConfiguration(new MenuCategoryCustomAttributeConfiguration());
 
             //modelBuilder
             //    .ApplyConfiguration(new GetPackagesAtConfiguration())

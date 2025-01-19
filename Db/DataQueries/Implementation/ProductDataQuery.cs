@@ -33,11 +33,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
                 .ThenInclude(lv => lv.Location));
         }
 
-        public IProductDataQuery WithProperties()
+        public IProductDataQuery WithCustomAttributes()
         {
             return new ProductDataQuery(DataContext, Queryable
-                .Include(p => p.PropertieValues)
-                .ThenInclude(p => p.Property));
+                .Include(p => p.CustomAttributeValues)
+                .ThenInclude(p => p.CustomAttribute));
         }
 
         public IProductDataQuery WhereId(Guid id)
@@ -77,11 +77,11 @@ namespace Juliapos.Portal.ProductApi.Db.DataQueries.Implementation
             return new ProductDataQuery(DataContext, Queryable.Where(c => c.ProductCategory.Organization.ExternalId == id));
         }
 
-        public IProductDataQuery HasProperty(Guid id)
+        public IProductDataQuery HasCustomAttribute(Guid id)
         {
             return new ProductDataQuery(DataContext, Queryable
-                .Include(p => p.PropertieValues)
-                .Where(c => c.PropertieValues.Any(p => p.PropertyId == id)));
+                .Include(p => p.CustomAttributeValues)
+                .Where(c => c.CustomAttributeValues.Any(p => p.CustomAttributeId == id)));
         }
 
         public IProductDataQuery OnSelectionPage(Guid id)

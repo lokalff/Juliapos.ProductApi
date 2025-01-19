@@ -6,6 +6,268 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/v1/customattributes": {
+      "get": {
+        "tags": [
+          "CustomAttributes"
+        ],
+        "summary": "Get custom attributes",
+        "operationId": "GetCustomAttributesAsync",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the custom attributes.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CustomAttributeDto"
+              }
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "CustomAttributes"
+        ],
+        "summary": "Create a new custom attribute",
+        "operationId": "CreateCustomAttributeAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CustomAttributeAddDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the new custom attribute.",
+            "schema": {
+              "$ref": "#/definitions/CustomAttributeDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another custom attribute.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/customattributes/{id}": {
+      "get": {
+        "tags": [
+          "CustomAttributes"
+        ],
+        "summary": "Get custom attribute with id as parameter",
+        "operationId": "GetCustomAttributeByIdAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the custom attribute.",
+            "schema": {
+              "$ref": "#/definitions/CustomAttributeDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the custom attribute was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "400": {
+            "description": "Returned when request can not be completed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "CustomAttributes"
+        ],
+        "summary": "Update a custom attribute",
+        "operationId": "UpdateCustomAttributeAsync",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CustomAttributeUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the full information about the custom attribute.",
+            "schema": {
+              "$ref": "#/definitions/CustomAttributeDto"
+            }
+          },
+          "404": {
+            "description": "Returned when the custom attribute was not found.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "409": {
+            "description": "Returned when there is a conflict with another custom attribute.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "CustomAttributes"
+        ],
+        "summary": "Delete a custom attribute",
+        "operationId": "DeleteCustomAttributeAsync",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned with the deleted custom attribute.",
+            "schema": {
+              "$ref": "#/definitions/CustomAttributeDto"
+            }
+          },
+          "409": {
+            "description": "Returned when the custom attribute is in use.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResultDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "openid"
+            ]
+          }
+        ]
+      }
+    },
     "/api/v1/dustcategories": {
       "get": {
         "tags": [
@@ -1054,268 +1316,6 @@
         ]
       }
     },
-    "/api/v1/properties": {
-      "get": {
-        "tags": [
-          "Properties"
-        ],
-        "summary": "Get properties",
-        "operationId": "GetPropertiesAsync",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Returned with the full information about the property.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/PropertyDto"
-              }
-            }
-          },
-          "400": {
-            "description": "Returned when request can not be completed.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "openid"
-            ]
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Properties"
-        ],
-        "summary": "Create a new property",
-        "operationId": "CreatePropertyAsync",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PropertyAddDto"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returned with the full information about the new property.",
-            "schema": {
-              "$ref": "#/definitions/PropertyDto"
-            }
-          },
-          "409": {
-            "description": "Returned when there is a conflict with another property.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "openid"
-            ]
-          }
-        ]
-      }
-    },
-    "/api/v1/properties/{id}": {
-      "get": {
-        "tags": [
-          "Properties"
-        ],
-        "summary": "Get property with id as parameter",
-        "operationId": "GetPropertyByIdAsync",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returned with the full information about the property.",
-            "schema": {
-              "$ref": "#/definitions/PropertyDto"
-            }
-          },
-          "404": {
-            "description": "Returned when the property was not found.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "400": {
-            "description": "Returned when request can not be completed.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "openid"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Properties"
-        ],
-        "summary": "Update a property",
-        "operationId": "UpdatePropertyAsync",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PropertyUpdateDto"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returned with the full information about the property.",
-            "schema": {
-              "$ref": "#/definitions/PropertyDto"
-            }
-          },
-          "404": {
-            "description": "Returned when the property was not found.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "409": {
-            "description": "Returned when there is a conflict with another property.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "openid"
-            ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Properties"
-        ],
-        "summary": "Delete a property",
-        "operationId": "DeletePropertyAsync",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returned with the deleted property.",
-            "schema": {
-              "$ref": "#/definitions/PropertyDto"
-            }
-          },
-          "409": {
-            "description": "Returned when the property is in use.",
-            "schema": {
-              "$ref": "#/definitions/ErrorResultDto"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "security": [
-          {
-            "oauth2": [
-              "openid"
-            ]
-          }
-        ]
-      }
-    },
     "/api/v1/selectionpages": {
       "get": {
         "tags": [
@@ -1580,6 +1580,80 @@
     }
   },
   "definitions": {
+    "CustomAttributeAddDto": {
+      "description": "DTO for adding a custom attribute",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "typeName": {
+          "description": "Typename",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CustomAttributeDto": {
+      "description": "DTO for Custom attributes",
+      "required": [
+        "enabled",
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "idName": {
+          "description": "Id as a name",
+          "type": "string"
+        },
+        "typeName": {
+          "description": "Typename",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CustomAttributeUpdateDto": {
+      "description": "DTO for adding a custom attribute",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "typeName": {
+          "description": "Typename",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
     "DustCategoryAddDto": {
       "description": "DTO for adding a dust category",
       "type": "object",
@@ -1598,6 +1672,10 @@
     },
     "DustCategoryDto": {
       "description": "DTO for Dust category",
+      "required": [
+        "id",
+        "weight"
+      ],
       "type": "object",
       "properties": {
         "id": {
@@ -1753,6 +1831,11 @@
     },
     "MenuCategoryDto": {
       "description": "DTO for Menu category",
+      "required": [
+        "enabled",
+        "id",
+        "weight"
+      ],
       "type": "object",
       "properties": {
         "id": {
@@ -1806,57 +1889,70 @@
       "properties": {
         "productCategoryId": {
           "format": "uuid",
+          "description": "Product category",
           "type": "string"
         },
         "dustCategoryId": {
           "format": "uuid",
+          "description": "Dust category",
           "type": "string"
         },
         "menuCategoryId": {
           "format": "uuid",
+          "description": "Menu category",
           "type": "string"
         },
         "code": {
+          "description": "Product code",
           "type": "string"
         },
         "name": {
+          "description": "Product name",
           "type": "string"
         },
         "menuName": {
+          "description": "Alternative name on menu",
           "type": "string"
         },
         "vatLevel": {
           "$ref": "#/definitions/VatLevel"
         },
         "description": {
+          "description": "Long description",
           "type": "string"
         },
         "inInventory": {
+          "description": "Should be included in inventory",
           "type": "boolean"
         },
         "percentage": {
           "format": "float",
+          "description": "Amount of softdrugs for use in stock measurement",
           "type": "number"
         },
         "ascendingStock": {
+          "description": "Stock goes up on use (coffee machine counter)",
           "type": "boolean"
         },
         "state": {
           "$ref": "#/definitions/RecordState"
         },
-        "properties": {
+        "customAttributes": {
+          "description": "Custom attributes",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductPropertyDto"
+            "$ref": "#/definitions/ProductCustomAttributeDto"
           }
         },
         "variations": {
+          "description": "Variations",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ProductVariationAddDto"
           }
         },
         "selectionPages": {
+          "description": "Selection pages",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ProductSelectionPageReferenceDto"
@@ -1902,6 +1998,12 @@
     },
     "ProductCategoryDto": {
       "description": "DTO for the product category",
+      "required": [
+        "enabled",
+        "id",
+        "measureMethod",
+        "weight"
+      ],
       "type": "object",
       "properties": {
         "id": {
@@ -1971,49 +2073,88 @@
       },
       "additionalProperties": false
     },
-    "ProductDto": {
-      "description": "",
+    "ProductCustomAttributeDto": {
+      "description": "Custom attribute instance in a product",
       "type": "object",
       "properties": {
         "id": {
           "format": "uuid",
+          "description": "Custom attribute id",
+          "type": "string"
+        },
+        "value": {
+          "description": "Custom attribute value",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductDto": {
+      "description": "DTO for products",
+      "required": [
+        "ascendingStock",
+        "created",
+        "dustCategoryId",
+        "id",
+        "inInventory",
+        "menuCategoryId",
+        "percentage",
+        "productCategoryId",
+        "state",
+        "vatLevel"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "Id",
           "type": "string"
         },
         "productCategoryId": {
           "format": "uuid",
+          "description": "Product category",
           "type": "string"
         },
         "dustCategoryId": {
           "format": "uuid",
+          "description": "Dust category",
           "type": "string"
         },
         "menuCategoryId": {
           "format": "uuid",
+          "description": "Menu category",
           "type": "string"
         },
         "code": {
+          "description": "Product code",
           "type": "string"
         },
         "name": {
+          "description": "Product name",
           "type": "string"
         },
         "menuName": {
+          "description": "Alternative name on menu",
           "type": "string"
         },
         "vatLevel": {
           "$ref": "#/definitions/VatLevel"
         },
         "description": {
+          "description": "Long description",
           "type": "string"
         },
         "inInventory": {
+          "description": "Should be included in inventory",
           "type": "boolean"
         },
         "percentage": {
           "format": "float",
+          "description": "Amount of softdrugs for use in stock measurement",
           "type": "number"
         },
         "ascendingStock": {
+          "description": "Stock goes up on use (coffee machine counter)",
           "type": "boolean"
         },
         "state": {
@@ -2021,45 +2162,35 @@
         },
         "created": {
           "format": "date-time",
+          "description": "Datetime created",
           "type": "string"
         },
         "userCreate": {
+          "description": "User that created the product",
           "type": "string"
         },
         "updated": {
           "format": "date-time",
+          "description": "Datetime last update",
           "type": "string"
         },
         "userUpdate": {
+          "description": "User last update",
           "type": "string"
         },
-        "properties": {
+        "customAttributes": {
+          "description": "Custom attributes",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductPropertyDto"
+            "$ref": "#/definitions/ProductCustomAttributeDto"
           }
         },
         "variations": {
+          "description": "Variations",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ProductVariationAddDto"
           }
-        }
-      },
-      "additionalProperties": false
-    },
-    "ProductPropertyDto": {
-      "description": "Property instance in a product",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "description": "Property id",
-          "type": "string"
-        },
-        "value": {
-          "description": "Property value",
-          "type": "string"
         }
       },
       "additionalProperties": false
@@ -2105,57 +2236,70 @@
       "properties": {
         "productCategoryId": {
           "format": "uuid",
+          "description": "Product category",
           "type": "string"
         },
         "dustCategoryId": {
           "format": "uuid",
+          "description": "Dust category",
           "type": "string"
         },
         "menuCategoryId": {
           "format": "uuid",
+          "description": "Menu category",
           "type": "string"
         },
         "code": {
+          "description": "Product code",
           "type": "string"
         },
         "name": {
+          "description": "Product name",
           "type": "string"
         },
         "menuName": {
+          "description": "Alternative name on menu",
           "type": "string"
         },
         "vatLevel": {
           "$ref": "#/definitions/VatLevel"
         },
         "description": {
+          "description": "Long description",
           "type": "string"
         },
         "inInventory": {
+          "description": "Should be included in inventory",
           "type": "boolean"
         },
         "percentage": {
           "format": "float",
+          "description": "Amount of softdrugs for use in stock measurement",
           "type": "number"
         },
         "ascendingStock": {
+          "description": "Stock goes up on use (coffee machine counter)",
           "type": "boolean"
         },
         "state": {
           "$ref": "#/definitions/RecordState"
         },
-        "properties": {
+        "customAttributes": {
+          "description": "Custom attributes",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductPropertyDto"
+            "$ref": "#/definitions/ProductCustomAttributeDto"
           }
         },
         "variations": {
+          "description": "Variations",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ProductVariationUpdateDto"
           }
         },
         "selectionPages": {
+          "description": "Selection pages",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ProductSelectionPageReferenceDto"
@@ -2261,76 +2405,6 @@
       },
       "additionalProperties": false
     },
-    "PropertyAddDto": {
-      "description": "DTO for adding a property",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Name",
-          "type": "string"
-        },
-        "idName": {
-          "description": "Id as a name",
-          "type": "string"
-        },
-        "typeName": {
-          "description": "Typename",
-          "type": "string"
-        },
-        "enabled": {
-          "description": "Enabled",
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false
-    },
-    "PropertyDto": {
-      "description": "DTO for Properties",
-      "type": "object",
-      "properties": {
-        "id": {
-          "format": "uuid",
-          "description": "Id",
-          "type": "string"
-        },
-        "name": {
-          "description": "Name",
-          "type": "string"
-        },
-        "idName": {
-          "description": "Id as a name",
-          "type": "string"
-        },
-        "typeName": {
-          "description": "Typename",
-          "type": "string"
-        },
-        "enabled": {
-          "description": "Enabled",
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false
-    },
-    "PropertyUpdateDto": {
-      "description": "DTO for adding a property",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Name",
-          "type": "string"
-        },
-        "typeName": {
-          "description": "Typename",
-          "type": "string"
-        },
-        "enabled": {
-          "description": "Enabled",
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false
-    },
     "RecordState": {
       "enum": [
         "Active",
@@ -2365,6 +2439,11 @@
     },
     "SelectionPageDto": {
       "description": "DTO for product selection page",
+      "required": [
+        "enabled",
+        "id",
+        "weight"
+      ],
       "type": "object",
       "properties": {
         "id": {

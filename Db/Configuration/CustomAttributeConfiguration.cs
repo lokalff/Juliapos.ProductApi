@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 namespace Juliapos.Portal.ProductApi.Db.Configuration
 {
     [ExcludeFromCodeCoverage]
-    internal sealed class PropertyConfiguration : IEntityTypeConfiguration<Property>
+    internal sealed class CustomAttributeConfiguration : IEntityTypeConfiguration<CustomAttribute>
     {
-        public void Configure(EntityTypeBuilder<Property> builder)
+        public void Configure(EntityTypeBuilder<CustomAttribute> builder)
         {
-            builder.ToTable(DbConstants.Table.Property, DbConstants.DefaultSchema);
+            builder.ToTable(DbConstants.Table.CustomAttribute, DbConstants.DefaultSchema);
 
-            builder.HasKey(t => t.PropertyId);
+            builder.HasKey(t => t.CustomAttributeId);
             builder.HasIndex(t => new { t.OrganizationId, t.Name }).IsUnique();
             builder.HasIndex(t => new { t.OrganizationId, t.IdName }).IsUnique();
 
-            builder.Property(u => u.PropertyId)
-                .HasColumnName("property_id");
+            builder.Property(u => u.CustomAttributeId)
+                .HasColumnName("customattribute_id");
 
             builder.Property(u => u.OrganizationId)
                 .HasColumnName("organization_id")
@@ -43,7 +43,7 @@ namespace Juliapos.Portal.ProductApi.Db.Configuration
                 .IsRequired();
 
             builder.HasOne(u => u.Organization)
-                .WithMany(t => t.Properties)
+                .WithMany(t => t.CustomAttributes)
                 .HasForeignKey(u => u.OrganizationId);
         }
     }

@@ -4,9 +4,9 @@ using Juliapos.Portal.ProductApi.Db.Models;
 namespace Juliapos.Portal.ProductApi.Commands
 {
     /// <summary>
-    /// Command to delete a <see cref="Property"/>
+    /// Command to delete a <see cref="CustomAttribute"/>
     /// </summary>
-    public sealed class PropertyDeleteCommand : ICommand<Property>
+    public sealed class CustomAttributeDeleteCommand : ICommand<CustomAttribute>
     {
         /// <summary>
         /// Organization id

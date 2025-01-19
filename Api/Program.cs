@@ -202,7 +202,7 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IDtoMapper<ProductCategory, ProductCategoryDto>, ProductCategoryDtoMapper>();
     services.AddTransient<IDtoMapper<DustCategory, DustCategoryDto>, DustCategoryDtoMapper>();
     services.AddTransient<IDtoMapper<MenuCategory, MenuCategoryDto>, MenuCategoryDtoMapper>();
-    services.AddTransient<IDtoMapper<Property, PropertyDto>, PropertyDtoMapper>();
+    services.AddTransient<IDtoMapper<CustomAttribute, CustomAttributeDto>, CustomAttributeDtoMapper>();
     services.AddTransient<IDtoMapper<SelectionPage, SelectionPageDto>, SelectionPageDtoMapper>();
 
     services.AddScoped<IProductsService, ProductsService>();
@@ -215,8 +215,8 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IHandleQuery<DustCategoryQuery, DustCategory>, DustCategoryQueryHandler>();
     services.AddTransient<IHandleQuery<MenuCategoriesQuery, IEnumerable<MenuCategory>>, MenuCategoriesQueryHandler>();
     services.AddTransient<IHandleQuery<MenuCategoryQuery, MenuCategory>, MenuCategoryQueryHandler>();
-    services.AddTransient<IHandleQuery<PropertiesQuery, IEnumerable<Property>>, PropertiesQueryHandler>();
-    services.AddTransient<IHandleQuery<PropertyQuery, Property>, PropertyQueryHandler>();
+    services.AddTransient<IHandleQuery<CustomAttributesQuery, IEnumerable<CustomAttribute>>, CustomAttributesQueryHandler>();
+    services.AddTransient<IHandleQuery<CustomAttributeQuery, CustomAttribute>, CustomAttributeQueryHandler>();
     services.AddTransient<IHandleQuery<SelectionPagesQuery, IEnumerable<SelectionPage>>, SelectionPagesQueryHandler>();
     services.AddTransient<IHandleQuery<SelectionPageQuery, SelectionPage>, SelectionPageQueryHandler>();
 
@@ -232,9 +232,9 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IHandleCommand<MenuCategoryCreateCommand, MenuCategory>, MenuCategoryCreateCommandHandler>();
     services.AddTransient<IHandleCommand<MenuCategoryUpdateCommand, MenuCategory>, MenuCategoryUpdateCommandHandler>();
     services.AddTransient<IHandleCommand<MenuCategoryDeleteCommand, MenuCategory>, MenuCategoryDeleteCommandHandler>();
-    services.AddTransient<IHandleCommand<PropertyCreateCommand, Property>, PropertyCreateCommandHandler>();
-    services.AddTransient<IHandleCommand<PropertyUpdateCommand, Property>, PropertyUpdateCommandHandler>();
-    services.AddTransient<IHandleCommand<PropertyDeleteCommand, Property>, PropertyDeleteCommandHandler>();
+    services.AddTransient<IHandleCommand<CustomAttributeCreateCommand, CustomAttribute>, CustomAttributeCreateCommandHandler>();
+    services.AddTransient<IHandleCommand<CustomAttributeUpdateCommand, CustomAttribute>, CustomAttributeUpdateCommandHandler>();
+    services.AddTransient<IHandleCommand<CustomAttributeDeleteCommand, CustomAttribute>, CustomAttributeDeleteCommandHandler>();
     services.AddTransient<IHandleCommand<SelectionPageCreateCommand, SelectionPage>, SelectionPageCreateCommandHandler>();
     services.AddTransient<IHandleCommand<SelectionPageUpdateCommand, SelectionPage>, SelectionPageUpdateCommandHandler>();
     services.AddTransient<IHandleCommand<SelectionPageDeleteCommand, SelectionPage>, SelectionPageDeleteCommandHandler>();
