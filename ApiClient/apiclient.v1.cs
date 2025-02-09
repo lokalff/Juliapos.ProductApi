@@ -6220,7 +6220,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("variations")]
-        public System.Collections.Generic.ICollection<ProductVariationAddDto> Variations { get; set; }
+        public System.Collections.Generic.ICollection<ProductVariationDto> Variations { get; set; }
 
     }
 
@@ -6373,26 +6373,80 @@ namespace Juliapos.Portal.ProductApi.Client.v1
 
     }
 
+    /// <summary>
+    /// DTO for adding product variation
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ProductVariationAddDto
     {
+        /// <summary>
+        /// Globally unique product code
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("sku")]
         public string Sku { get; set; }
 
+        /// <summary>
+        /// Locally unique product code
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("code")]
         public string Code { get; set; }
+
+        /// <summary>
+        /// Variation name
+        /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Product Location values
+        /// </summary>
+
         [System.Text.Json.Serialization.JsonPropertyName("productVariationLocations")]
-        public System.Collections.Generic.ICollection<ProductVariationLocationReferenceDto> ProductVariationLocations { get; set; }
+        public System.Collections.Generic.ICollection<ProductVariationLocationDto> ProductVariationLocations { get; set; }
+
+    }
+
+    /// <summary>
+    /// DTO for product variation
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProductVariationDto
+    {
+        /// <summary>
+        /// Globally unique product code
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("sku")]
+        public string Sku { get; set; }
+
+        /// <summary>
+        /// Locally unique product code
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("code")]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Variation name
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Product Location values
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("productVariationLocations")]
+        public System.Collections.Generic.ICollection<ProductVariationLocationDto> ProductVariationLocations { get; set; }
 
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.2.0.0 (NJsonSchema v11.1.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ProductVariationLocationReferenceDto
+    public partial class ProductVariationLocationDto
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("locationId")]
@@ -6452,7 +6506,7 @@ namespace Juliapos.Portal.ProductApi.Client.v1
         public string Name { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("productVariationLocations")]
-        public System.Collections.Generic.ICollection<ProductVariationLocationReferenceDto> ProductVariationLocations { get; set; }
+        public System.Collections.Generic.ICollection<ProductVariationLocationDto> ProductVariationLocations { get; set; }
 
     }
 

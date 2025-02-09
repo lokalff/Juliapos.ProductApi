@@ -111,6 +111,6 @@ namespace Juliapos.Portal.ProductApi.Api.Models.Dto
         /// <summary>
         /// Variations
         /// </summary>
-        public ProductVariationAddDto[] Variations { get; set; } = Array.Empty<ProductVariationAddDto>();
+        public ProductVariationDto[] Variations { get; set; } = Array.Empty<ProductVariationDto>();
     }
 }

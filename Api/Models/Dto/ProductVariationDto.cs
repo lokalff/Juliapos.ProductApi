@@ -1,9 +1,9 @@
 ﻿namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
     /// <summary>
-    /// DTO for adding product variation 
+    /// DTO for product variation
     /// </summary>
-    public sealed class ProductVariationAddDto
+    public sealed class ProductVariationDto
     {
         /// <summary>
         /// Globally unique product code

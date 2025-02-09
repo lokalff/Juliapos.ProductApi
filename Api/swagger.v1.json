@@ -2189,7 +2189,7 @@
           "description": "Variations",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductVariationAddDto"
+            "$ref": "#/definitions/ProductVariationDto"
           }
         }
       },
@@ -2309,27 +2309,58 @@
       "additionalProperties": false
     },
     "ProductVariationAddDto": {
+      "description": "DTO for adding product variation",
       "type": "object",
       "properties": {
         "sku": {
+          "description": "Globally unique product code",
           "type": "string"
         },
         "code": {
+          "description": "Locally unique product code",
           "type": "string"
         },
         "name": {
+          "description": "Variation name",
           "type": "string"
         },
         "productVariationLocations": {
+          "description": "Product Location values",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductVariationLocationReferenceDto"
+            "$ref": "#/definitions/ProductVariationLocationDto"
           }
         }
       },
       "additionalProperties": false
     },
-    "ProductVariationLocationReferenceDto": {
+    "ProductVariationDto": {
+      "description": "DTO for product variation",
+      "type": "object",
+      "properties": {
+        "sku": {
+          "description": "Globally unique product code",
+          "type": "string"
+        },
+        "code": {
+          "description": "Locally unique product code",
+          "type": "string"
+        },
+        "name": {
+          "description": "Variation name",
+          "type": "string"
+        },
+        "productVariationLocations": {
+          "description": "Product Location values",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductVariationLocationDto"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProductVariationLocationDto": {
       "type": "object",
       "properties": {
         "locationId": {
@@ -2399,7 +2430,7 @@
         "productVariationLocations": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProductVariationLocationReferenceDto"
+            "$ref": "#/definitions/ProductVariationLocationDto"
           }
         }
       },

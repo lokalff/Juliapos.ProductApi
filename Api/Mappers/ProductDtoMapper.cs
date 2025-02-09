@@ -44,12 +44,12 @@ namespace Juliapos.Portal.ProductApi.Api.Mappers
 
             if (source.ProductVariations != null && source.ProductVariations.Any())
             {
-                result.Variations = source.ProductVariations.Select(x => new ProductVariationAddDto
+                result.Variations = source.ProductVariations.Select(x => new ProductVariationDto
                 {
                     Name = x.NameExtension,
                     Code = x.CodeExtension,
                     Sku = x.Sku,
-                    ProductVariationLocations = x.ProductVariationLocations.Select(y => new ProductVariationLocationReferenceDto
+                    ProductVariationLocations = x.ProductVariationLocations.Select(y => new ProductVariationLocationDto
                     {
                         LocationId = y.LocationId,
                         Status = y.Status,

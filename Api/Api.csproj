@@ -56,10 +56,14 @@
     <ProjectReference Include="..\Queries\Queries.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
-	
-	
-  <Target Name="NSwagDebug" AfterTargets="PostBuildEvent">
-    <Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="dotnet swagger tofile --serializeasv2 --output swagger.v1.json $(TargetPath) v1&#xD;&#xA;$(NSwagExe_Net80) run nswag.json /variables:Configuration=$(Configuration)" />
-  </Target>
-	
+
+
+	<Target Name="NSwag" AfterTargets="PostBuildEvent">
+		<Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="dotnet swagger tofile --serializeasv2 --output swagger.v1.json $(TargetPath) v1&#xD;&#xA;$(NSwagExe_Net80) run nswag.json /variables:Configuration=$(Configuration)" />
+	</Target>
+
+	<Target Name="Kiota" AfterTargets="PostBuildEvent">
+		<Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="dotnet swagger tofile --serializeasv2 --output swagger.v1.json $(TargetPath) v1&#xD;&#xA;kiota generate --language CSharp --openapi swagger.v1.json --output ..\ApiClient --namespace-name Juliapos.Portal.ProductsApi --class-name ProductsClient" />
+	</Target>
+
 </Project>

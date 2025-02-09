@@ -2,7 +2,7 @@
 
 namespace Juliapos.Portal.ProductApi.Api.Models.Dto
 {
-    public sealed class ProductVariationLocationReferenceDto
+    public sealed class ProductVariationLocationDto
     {
         public Guid? LocationId { get; set; }
 

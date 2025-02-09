@@ -175,7 +175,7 @@ namespace Juliapos.Portal.ProductApi.Api.Controllers
                 });
 
             var result = category != null ? m_mapper.Map<ProductCategory, ProductCategoryDto>(category) : null;
-            return result == null ? Ok() : Ok(result);
+            return /*result == null ? Ok() :*/ Ok(result);
         }
 
 
